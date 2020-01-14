@@ -1,0 +1,89 @@
+<header>
+    <div class="header-area ">
+        <div class="header-top_area  d-none d-lg-block ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 ">
+                        <ul class="social_media_links d-flex justify-content-start">
+                           <li><a href="#">
+                            <i class="fa fa-linkedin"></i>
+                        </a></li> 
+                        <li><a href="#">
+                          <i class="fa fa-facebook"></i>
+                      </a></li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                        <div class="short_contact_list">
+                            <ul class="d-flex justify-content-end">
+                                <li><a href="#"> <i class="fa fa-envelope"></i> info@reservesmanager.com</a></li>
+                                <li><a href="#"> <i class="fa fa-phone"></i> +234 080 6034 6709</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+  
+        <div [ngClass]="{'blur': showMenu}" id="sticky-header" class="main-header-area ">
+            <div class="container">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2 ">
+                            <div class="logo d-flex justify-content-between ">
+                                <a href="index.html">
+                                    <!-- <img src="../../../../assets/img/logo.png" alt=""> -->
+                                    <h3 class="text-white"><span style="color:rgb(0, 34, 255);">R</span>eserve<span style="color:rgb(0, 34, 255);">M</span>anager</h3>
+                                </a>
+  <div>
+    <button (click)="this.showMenu = !this.showMenu" class=" text-white d-lg-none d-xl-none" mat-button><mat-icon *ngIf="!showMenu">menu</mat-icon> <mat-icon *ngIf="showMenu">close</mat-icon></button>
+  </div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div [ngClass]="{'fadeInDown': showMenu}" class="main-menu animated  d-none  d-md-block  d-lg-block">
+                                <nav>
+                                    <ul id="navigation" class="navigation d-flex justify-content-between">
+                                        <li><a [routerLinkActiveOptions]="{exact:
+                                            true}" mat-list-item routerLink="/" routerLinkActive="menu-active">Home</a></li>
+                                
+                                        <li><a  routerLink="/client-education" routerLinkActive="menu-active">Client Education</a></li>
+                                        <li><a  routerLink="/financial-services" routerLinkActive="menu-active">Financial Services</a></li>
+                                        <li><a  routerLink="/software-development" routerLinkActive="menu-active">Sofware Development</a></li>
+                                        <li><a >More Services <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a routerLinkActive="menu-active" routerLink="/consultancy-services">Consultancy Services</a></li>
+                                                <li><a routerLinkActive="menu-active" routerLink="/fees-and-commission">Fees & Commission</a></li>
+                                                <li><a routerLinkActive="menu-active" routerLink="/dedicated-trading-accounts">Dedicated Trading Accounts</a></li>
+                                                <li><a routerLinkActive="menu-active" routerLink="/bonus">Bonus</a></li>
+                                            </ul>
+                                        </li>
+                                       
+                                       
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="acoount-area d-flex justify-content-end">
+                               <button mat-raised-button class="shadow-sm success text-white">Register</button>
+                               <button mat-raised-button class="shadow-sm ml-lg-4 ">Login</button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+    </div>
+  </header>
