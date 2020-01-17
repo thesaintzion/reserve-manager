@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   showMenu = false;
 
-  constructor() { }
-
+  constructor(private router: Router) { }
+  dataTest(e): void{
+// alert(e);
+this.router.navigate(['/register'], {queryParams: {
+  'user': 'Saint'
+}});
+  }
   ngOnInit() {
   }
 

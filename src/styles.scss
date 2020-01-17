@@ -1,5 +1,14 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: #555;
+}
+
 button:focus {
     outline: 1px dotted;
     outline: none !important;
@@ -8,23 +17,37 @@ button:focus {
     scroll-behavior: smooth !important;
 }
 
-*{
+* {
     scroll-behavior: smooth !important;
 }
 
-
-.menu-active{
+.menu-active {
     // color: rgb(0, 34, 255) !important;
     border-bottom: 2px solid rgb(0, 34, 255) !important;
 }
 
-@media (max-width:767px){
-    .menu-active{
-    border-bottom: none !important; 
+@media (max-width:767px) {
+    .menu-active {
+        border-bottom: none !important;
     }
-    .showcase-content h1{
+    .showcase-content h1 {
         text-align: center !important;
-       padding-left: 20px;
-       padding-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: none !important;
+    outline: 0 !important;
+    // outline: 5px auto -webkit-focus-ring-color;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #eee !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #eee !important;
 }

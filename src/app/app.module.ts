@@ -20,6 +20,7 @@ import { BonusComponent } from './components/site-components/bonus/bonus.compone
 import { PageNotFoundComponent } from './components/shared-components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/site-components/register/register.component';
 import { ScrollUpComponent } from './components/shared-components/scroll-up/scroll-up.component';
+import { LoginComponent } from './components/site-components/login/login.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ScrollUpComponent } from './components/shared-components/scroll-up/scro
     PageNotFoundComponent,
     RegisterComponent,
     ScrollUpComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

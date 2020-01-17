@@ -105,6 +105,16 @@ header{
     
 }
 
+.acoount-area{
+    .mat-raised-button:nth-child(1):hover{
+        background-color: #fff !important;
+        color: $success !important;
+    }
+
+    .mat-raised-button:nth-child(2):hover{
+        color:$success !important;
+    }
+}
 
 .fadeInDown{
     display: block !important;

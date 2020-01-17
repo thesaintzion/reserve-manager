@@ -10,6 +10,8 @@ import { FeesAndCommissionComponent } from './components/site-components/fees-an
 import { DedicatedTradingAccountsComponent } from './components/site-components/dedicated-trading-accounts/dedicated-trading-accounts.component';
 import { BonusComponent } from './components/site-components/bonus/bonus.component';
 import { PageNotFoundComponent } from './components/shared-components/page-not-found/page-not-found.component';
+import { RegisterComponent } from './components/site-components/register/register.component';
+import { LoginComponent } from './components/site-components/login/login.component';
 
 const routes: Routes = [
   {path: '', component: SiteLayoutMainComponent, children: [
@@ -24,6 +26,8 @@ const routes: Routes = [
     {path: 'fees-and-commission', component: FeesAndCommissionComponent},
     {path: 'dedicated-trading-accounts', component: DedicatedTradingAccountsComponent},
     {path: 'bonus', component: BonusComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'login', component: LoginComponent},
 
     {path: '**', component: PageNotFoundComponent},
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
+  url: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.url =  this.router.url.split('/')[1];
   }
 
 }

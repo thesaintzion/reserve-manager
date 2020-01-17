@@ -15,13 +15,11 @@ sub: Subscription;
 
 
   ngOnInit(){
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(
-      () => window.scrollTo(0, 0));
-
-
-      
+      () => window.scrollTo(0, 0));  
   }
 
   ngOnDestroy(){
