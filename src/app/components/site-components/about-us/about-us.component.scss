@@ -12,7 +12,7 @@ $success: rgb(0, 34, 255);
         background-position: center center;
         text-align: center;
         // z-index: 0;
-        background-image: url('../../../../assets/img/bonus.jpg');
+        background-image: url('../../../../assets/img/consult.jpg');
         &::after {
             position: absolute;
             content: "";
@@ -47,8 +47,11 @@ $success: rgb(0, 34, 255);
             // background-color: red;
         }
     }
+    main {
+        margin-bottom: 200px;
+    }
     // section 2
-    .bonus-section-2 {
+    .client-edu-section-2 {
         padding: 80px 0 100px 0;
         .headline {
             margin-bottom: 100px;
@@ -74,6 +77,7 @@ $success: rgb(0, 34, 255);
             font-weight: 500;
             color: #2C2C2C;
             margin-bottom: 20px;
+            margin-top: 100px;
         }
         h4 {
             // font-size: 36px;

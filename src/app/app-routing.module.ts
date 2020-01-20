@@ -12,6 +12,7 @@ import { BonusComponent } from './components/site-components/bonus/bonus.compone
 import { PageNotFoundComponent } from './components/shared-components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/site-components/register/register.component';
 import { LoginComponent } from './components/site-components/login/login.component';
+import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
 
 const routes: Routes = [
   {path: '', component: SiteLayoutMainComponent, children: [
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: 'fees-and-commission', component: FeesAndCommissionComponent},
     {path: 'dedicated-trading-accounts', component: DedicatedTradingAccountsComponent},
     {path: 'bonus', component: BonusComponent},
+    {path: 'about-us', component: AboutUsComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
 

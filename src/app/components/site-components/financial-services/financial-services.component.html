@@ -1,6 +1,3 @@
-<!-- <div class="pre-loader" *ngIf="loading">
-    <div class="lds-ripple"><div></div><div></div></div> 
-</div> -->
 <section class="showcase animated fadeInUp">
     <div class="showcase-content">
         <div class="container">
@@ -9,35 +6,36 @@
     </div>
 </section>
 
+<main>
+    <section class="services-section-2 our-team">
+        <div class="container">
+            <div class="row " *ngFor="let fService of fServices">
+                <div class="col-md-3 order">
+                    <div class="roud-bg"></div>
+                    <div class="card shadow">
+                        <div class="card-body animated">
+                            <mat-icon>{{fService.icon}}</mat-icon>
+                            <h4>{{fService.title}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 order-margin">
+                    <div class="content">
+                        <ul>
+                            <li class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
+                                {{fD}}
+                            </li>
+                        </ul>
+                        <div>
+                            <a class="" mat-raised-button>Investment options</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<section class="services-section-2 our-team">
-    <div class="container">
-        <div class="row " *ngFor="let fService of fServices">
-            <div class="col-md-3 order">
-                <div class="roud-bg"></div>
-                <div class="card shadow">
-                    <div class="card-body animated">
-                        <mat-icon>{{fService.icon}}</mat-icon>
-                        <h4>{{fService.title}}</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 order-margin">
-                <div class="content">
-                    <ul>
-                        <li class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
-                            {{fD}}
-                        </li>
-                    </ul>
-                    <div>
-                        <a routerLink="/" class="shadow-sm " mat-raised-button>Investment options</a>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
-
-
-
-    </div>
-</section>
-<!-- ./section-3  -->
+    </section>
+    <!-- ./section-3  -->
+</main>

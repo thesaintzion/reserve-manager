@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './components/shared-components/page-not-f
 import { RegisterComponent } from './components/site-components/register/register.component';
 import { ScrollUpComponent } from './components/shared-components/scroll-up/scroll-up.component';
 import { LoginComponent } from './components/site-components/login/login.component';
+import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { LoginComponent } from './components/site-components/login/login.compone
     RegisterComponent,
     ScrollUpComponent,
     LoginComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

@@ -246,7 +246,7 @@ $success: rgb(0, 34, 255);
 
 // section-live-tick 
 .section-live-tick {
-    padding: 100px 0 100px 0;
+    padding: 100px 0 200px 0;
     background-color: rgb(250, 250, 250);
     .header {
         margin-bottom: 100px;
@@ -275,7 +275,7 @@ $success: rgb(0, 34, 255);
             display: block;
             line-height: 0;
             font-weight: 300;
-            color: $success;
+            // color: $success;
         }
     }
     ul {
@@ -320,7 +320,6 @@ $success: rgb(0, 34, 255);
     .form-control {
         border-radius: 0;
         // box-shadow: 0 0 10px #eee;
-        border-color: #eee !important;
     }
     h2 {
         font-size: 30px;
@@ -336,7 +335,6 @@ $success: rgb(0, 34, 255);
             font-weight: 750;
         }
     }
-    border: 1px solid #eee;
     .contact-info {
         margin-bottom: 20px;
         h3 {
@@ -352,6 +350,11 @@ $success: rgb(0, 34, 255);
             }
         }
     }
+}
+
+.mat-raised-button:hover {
+    background-color: #ffffff;
+    color: $success !important;
 }
 
 .video_icon .video_play_button {

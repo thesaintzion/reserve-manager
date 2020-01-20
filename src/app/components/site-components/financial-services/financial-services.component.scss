@@ -53,7 +53,7 @@ $success: rgb(0, 34, 255);
     }
     .services-section-2,
     .services-section-3 {
-        min-height: 400px;
+        min-height: 100vh;
         padding: 80px 0 100px 0;
     }
     // section 2
@@ -90,14 +90,15 @@ $success: rgb(0, 34, 255);
                 color: #f5f5f5;
                 font-weight: 500;
                 // font-size: 19px !important;
+                text-align: justify;
             }
             a.mat-raised-button {
                 color: $success;
-                border: 1px solid $success;
+                // border: 1px solid $success;
             }
         }
         .row {
-            padding-bottom: 140px;
+            padding-bottom: 300px;
             &:nth-child(even) {
                 .order {
                     order: 2;
