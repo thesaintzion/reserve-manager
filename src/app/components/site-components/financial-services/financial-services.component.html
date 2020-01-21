@@ -9,32 +9,35 @@
 <main>
     <section class="services-section-2 our-team">
         <div class="container">
-            <div class="row " *ngFor="let fService of fServices">
-                <div class="col-md-3 order">
-                    <div class="roud-bg"></div>
-                    <div class="card shadow">
-                        <div class="card-body animated">
-                            <mat-icon>{{fService.icon}}</mat-icon>
-                            <h4>{{fService.title}}</h4>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row " *ngFor="let fService of fServices">
+                        <div class="col-md-4 order">
+                            <div class="roud-bg"></div>
+                            <div class="card shadow">
+                                <div class="card-body animated">
+                                    <mat-icon>{{fService.icon}}</mat-icon>
+                                    <h4>{{fService.title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 order-margin">
+                            <div class="content">
+                                <ul>
+                                    <li class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
+                                        {{fD}}
+                                    </li>
+                                </ul>
+                                <div>
+                                    <a class="" mat-raised-button>Investment options</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-8 order-margin">
-                    <div class="content">
-                        <ul>
-                            <li class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
-                                {{fD}}
-                            </li>
-                        </ul>
-                        <div>
-                            <a class="" mat-raised-button>Investment options</a>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
-
-
-
         </div>
     </section>
     <!-- ./section-3  -->

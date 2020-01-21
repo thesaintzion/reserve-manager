@@ -2,9 +2,45 @@
     <div class="lds-ripple"><div></div><div></div></div> 
 </div> -->
 <section class="showcase animated fadeInUp">
-        <div class="showcase-content">
-            <div class="container">
-           <h1>Consultancy Services</h1> 
+    <div class="showcase-content">
+        <div class="container">
+            <h1>Consultancy Services</h1>
         </div>
     </div>
 </section>
+
+<main>
+
+    <section class="services-section-2 our-team">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row " *ngFor="let  consultancyService  of  consultancyServices ">
+                        <div class="col-md-4 order">
+                            <div class="roud-bg"></div>
+                            <div class="card shadow">
+                                <div class="card-body animated">
+                                    <!-- <mat-icon>{{fService.icon}}</mat-icon> -->
+                                    <img src="../../../../assets/img/{{consultancyService.icon}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 ml-auto">
+                            <div class="content">
+
+                                <p class="mb-3 text-muted" *ngFor="let cS of   consultancyService.description ">
+                                    {{cS}}
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ./section-3  -->
+</main>

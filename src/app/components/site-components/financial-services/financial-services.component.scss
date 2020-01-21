@@ -99,6 +99,7 @@ $success: rgb(0, 34, 255);
         }
         .row {
             padding-bottom: 300px;
+            align-items: center;
             &:nth-child(even) {
                 .order {
                     order: 2;
@@ -121,7 +122,7 @@ $success: rgb(0, 34, 255);
             border: 0 !important;
             .mat-icon {
                 font-size: 500%;
-                margin-left: -30px;
+                margin-left: -40px;
                 color: gray;
             }
             h4 {

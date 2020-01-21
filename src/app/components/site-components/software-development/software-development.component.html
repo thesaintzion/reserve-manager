@@ -13,29 +13,43 @@
 
 <main>
 
-    <!--  -->
-    <section class="section-softwareDevs">
-        <div class="container p-0">
-            <div class="row no-gutters" *ngFor="let softwareDev of softwareDevs">
-                <div class="col-xl-6 col-lg-6 order-control">
-                    <div class="about-image">
-                        <img class="w-100 h-100 animated shadow-sm" src="../../../../assets/img/{{softwareDev.image}}" alt="">
+
+
+
+
+    <section class="services-section-2 our-team">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row " *ngFor="let fService of fServices">
+                        <div class="col-md-4 order">
+                            <div class="roud-bg"></div>
+                            <div class="card shadow">
+                                <div class="card-body animated">
+                                    <mat-icon>{{fService.icon}}</mat-icon>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 order-margin">
+                            <div class="content">
+                                <h4>{{fService.title}}</h4>
+
+                                <p class="mb-3 text-muted">
+                                    {{fService.description}}
+                                </p>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xl-5 col-lg-5 ml-auto about-info ">
-                    <!-- <div class=""> -->
-                    <h3>
-                        {{softwareDev.title}}</h3>
-                    <p>
-                        {{softwareDev.description}}
-                    </p>
+
 
                 </div>
             </div>
-
-
         </div>
     </section>
-    <!-- ./about -->
+    <!-- ./section-3  -->
+
 
 </main>

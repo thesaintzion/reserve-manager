@@ -7,7 +7,7 @@ $success: rgb(0, 34, 255);
 
 :host ::ng-deep {
     main {
-        padding-bottom: 300px;
+        padding-bottom: 200px;
     }
     .showcase {
         margin-bottom: 100px;
@@ -108,8 +108,8 @@ $success: rgb(0, 34, 255);
             padding-right: 30px;
         }
         .row {
-            min-height: 100vh;
-            // padding-bottom: 100px;
+            // min-height: 100vh;
+            padding-bottom: 100px;
             &:nth-child(even) {
                 .order-control {
                     order: 2;
@@ -127,6 +127,115 @@ $success: rgb(0, 34, 255);
                     -webkit-animation-name: pulse;
                     animation-name: pulse;
                     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
+                }
+            }
+        }
+    }
+    .services-section-2,
+    .services-section-3 {
+        min-height: 100vh;
+        padding: 80px 0 100px 0;
+    }
+    // section 2
+    .services-section-2 {
+        .order {
+            position: relative;
+        }
+        .roud-bg {
+            position: absolute;
+            top: -15%;
+            left: -15%;
+            width: 100px;
+            height: 100px;
+            // border-radius: 100px;
+            background-color: #eee;
+            opacity: 0.4;
+        }
+        .order-margin {
+            margin-left: auto;
+        }
+        h4 {
+            font-size: 30px;
+            line-height: 55px;
+            font-weight: 500;
+            color: #2C2C2C;
+            width: auto !important;
+        }
+        .content {
+            p {
+                font-size: 20px;
+                line-height: 28px;
+                color: #727272;
+                margin-bottom: 22px;
+                margin-top: 28px;
+                text-align: justify;
+            }
+        }
+        .row {
+            padding-bottom: 300px;
+            align-items: center;
+            &:nth-child(even) {
+                .order {
+                    order: 2;
+                    .roud-bg {
+                        top: initial;
+                        bottom: -15%;
+                        left: initial;
+                        right: -15%;
+                    }
+                }
+                .order-margin {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
+            }
+        }
+        .card {
+            text-align: center;
+            padding: 50px 0 50px 0;
+            border: 0 !important;
+            .mat-icon {
+                font-size: 600%;
+                margin-left: -40px;
+                color: gray;
+            }
+            h4 {
+                font-weight: 800;
+                color: gray;
+            }
+        }
+    }
+    @media (max-width: 991.93px) {
+        // section 3
+        .services-section-3 {
+            .box-con {
+                .card {
+                    padding: 50px 10px 50px 10px !important;
+                    width: 100%;
+                }
+                margin-bottom: 30px;
+            }
+        }
+    }
+    @media (max-width:767px) {
+        // section 3
+        .services-section-3 {
+            .box-con {
+                .card {
+                    padding: 50px 10px 50px 10px !important;
+                    width: 100%;
+                }
+                margin-bottom: 30px;
+            }
+        }
+        .services-section-2 {
+            .row {
+                .order {
+                    order: initial !important;
+                }
+                .order-margin {
+                    margin-left: auto;
+                    margin-right: auto;
                 }
             }
         }

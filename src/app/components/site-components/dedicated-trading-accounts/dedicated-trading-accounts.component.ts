@@ -8,6 +8,33 @@ import { Component, OnInit } from '@angular/core';
 export class DedicatedTradingAccountsComponent implements OnInit {
 
   constructor() { }
+  consultancyServices =[ 
+    {
+      icon: 'info_1.svg',
+      description: [
+        `FX`
+      ]
+    },
+
+    {
+      icon: 'info_2.svg',
+      description: [
+       `CFD`,
+      ]
+    },
+    {
+      icon: 'info_2.svg',
+      description: [
+       `FUTURES`,
+      ]
+    },
+    {
+      icon: 'info_1.svg',
+      description: [
+       `METAL, OIL & GAS`,
+      ]
+    },
+  ];
 
   ngOnInit() {
   }

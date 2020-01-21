@@ -4,7 +4,46 @@
 <section class="showcase animated fadeInUp">
     <div class="showcase-content">
         <div class="container">
-       <h1>Dedicated Trading Accounts </h1> 
+            <h1>Dedicated Trading Accounts </h1>
+        </div>
     </div>
-</div>
 </section>
+
+<main>
+
+    <section class="services-section-2 our-team">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row " *ngFor="let  consultancyService  of  consultancyServices ">
+                        <div class="col-md-4 order">
+                            <div class="roud-bg"></div>
+                            <div class="card shadow">
+                                <div class="card-body animated">
+                                    <!-- <mat-icon>{{fService.icon}}</mat-icon> -->
+                                    <img src="../../../../assets/img/{{consultancyService.icon}}">
+                                    <h3 class="mb-3 text-muted" *ngFor="let cS of   consultancyService.description ">
+                                        {{cS}}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 order-margin">
+                            <div class="content">
+
+                                <!-- <h3 class="mb-3 text-muted" *ngFor="let cS of   consultancyService.description ">
+                                    {{cS}}
+                                </h3> -->
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ./section-3  -->
+</main>
