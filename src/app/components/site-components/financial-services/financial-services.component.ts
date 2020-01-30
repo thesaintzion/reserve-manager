@@ -16,51 +16,44 @@ export class FinancialServicesComponent implements OnInit {
       icon: 'school',
       title: 'School Fees Planning',
       description: [
-        `School Fees and Career 
-        Cost are Periodical payments
-        Parents, Guardians and Individual
-       are require to make for their Wards
-       and Children, as such adequate 
-       plans are advice to be made in
+        `School fees and career 
+        cost are periodical payments.
+        Parents, guardians and individual
+       are require to make payment for their wards
+       and children, as such adequate 
+       plans are advised  to be made in
        order to avoid being under pressure
        or stress to meet up.`,
 
-       `We are in Business to help
+       `We are in business to help
        you make plans with as little
        as less than 20 percentage of full
         period cost or 100 percentage of 
-       period cost for a lifetime, of this obligation.`,
+       period cost for a lifetime of this obligation.`,
       
-       `Our slogan is, "Pay Your School Fees 
-       only once, As only single 
+       `Our slogan is, "Pay Your School Fees" 
+       only once, as only single 
        investment plan would be 
-       sufficient for a lifetime`,
-
-       `No matter how confortable you
-       are sure of the future, if you 
-       do not have reserves plan for this
-       purpose, then you are death.`
+       sufficient for a lifetime`
       ]
     },
     {
       icon: 'business_center',
       title: 'Your Business and House Rent Planning',
       description: [
-        `Your Business and House Rent are 
-        Periodical payments that reduce your 
-        Assets, when you create a reserves
-        Investment plans for it, it no longer a 
-        liabiliy that reduce your wealth,
+        `Your business and house rent are 
+        periodical payments that reduce your 
+        assets, when you create a reserves
+        investment plans for it, it's no longer a 
+        liability that reduces your wealth,
         your investment plans make it a comfort.
         Please do not tell us you are a house owner
         ,you as Landlord require this plan as well.`,
 
-       `Other categories of areas you require this plan are`,
-      
-       `Housing Projects funding`,
-
-       `Housing Maintenance`,
-       `Housing Rebuild and Replacement`,
+       `Other categories of areas you require this plan are
+       housing projects funding
+       housing maintenance
+       housing rebuild and replacement`,
      
       ]
     },
@@ -68,16 +61,16 @@ export class FinancialServicesComponent implements OnInit {
       icon: 'favorite_border',
       title: 'Religious Obligations',
       description: [
-        `Religious Obligations are neccessary
+        `Religious obligations are necessary
         to increase our spiritual strength.
         We can help you plan them with few funds and  
         make it easier for you to perform these rights 
        as often as you wish.`,
 
-       `Islamic Hajj & Umrah Rights,
-       Go to Mecca & Medina every year`,
+       `Islamic Hajj & Umrah rights,
+       go to Mecca & Medina every year`,
       
-       `Christian Pilgrimage, Go to
+       `Christian pilgrimage, go to
        Jerusalem & Rome as you wish`,
       ]
     },
@@ -86,59 +79,59 @@ export class FinancialServicesComponent implements OnInit {
       icon: 'monetization_on',
       title: 'Mortgage  & Assets Acquisition',
       description: [
-        `Housing Projects,
-        Finance your Home with
-        less than twentyfive 
+        `Housing projects,
+        finance your home with
+        less than twenty-five 
         percentage of fund 
         required.`,
 
-       `Longterm Asset Project
-       Development ,Funding of 
-       Governmental &
-       Corporation projects  with 
-         less than twentyfive 
+       `Long-term  asset project
+       development , funding of 
+       governmental &
+       corporation projects  with 
+         less than twenty-five 
        percentage of fund required`,
       
-       `You plan your Car Purchase
-       with less than twentyfive 
+       `You plan your car purchase
+       with less than twenty-five 
        percentage of fund required
-       As well as all other 
-       Fixed Assets`,
+       as well as all other 
+       fixed assets`,
       ]
     },
     {
       icon: 'airplanemode_active',
       title: 'Holiday & Socialisation',
       description: [
-        `Period Holiday & Leisure 
-        Making with single investment `,
+        `Period holiday & leisure 
+        making with single investment `,
 
-       `Annual Festivities`,
+       `Annual festivities`,
       
-       `Burial & Funeral Preparation`,
+       `Burial & funeral preparation`,
 
-       `Meeting Hosting and other Social Planning`
+       `Meeting hosting and other social planning`
       ]
     },
     {
       icon: 'group_work',
       title: 'General Reserves',
       description: [
-        `The value of Your
-        General Financial 
-        Reserves, is a measure 
-        how Liquidly you are
+        `The value of your
+        general financial 
+        reserves, is a measure 
+        how liquidity you are
         well now and in future.
         It could be used to know
         how quickly you can
         recover when financial
         and other disasters struck`,
 
-       `Corporate and Governmental
-       Overhead Funding`,
+       `Corporate and governmental
+       overhead funding`,
       
-       `We help you plan for every Obligation 
-				and Transactions that would require you
+       `We help you plan for every obligation 
+				and transactions that would require you
 				to make payments in future`,
 
       ]
@@ -149,8 +142,8 @@ export class FinancialServicesComponent implements OnInit {
       title: 'Microfund Pigibox',
       description: [
         `Do you know that every
-        50 Nigeria Naira you drop 
-        in our Investment Pigibox 
+        &#8358;50 you drop 
+        in our investment pigibox 
         every day have potential 
         to yield up to 500 percent
         within 365 days ? So do not 
@@ -163,7 +156,7 @@ export class FinancialServicesComponent implements OnInit {
       title: 'Medical Health Cares',
       description: [
         `Healthy living 
-        is a Happy Life, 
+        is a happy life, 
         please plan for it`
       ]
     },
@@ -173,10 +166,10 @@ export class FinancialServicesComponent implements OnInit {
       icon: 'school',
       title: 'Cost of Foreign Education',
       description: [
-        `With less than 10pencent of 
-        Required Cost, We can help Your 
-        Children plan for Foreign 
-        Education, If you start Today, Now`
+        `With less than 10 percent of 
+        required cost, we can help your 
+        children plan for foreign 
+        education, if you start today`
       ]
     },
     

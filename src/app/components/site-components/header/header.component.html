@@ -29,7 +29,7 @@
                                     <a href="#"> <i class="fa fa-envelope"></i> info@reservesmanager.com</a>
                                 </li>
                                 <li>
-                                    <a href="#"> <i class="fa fa-phone"></i> +234 080 6034 6709</a>
+                                    <a href="#"> <i class="fa fa-phone"></i> +234 806 034 6709</a>
                                 </li>
                             </ul>
                         </div>
@@ -39,10 +39,10 @@
         </div>
 
 
-        <div [ngClass]="{'blur': showMenu}" id="sticky-header" class="main-header-area ">
+        <div [ngClass]="{'blur': showMenu, 'header-full-width': headerFullWidth }" id="sticky-header" class="main-header-area ">
             <div class="container">
                 <div class="header_bottom_border">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center" style="align-items: center;">
                         <div class="col-xl-3 col-lg-2 ">
                             <div class="logo d-flex justify-content-between ">
                                 <a routerLink='/'>
@@ -64,7 +64,7 @@
 
                                         <li><a (click)="this.showMenu = !this.showMenu" routerLink="/client-education" routerLinkActive="menu-active">Client Education</a></li>
                                         <li><a (click)="this.showMenu = !this.showMenu" routerLink="/financial-services" routerLinkActive="menu-active">Financial Services</a></li>
-                                        <li><a (click)="this.showMenu = !this.showMenu" routerLink="/software-development" routerLinkActive="menu-active">Sofware Development</a></li>
+                                        <li><a (click)="this.showMenu = !this.showMenu" routerLink="/software-development" routerLinkActive="menu-active">Software Development</a></li>
                                         <li><a>More Services <i class=" ml-2 fa fa-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a (click)="this.showMenu = !this.showMenu" routerLinkActive="menu-active" routerLink="/consultancy-services">Consultancy Services</a></li>

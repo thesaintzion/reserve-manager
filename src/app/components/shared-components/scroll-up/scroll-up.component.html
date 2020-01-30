@@ -1,1 +1,6 @@
-<p>scroll-up works!</p>
+<!--Scroll to top-->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button mat-raised-button mat-icon-button (click)="scrollToTop()">
+        <mat-icon>arrow_upward</mat-icon>
+    </button>
+</div>

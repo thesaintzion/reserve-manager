@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators'
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,10 +12,15 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'reserves-m';
 sub: Subscription;
+
+
   constructor(private router: Router){}
 
+  scrollToTop(){
 
+  }
   ngOnInit(){
+   
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

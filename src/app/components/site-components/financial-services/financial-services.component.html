@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <div class="row " *ngFor="let fService of fServices">
+                    <div style=" padding-bottom:250px" class="row " *ngFor="let fService of fServices">
                         <div class="col-md-4 order">
                             <div class="roud-bg"></div>
                             <div class="card shadow">
@@ -24,13 +24,13 @@
                         <div class="col-md-7 order-margin">
                             <div class="content">
                                 <ul>
-                                    <li class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
-                                        {{fD}}
+                                    <li [innerHtml]="fD" class="mb-3 text-muted" *ngFor="let fD of  fService.description ">
+
                                     </li>
                                 </ul>
-                                <div>
+                                <!-- <div>
                                     <a class="" mat-raised-button>Investment options</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -6,9 +6,6 @@ $success: rgb(0, 34, 255);
 }
 
 :host ::ng-deep {
-    main {
-        padding-bottom: 200px;
-    }
     .showcase {
         margin-bottom: 100px;
         position: relative;
@@ -82,7 +79,7 @@ $success: rgb(0, 34, 255);
         padding: 100px 0 0 0;
         overflow: hidden;
         p {
-            font-size: 20px;
+            font-size: 15px !important;
             line-height: 28px;
             color: #727272;
             margin-bottom: 22px;
@@ -108,8 +105,6 @@ $success: rgb(0, 34, 255);
             padding-right: 30px;
         }
         .row {
-            // min-height: 100vh;
-            padding-bottom: 100px;
             &:nth-child(even) {
                 .order-control {
                     order: 2;
@@ -148,8 +143,8 @@ $success: rgb(0, 34, 255);
             width: 100px;
             height: 100px;
             // border-radius: 100px;
-            background-color: #eee;
-            opacity: 0.4;
+            background-color: gray;
+            opacity: 0.7;
         }
         .order-margin {
             margin-left: auto;
@@ -163,16 +158,14 @@ $success: rgb(0, 34, 255);
         }
         .content {
             p {
-                font-size: 20px;
+                font-size: 15px !important;
                 line-height: 28px;
                 color: #727272;
                 margin-bottom: 22px;
                 margin-top: 28px;
-                text-align: justify;
             }
         }
         .row {
-            padding-bottom: 300px;
             align-items: center;
             &:nth-child(even) {
                 .order {

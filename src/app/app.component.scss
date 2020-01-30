@@ -5,36 +5,32 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
+}
 
 
+/* Responsive Styles */
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-    .card-container > *:not(.circle-link) ,
+@media screen and (max-width: 767px) {
+    .card-container>*:not(.circle-link),
     .terminal {
-      width: 100%;
+        width: 100%;
     }
-
     .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
+        height: 16px;
+        margin: 8px 0;
     }
-
     .card.highlight-card span {
-      margin-left: 72px;
+        margin-left: 72px;
     }
-
     svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
+        right: 120px;
+        transform: rotate(-5deg);
     }
-  }
+}
 
-  @media screen and (max-width: 575px) {
+@media screen and (max-width: 575px) {
     svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
+        display: none;
+        visibility: hidden;
     }
-  }
+}

@@ -14,14 +14,14 @@ export class ConsultancyServicesComponent implements OnInit {
     {
       icon: 'info_1.svg',
       description: [
-        `Software, Derivative Trading &amp; Financial Services`
+        `Software, Derivative Trading & Financial Services`
       ]
     },
 
     {
       icon: 'info_2.svg',
       description: [
-       `Properties &amp; Asset Acquisition`,
+       `Properties & Asset Acquisition`,
       ]
     },
   ];

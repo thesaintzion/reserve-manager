@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <div class="row " *ngFor="let  consultancyService  of  consultancyServices ">
+                    <div style="padding-bottom: 200px; align-content: center;" class="row " *ngFor="let  consultancyService  of  consultancyServices ">
                         <div class="col-md-4 order">
                             <div class="roud-bg"></div>
                             <div class="card shadow">
@@ -25,10 +25,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7 ml-auto">
+                        <div class="col-md-7 ml-auto ">
                             <div class="content">
 
-                                <p class="mb-3 text-muted" *ngFor="let cS of   consultancyService.description ">
+                                <p class="mb-3" *ngFor="let cS of   consultancyService.description ">
                                     {{cS}}
                                 </p>
 

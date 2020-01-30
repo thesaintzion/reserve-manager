@@ -211,12 +211,6 @@ $success: rgb(0, 34, 255);
             font-weight: 400;
         }
     }
-    .table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
     .table thead th {
         border: 0 !important;
     }
@@ -358,6 +352,12 @@ $success: rgb(0, 34, 255);
 
 //////// Responsive ////////////
 @media (max-width: 991.93px) {
+    .table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
     //setion carosle
     .carousel {
         .carousel-caption {

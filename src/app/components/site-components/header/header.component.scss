@@ -118,6 +118,36 @@ header {
     display: block !important;
 }
 
+@media (min-width:768px) {
+    .main-header-area.header-full-width {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: #ffff;
+        opacity: 1;
+        transition: all .2s ease-in-out;
+        transition: 900ms;
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+        nav a {
+            color: #000 !important;
+            // line-height: 100% !important;
+        }
+        ul {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        .logo {
+            h3 {
+                color: #000 !important;
+            }
+        }
+        .header_bottom_border {
+            border-bottom: 0 !important;
+            padding: 8px 0 8px 0 !important;
+        }
+    }
+}
+
 //////// Responsive ////////////
 @media (max-width: 991.93px) {
     .carousel {
