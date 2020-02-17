@@ -1,13 +1,13 @@
 <div class="animated fadeInUp setings">
-    <div class="container">
+   
 
         <div class="inner mt-4  mb-5">
-            <h4 class="">Utility</h4>
+            <!-- <h4 class="">Utility</h4> -->
             <div class="rounded-nav-con  mt-3">
                 <mat-toolbar>
                     <div class="d-flex justify-content-between align-content-center align-items-center w-100">
                         <div class="nav-con">
-                            <button [ngClass]="{'active': active == 'genda'}"  (click)="getGlug('genda')"  routerLink="genda"  mat-button>
+                            <button [ngClass]="{'active': active == 'gender'}"  (click)="getGlug('gender')"  routerLink="gender"  mat-button>
                             Gender
                         </button>
 
@@ -29,7 +29,7 @@
                        Investment Period
                       </button>
 
-                      <button [ngClass]="{'active': active == 'bank-details'}"  investment-period routerLink="bank-details"  (click)="getGlug('bank-details')"  mat-button>
+                      <button [ngClass]="{'active': active == 'bank-details'}"   routerLink="bank-details"  (click)="getGlug('bank-details')"  mat-button>
                         Bank Details
                        </button>
                         </div>
@@ -39,49 +39,318 @@
             </div>
 
 
-          
-              
-                <div *ngIf=" active == 'genda'" class="row mt-3 animated fadeInUp">
+
+                    <!-- 
+                    ============ ========
+                    GENDA 
+                    =============  =======
+                    -->
+                <div *ngIf=" active == 'gender'" class="row mt-3 animated fadeInUp">
                     <div class="col-12 ">
-                        <h4 class="">Genda</h4>
+                        <header class="d-flex justify-content-between mt-4 mb-3 ">
+                            <div class="d-flex align-content-center  align-items-center">
+                                <h4> Gender </h4>
+                               
+                            </div>
+                            <div class="d-flex align-content-center  align-items-center">
+                                
+                                    <button (click)="addGenderDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                
+                            </div>
+                        </header>
                     <div class="table-conshadow mt-0 table-responsive bg-white ">
-                        <table class="table  table-responsive">
+                        <table class="table mb-0 ">
                             <tbody>
-                                <tr>
-                                  
-                                    <td>Male</td>
-                                    
-                                    
-                                    <td>
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
+                                <tr *ngFor="let gender of genders">
+                                    <td > <span>{{gender.name}}</span></td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        <button  (click)="openConfirmDialog(gender?.name, 'Gender')" mat-icon-button>
+                                            <mat-icon class="text-danger">cancel</mat-icon>
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                   
-                                    <td>Female</td>
-                                   
-                                    
-                                    <td>
-                                       
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
-                                        </button>
-                                    </td>
-                                </tr>
-                             
-                             
-    
+                              
                             </tbody>
                         </table>
                     </div>
                 </div>
                 </div>
+
+
+                                    <!-- 
+                    ============ ========
+                   COUNTRY
+                    =============  =======
+                    -->
+                    <div *ngIf=" active == 'country'" class="row mt-3 animated fadeInUp">
+                        <div class="col-12 ">
+                            <header class="d-flex justify-content-between mt-4 mb-3 ">
+                                <div class="d-flex align-content-center  align-items-center">
+                                    <h4> County </h4>
+                                   
+                                </div>
+                                <div class="d-flex align-content-center  align-items-center">
+                                    
+                                        <button (click)="addCountryDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                    
+                                </div>
+                            </header>
+                        <div class="table-conshadow mt-0 table-responsive  ">
+                            <table class="table mb-0">
+                                <tbody>
+                                    <tr *ngFor="let country of countries" class="bg-white">
+                                        <td > <span>{{country?.name}}</span></td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button (click)="openConfirmDialog(country?.name, 'Country')"  mat-icon-button>
+                                                <mat-icon class="text-danger">cancel</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                  
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+                <!-- 
+                ============ ========
+                ACCOUNT TYPE
+                =============  =======
+                -->
+                <div *ngIf=" active == 'account-type'" class="row mt-3 animated fadeInUp">
+                    <div class="col-12 ">
+                        <header class="d-flex justify-content-between mt-4 mb-3 ">
+                            <div class="d-flex align-content-center  align-items-center">
+                                <h4> Account Type </h4>
+                               
+                            </div>
+                            <div class="d-flex align-content-center  align-items-center">
+                                
+                                    <button (click)="addAccountTypeDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                
+                            </div>
+                        </header>
+                    <div class="table-conshadow mt-0 table-responsive bg-white ">
+                        <table class="table mb-0 ">
+                            <tbody>
+                                <tr *ngFor="let acountType of accountTypes">
+                                    <td > <span>{{acountType?.name}}</span></td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        <button  (click)="openConfirmDialog(acountType?.name, 'Account Type')" mat-icon-button>
+                                            <mat-icon class="text-danger">cancel</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+
+
+                                                       <!-- 
+                    ============ ========
+                    DENOMINATION
+                    =============  =======
+                    -->
+                    <div *ngIf=" active == 'denomination'" class="row mt-3 animated fadeInUp">
+                        <div class="col-12 ">
+                            <header class="d-flex justify-content-between mt-4 mb-3 ">
+                                <div class="d-flex align-content-center  align-items-center">
+                                    <h4> Denomination </h4>
+                                   
+                                </div>
+                                <div class="d-flex align-content-center  align-items-center">
+                                        <button (click)="addDenominationDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                </div>
+                            </header>
+                        <div class="table-conshadow mt-0 table-responsive bg-white ">
+                            <table class="table mb-0 ">
+                                <tbody>
+                                    <tr *ngFor="let denomination of denominations">
+                                        <td > <span>{{denomination?.name}}</span></td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button  (click)="openConfirmDialog(denomination?.name, 'Denomination')" mat-icon-button>
+                                                <mat-icon class="text-danger">cancel</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+
+                                                                          <!-- 
+                    ============ ========
+                    PROMOTION TYPE
+                    =============  =======
+                    -->
+                    <div *ngIf=" active == 'promotion-type'" class="row mt-3 animated fadeInUp">
+                        <div class="col-12 ">
+                            <header class="d-flex justify-content-between mt-4 mb-3 ">
+                                <div class="d-flex align-content-center  align-items-center">
+                                    <h4> Promotion Type </h4>
+                                   
+                                </div>
+                                <div class="d-flex align-content-center  align-items-center">
+                                        <button (click)="addPromotionTypeDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                </div>
+                            </header>
+                        <div class="table-conshadow mt-0 table-responsive bg-white ">
+                            <table class="table mb-0 ">
+                                <tbody>
+                                    <tr *ngFor="let promotionType of promotionTypes">
+                                        <td > <span>{{promotionType?.name}}</span></td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button  (click)="openConfirmDialog(promotionType?.name, 'Denomination')" mat-icon-button>
+                                                <mat-icon class="text-danger">cancel</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+                                                                          <!-- 
+                    ============ ========
+                    INVESTMENT PERIOD
+                    =============  =======
+                    -->
+                    <div *ngIf="active == 'investment-period'" class="row mt-3 animated fadeInUp">
+                        <div class="col-12 ">
+                            <header class="d-flex justify-content-between mt-4 mb-3 ">
+                                <div class="d-flex align-content-center  align-items-center">
+                                    <h4> Investment Period</h4>
+                                   
+                                </div>
+                                <div class="d-flex align-content-center  align-items-center">
+                                        <button (click)="addInvestmentPeriodDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
+                                </div>
+                            </header>
+                        <div class="table-conshadow mt-0 table-responsive bg-white ">
+                            <table class="table mb-0 ">
+                                <tbody>
+                                    <tr *ngFor="let investmentPeriod of investmentPeriods">
+                                        <td > <span>{{investmentPeriod?.name}}</span></td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button  (click)="openConfirmDialog(investmentPeriod?.name, 'Investment Period')" mat-icon-button>
+                                                <mat-icon class="text-danger">cancel</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+                    
+
+                                                                          <!-- 
+                    ============ ========
+                   BANK DETAILS
+                    =============  =======
+                    -->
+                    <div *ngIf=" active == 'bank-details'" class="row mt-3 animated fadeInUp">
+                        <div class="col-12 ">
+                            
+                            <div class="row  no-gutters">
+                                <div class="col-md-12 ">
+                                    <div class="bg-white bank-form">
+                                        <div class="d-flex  ">
+                                            <div *ngIf="!loading" class="animated fadeIn text-center" >
+                                                <mat-card class="profile-avater">
+                                                    <div class="d-flex align-content-center align-items-center justify-content-center text-center">
+                                                    
+                                                        <div class="link-box-text">
+                                                            <mat-icon class="color-primary mx-auto">account_balance_wallet__outline</mat-icon>
+                                                        </div>
+                                                    </div>
+                            
+                                                </mat-card>
+                                            </div>
+                
+                                            <div class="form-con w-100">
+                                                <div  *ngIf="!loading" class="row animated fadeIn">
+                                                    <!-- <div class="col-md-12">
+                                                        <h5 class="text-black">General Info</h5>
+                                                    </div> -->
+                                                    <div class="col-md-6">
+                                                        <mat-form-field class="w-100">
+                                                            <input matInput type="number" name="firstname" placeholder="Account Number" required>
+                                                        </mat-form-field>
+                                                    </div>
+                
+                                                    <div class="col-md-6">
+                                                        <mat-form-field class="w-100">
+                                                            <mat-select placeholder=" Bank" required>
+                
+                                                                <mat-option value="First_Bank">First bank</mat-option>
+                                                                <mat-option value="Eko_Bank">Eko bank</mat-option>
+                                                                
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                
+                                                    <div class="col-md-6">
+                                                        <mat-form-field class="w-100">
+                                                            <input matInput type="text" placeholder="Account Name" required>
+                                                        </mat-form-field>
+                                                    </div>
+                
+                                                
+                                                </div>
+                
+                                                <div *ngIf="!loading" class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="pb-2 mt-5 d-flex justify-content-between">
+                                                            <div>
+                                                                <button (click)="onBankFormSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
+                                                            </div>
+                                                            <!-- <div>
+                                                                <button class="btn-light-primary" mat-raised-button>Cancel</button>
+                                                            </div> -->
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                
+                                                <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center"
+                                                 style="min-height: 200px;">
+                                                    <div class="col-md-12">
+                                                        <p>Loading... Please wait</p>
+                                                    </div>
+                                                </div>
+                
+                
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                               
+                            </div>
+                               
+                    </div>
+                    </div>
                 <!-- <div class="router-con" >
                 <router-outlet #routeData="outlet"></router-outlet>
             </div> -->
 
           </div>
-          </div>
+        
           </div>

@@ -21,6 +21,9 @@
         border-radius: 60px;
         color: #ffffff;
     }
+    .inner{
+        min-height: 100vh;
+    }
 
 .mat-toolbar {
     // border-radius: 70px;
@@ -47,4 +50,46 @@
         }
     }
 }
+
+.table td {
+    padding:  .10rem !important;
+    padding-left: 10px !important;
+    vertical-align: middle !important;
+    border-top: 1px solid #dee2e6;
+}
+
+
+
+.bank-form {
+    padding: 30px 20px 30px 20px;
+ 
+    .profile-avater {
+        // position: relative;
+        border-radius: 50%;
+        // background-color: #F7F8FF;
+     
+        // margin-top: px;
+        .mat-icon{
+            font-size: 100px ;
+            height: 100px !important;
+            width: 100px !important;
+            margin: 0 auto !important;
+            // color: #7889f8 !important;
+                }
+      
+       
+    }
+    .form-con {
+        padding-left: 15px;
+        .mat-form-field {
+            // width: 90%;
+        }
+    }
+}
+
+//  .table th {
+//     padding: .75rem;
+//     vertical-align: top;
+//     border-top: 1px solid #dee2e6;
+// }
 }

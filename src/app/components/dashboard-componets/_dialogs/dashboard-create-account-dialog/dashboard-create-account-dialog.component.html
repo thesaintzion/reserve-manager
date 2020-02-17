@@ -2,11 +2,12 @@
     
     <div  class="form-con">
 
-<form [formGroup]="accountForm">
 
+
+    <form *ngIf="data?.type == 'createAccount' || data?.type == 'editAccount'" [formGroup]="accountForm">
         <div  *ngIf="!loading" class="row animated fadeIn">
             <div class="col-md-12">
-                <h5 class="text-black mb-4">Create new account</h5>
+                <h5 class="text-black mb-4">{{data?.title}}</h5>
             </div>
             <!-- <button  (click)="openCreatAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button> -->
             <div class="col-md-12">
@@ -53,11 +54,61 @@
 
     </form>
 
-        <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 300px;">
+
+
+    <!-- 
+==========================
+ADD UTILITY
+==========================
+
+     -->
+
+     <form [formGroup]="utilityFrom" (ngSubmit)="onUtilityFormSubmit()" *ngIf="data?.type == 'addUtility'" >
+        <div  *ngIf="!loading" class="row animated fadeIn">
+            <div class="col-md-12">
+                <h5 class="text-black mb-4">{{data?.title}}</h5>
+            </div>
+            <!-- <button  (click)="openCreatAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button> -->
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <input matInput type="text"formControlName="utility" [placeholder]="data?.title" required>
+                </mat-form-field>
+                <!-- <small *ngIf="utilityFrom.controls.utility.errors?.required && utilityFrom.controls.utility.dirty">Please fill in the field</small> -->
+
+                
+            </div>
+           
+        </div>
+
+        <div *ngIf="!loading" class="row animated fadeIn">
+            <div class="col-md-12">
+                <div class="  d-flex justify-content-end w-100">
+                    <div>
+                        <button class="btn-light-primary" tabindex="-1" mat-dialog-close mat-raised-button>Cancel</button>
+                    </div>
+                    <div class="ml-3">
+                        <button class="btn-primary"   tabindex="-1"  mat-raised-button>Add <mat-icon>add</mat-icon></button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+        <div *ngIf="loading && (data?.type == 'createAccount' || data?.type == 'editAccount')" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 300px;">
             <div class="col-md-12">
                 <p>Loading... Please wait</p>
             </div>
         </div>
+
+        <div *ngIf="loading && data?.type == 'addUtility'" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 100px;">
+            <div class="col-md-12">
+                <p>Loading... Please wait</p>
+            </div>
+        </div>
+
 
 
 

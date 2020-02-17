@@ -12,6 +12,7 @@ import { DashboardUtilityComponent } from './dashboard-utility/dashboard-utility
 import { DashboardChangePasswordComponent } from './dashboard-change-password/dashboard-change-password.component';
 import { DashboardBankDetailsComponent } from './dashboard-bank-details/dashboard-bank-details.component';
 import { DashboardAllUtilityComponent } from './dashboard-all-utility/dashboard-all-utility.component';
+import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
 
 const routes: Routes = [
  {path: '', component: DashboardLayoutComponent, children: 
@@ -19,8 +20,9 @@ const routes: Routes = [
   {path: '', component: DashboardHomeComponent},
   {path: 'home', component: DashboardHomeComponent},
   {path: 'users', component: DashboardUsersComponent},
+  {path: 'users/:userId', component: DashboardUserDetailComponent},
   {path: 'accounts', component: DashboardAccountsComponent},
-  {path: 'accounts/:account-munber', component:   DashboardAccountDetailComponent},
+  {path: 'accounts/:accountNumber', component:   DashboardAccountDetailComponent},
   {path: 'settings', component:  DashboardSettingsComponent, children: [
     { path: '', component:  DashboardProfileComponent},
     { path: 'profile', component:  DashboardProfileComponent},

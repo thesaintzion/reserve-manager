@@ -31,8 +31,10 @@ export class DashboardAccountsComponent implements OnInit {
    });
    }
 
+
    // form dialog
-openCreatAccountDialog(accountNo, type, denomination, period): void {
+openEditAccountDialog(accountNo, type, denomination, period): void {
+  let title = 'Edit Account';
   let selectedAccount  = {
     accountNo: accountNo,
     type: type,
@@ -41,9 +43,19 @@ openCreatAccountDialog(accountNo, type, denomination, period): void {
   }
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
      width: '400px',
-     data:{selectedAccount: selectedAccount},
+     data:{selectedAccount: selectedAccount, title:  title, type: 'editAccount' },
   });
  }
+
+    // form dialog
+openCreatAccountDialog(): void {
+  let title = 'Create New Account';
+  const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
+     width: '400px',
+     data:{ title:  title, type: 'createAccount' },
+  });
+ }
+
 
 
   ngOnInit() {

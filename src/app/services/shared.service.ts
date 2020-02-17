@@ -4,10 +4,20 @@ import { DashboardCreateAccountDialogComponent } from '../components/dashboard-c
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+export interface User  {
+  id: string,
+  userName: string,
+  accountNo: true,
+  createdAt: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+user: User;
+
 sharedSlug =  this.router.url.split('/')[1];
   goUp(){
       window.scrollTo(0, 0);
@@ -29,6 +39,18 @@ openCreatAccountDialog(): void {
       duration,
       panelClass,
     });
+  }
+
+
+  // Edith user 
+  editUser(id, userName, accountNo, createdAt){
+    this.user = {
+      id,
+      userName,
+      accountNo,
+      createdAt
+    }
+  
   }
 
  

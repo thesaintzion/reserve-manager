@@ -37,7 +37,7 @@
     .inner {
      
         header {
-            margin-top: 90px;
+            // margin-top: 90px;
         }
         .general-info {
             padding: 30px 20px 30px 20px;
@@ -48,7 +48,7 @@
                 border-radius: 50%;
                 // background-color: #F7F8FF;
              
-                margin-top: 40px;
+                margin-top: 20px;
                 .mat-icon{
                     font-size: 100px ;
                     height: 100px !important;
@@ -71,6 +71,23 @@
             height: 100%;
         }
     }
+
+    .custom-file-label {
+        border: 1px solid initial !important;
+        &:focus {}
+    }
+    .custom-file-label::after {
+        // color: #ffffff $primary;
+        // background-color: $light-primary !important;
+        // border-color: $light-primary !important;
+    }
+    // .custom-file-label:focus {
+    //     color: #495057;
+    //     background-color: #fff;
+    //     border-color: #ffc107 !important;
+    //     outline: 0;
+    //     box-shadow: 0 0 0 0.2rem #eee !important;
+    // }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .mat-toolbar {

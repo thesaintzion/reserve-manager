@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardChangePasswordComponent implements OnInit {
 
+  loading = false;
+
   constructor() { }
+// onBankFormSubmit
+onBankFormSubmit(){
+  this.loading = true;
+  
+  setTimeout( () =>{
+    this.loading = false;
+  }, 3000);
+    }
 
   ngOnInit() {
   }
