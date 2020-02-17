@@ -24,6 +24,8 @@ import { LoginComponent } from './components/site-components/login/login.compone
 import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { AboutUsComponent } from './components/site-components/about-us/about-us
     ScrollUpComponent,
     LoginComponent,
     AboutUsComponent,
+   
+    
   ],
   imports: [
     BrowserModule,

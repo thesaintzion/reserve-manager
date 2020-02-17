@@ -1,0 +1,38 @@
+<div class="animated fadeInUp setings">
+    <div class="container">
+
+        <div class="inner mt-4  mb-5">
+            <h4 class="">Setings</h4>
+            <div class="rounded-nav-con  mt-3">
+                <mat-toolbar>
+                    <div class="d-flex justify-content-between align-content-center align-items-center w-100">
+                        <div class="nav-con">
+                            <button [routerLinkActiveOptions]="{exact:
+                                true}" routerLink="profile" routerLinkActive="settingsActive" mat-button>
+                            Profile
+                        </button>
+
+                        <button routerLink="utility" routerLinkActive="settingsActive" mat-button>
+                        Utility
+                    </button>
+                    <button routerLink="change-password" routerLinkActive="settingsActive" mat-button>
+                      Change password
+                    </button>
+
+                    <button routerLink="bank-details" routerLinkActive="settingsActive" mat-button>
+                        Bank Details
+                      </button>
+                        </div>
+
+                    </div>
+                </mat-toolbar>
+            </div>
+
+
+            <div class="router-con" >
+                <router-outlet #routeData="outlet"></router-outlet>
+            </div>
+
+          </div>
+          </div>
+          </div>

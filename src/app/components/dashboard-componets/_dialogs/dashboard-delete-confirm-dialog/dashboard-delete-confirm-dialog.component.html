@@ -1,0 +1,21 @@
+<div>
+<div class="text-center">
+    <p>{{data?.message}}</p>
+</div>
+    <div  class="row animated fadeIn">
+
+
+        <div class="col-md-12">
+            <div class="  d-flex justify-content-end w-100">
+                <div>
+                    <button class="btn-light-primary" color="warn" tabindex="-1" [mat-dialog-close]="true"  mat-button>Confirm</button>
+                </div>
+                <div class="ml-3">
+                    <button  color="primary" (click)="onFormSubmit()" tabindex="-1" mat-dialog-close  mat-button>Cancel</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-light-primary {
+        background-color: $light-primary;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: $primary !important;
+        border-radius: 60px;
+        color: #ffffff;
+    }
+    .btn-light-primary {
+        background-color: $light-primary !important;
+        border-radius: 60px;
+    }
+}

@@ -1,0 +1,177 @@
+<div class="animated fadeInUp" style="min-height: 100%;">
+        <div class="inner" style="overflow: hidden; ">
+            <div class="row mt-4 no-gutters">
+                <div class="col-md-12 ">
+                    <div class="bg-white general-info">
+                        <div class="d-flex ">
+                            <div *ngIf="!loading" class="animated fadeIn">
+                                <button class=" profile-avater" mat-icon-button>
+                                    <mat-icon class="color-primary mx-auto">person_outline</mat-icon>
+                                </button>
+                                <!-- <div class="profile-avater">
+                                    <div class="avater-content d-flex align-items-center align-content-center justify-content-center">
+
+                                       
+                                    </div>
+
+                                </div> -->
+                            </div>
+
+                            <div class="form-con">
+
+
+                                <div  *ngIf="!loading" class="row animated fadeIn">
+                                    <div class="col-md-12">
+                                        <h5 class="text-black">General Info</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="text" name="firstname" id="firstname" placeholder="Firstname" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="text" name="lastname" id="lastname" placeholder="Lastname" required>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="text" name="username" id="username" placeholder="Username" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="email" name="email" id="email" placeholder="Email Address" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="number" name="phone" id="phone" placeholder="Phone Number" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <mat-select placeholder="Country">
+                                                <mat-option value="option">Option</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="password" name="password" id="password" maxlength="15" placeholder="Password" required>
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100">
+                                            <input matInput type="password" name="conf_password" id="conf_password" maxlength="15" placeholder="Confirm Password" required>
+                                        </mat-form-field>
+
+                                    </div>
+
+
+
+
+                                    <div class="col-12">
+                                        <mat-form-field class="w-100">
+                                            <input matInput name="address" id="address" placeholder="Residential Address" required>
+                                        </mat-form-field>
+
+                                    </div>
+                                </div>
+
+                                <div *ngIf="!loading" class="row">
+                                    <div class="col-md-6">
+                                        <div class="pb-2 mt-2 d-flex justify-content-between">
+                                            <div>
+                                                <button (click)="onformSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
+                                            </div>
+                                            <!-- <div>
+                                                <button class="btn-light-primary" mat-raised-button>Cancel</button>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center"
+                                 style="min-height: 300px;">
+                                    <div class="col-md-12">
+                                        <p>Loading... Please wait</p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-none">
+                    <div class="bg-light-primary reset-password">
+                        <div class="form-co">
+
+
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <h5 class="text-black">Reset Password</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="text" name="firstname" id="firstname" placeholder="Old Password" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="text" name="lastname" id="lastname" placeholder="New Password" required>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="text" name="username" id="username" placeholder="Confirm Password" required>
+                                    </mat-form-field>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pb-2 mt-2 d-flex justify-content-between">
+                                        <div>
+                                            <button class="btn-white" mat-raised-button>Save changes </button>
+                                        </div>
+                                        <!-- <div>
+                                            <button class="btn-white" mat-raised-button>Cancel</button>
+                                        </div> -->
+
+                                    </div>
+
+                                    <p class=" text-center mt-5 color-primary">Forgot password?</p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+   
+</div>

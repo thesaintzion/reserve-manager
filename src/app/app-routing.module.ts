@@ -14,6 +14,9 @@ import { RegisterComponent } from './components/site-components/register/registe
 import { LoginComponent } from './components/site-components/login/login.component';
 import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
 
+
+
+
 const routes: Routes = [
   {path: '', component: SiteLayoutMainComponent, children: [
     {path: '', component: HomeComponent},
@@ -31,10 +34,15 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
 
-    {path: '**', component: PageNotFoundComponent},
+    {path: '404', component: PageNotFoundComponent,  data: {depth: 2, title: 'Page not found | Profile Me' }}, 
+  ]},
 
-    
-  ]} 
+  
+  // Lazy loading
+  { path: 'profile', loadChildren: './components/profile-components/profile.module#ProfileModule'},
+  { path: 'dashboard', loadChildren: './components/dashboard-componets/dashboard.module#DashboardModule'},
+ 
+  { path: '**',  redirectTo: '/404', pathMatch: 'full'}, 
 ];
 
 @NgModule({

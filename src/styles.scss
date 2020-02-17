@@ -1,12 +1,32 @@
+$primary: #0022ff;
+
 html,
 body {
     height: 100%;
+}
+
+@media (min-width:768px) {
+     ::-webkit-scrollbar,
+     ::-webkit-scrollbar-thumb {
+        width: 8px;
+        border-radius: 13px;
+        // background-clip: padding-box;
+        height: 7px;
+        border: 1px solid gray;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5);
+    }
 }
 
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     color: #555;
+}
+
+.rounded-btn{
+    border-radius: 70px !important;
 }
 
 button:focus {
@@ -24,6 +44,11 @@ button:focus {
 .menu-active {
     // color: rgb(0, 34, 255) !important;
     border-bottom: 2px solid rgb(0, 34, 255) !important;
+}
+
+.settingsActive{
+    color: $primary  !important;
+    border-bottom: 3px solid $primary !important;
 }
 
 @media (max-width:767px) {
@@ -50,4 +75,19 @@ button:focus {
     border-color: #eee !important;
     outline: 0;
     box-shadow: 0 0 0 0.2rem #eee !important;
+}
+
+// profile active link
+.mat-list-item.active {
+    border-right: 3px solid #0022ff !important;
+    .main-text {
+        color: rgb(0, 0, 0, 100%) !important;
+        font-weight: 400;
+    }
+    .mat-icon {
+        color: #0022ff !important;
+    }
+    .mat-icon {
+        color: #0022ff !important;
+    }
 }

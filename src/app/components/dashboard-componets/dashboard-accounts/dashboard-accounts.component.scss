@@ -1,0 +1,177 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    $color-success: #03F59E;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-success {
+        color: $color-success !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-light-primary {
+        background-color: $light-primary;
+    }
+    .bg-light-success {
+        background-color: #ECFFF8 !important;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: $primary !important;
+        border-radius: 60px;
+        color: #ffffff;
+    }
+    .btn-outline-primary {
+        background-color: #ffffff !important;
+        border-radius: 60px;
+        border: 1px solid $primary;
+        color: $primary;
+    }
+    .btn-outline-success {
+        background-color: #ffffff !important;
+        border-radius: 60px;
+        border: 1px solid $color-success;
+        color: $color-success;
+    }
+    .btn-light-primary {
+        background-color: $light-primary !important;
+        border-radius: 60px;
+        color: $primary
+    }
+    .btn-white {
+        background-color: #ffffff !important;
+        border-radius: 60px;
+        color: $primary;
+    }
+    .inner {
+        header {
+           
+            .rounded-form {
+                border-radius: 60px;
+                border: 0 !important;
+            }
+        }
+        // padding: 30px 20px 30px 20px;
+        border-radius: 30px 0px 0px 30px;
+        .account-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            .acount-avater {
+                position: relative;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background-color: $light-primary;
+                margin-bottom: 30px;
+                .mat-icon {
+                    font-size: 30px;
+                    vertical-align: middle;
+                    margin-left: -5px !important;
+                }
+            }
+            h3,
+            h5 {
+                line-height: 0;
+            }
+            small {
+                font-size: 15px;
+                color: rgb(0, 0, 0, 60%);
+            }
+            .divider {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    // Bank details 
+    .general-info {
+        padding: 30px 20px 30px 20px;
+        border-radius: 30px 0px 0px 30px;
+        height: 100%;
+        background-color: #eee;
+        .profile-avater {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #F7F8FF;
+            text-align: center;
+            margin-top: 40px;
+            .mat-icon {
+                font-size: 80px;
+                vertical-align: middle;
+                margin-left: -60px !important;
+            }
+            // overflow: hidden;
+            .avater-content {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                text-align: center;
+                // background-color: #eee;
+            }
+        }
+        .form-con {
+            padding-left: 15px;
+            .mat-form-field {
+                // width: 90%;
+            }
+        }
+    }
+    .reset-password {
+        padding: 30px 20px 30px 20px;
+        border-radius: 0px 30px 30px 0px;
+        height: 100%;
+    }
+
+    .table  {
+
+        .account-no{
+            &:hover{
+                cursor: pointer;
+                background-color: gray;
+                color: #ffffff;
+            }
+        }
+        thead th{
+            border: 0 !important;
+        }
+
+        tr{
+            // border-bottom: 5px solid #eaebf0;
+            // border-top: 5px solid #eaebf0;
+            
+        }
+        
+    }
+
+  
+
+    //////// Responsive ////////////
+    @media (max-width: 991.93px) {
+        .table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .mat-toolbar {
+            overflow-x: scroll;
+        }
+    }
+    
+}

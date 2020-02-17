@@ -1,0 +1,66 @@
+<div>
+    
+    <div  class="form-con">
+
+<form [formGroup]="accountForm">
+
+        <div  *ngIf="!loading" class="row animated fadeIn">
+            <div class="col-md-12">
+                <h5 class="text-black mb-4">Create new account</h5>
+            </div>
+            <!-- <button  (click)="openCreatAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button> -->
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="accountType" tabindex="-1" required placeholder="Account type">
+                        <mat-option value="individual">Individual</mat-option>
+                        <mat-option value="coporate">Coporate</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select  formControlName="accountDenomination" tabindex="-1" required placeholder="Accounnt denomination">
+                        <mat-option value="naira">Naira</mat-option>
+                        <mat-option value="us_dollar">US Dollar</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select  formControlName="investmentPeriod" tabindex="-1" required placeholder="Investment period">
+                        <mat-option value="6">6 month</mat-option>
+                        <mat-option value="18">I8 month</mat-option>
+                        <mat-option value="12">I2 month</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div *ngIf="!loading" class="row animated fadeIn">
+            <div class="col-md-12">
+                <div class="  d-flex justify-content-end w-100">
+                    <div>
+                        <button class="btn-light-primary" tabindex="-1" mat-dialog-close mat-raised-button>Cancel</button>
+                    </div>
+                    <div class="ml-3">
+                        <button class="btn-primary" (click)="onFormSubmit()" tabindex="-1"  mat-raised-button>Save changes</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+        <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 300px;">
+            <div class="col-md-12">
+                <p>Loading... Please wait</p>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

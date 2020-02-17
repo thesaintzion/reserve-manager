@@ -1,0 +1,99 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: #0022ff !important;
+        border-radius: 60px;
+        color: #ffffff;
+    }
+    .inner {
+        .home-nav-con {
+            margin-top: 90px;
+            .mat-toolbar {
+                border-radius: 70px;
+                height: 50px;
+                .nav-con {
+                    button {
+                        height: 50px;
+                        border-radius: none !important;
+                        border-radius: 0 !important;
+                        color: $dark-gray;
+                        font-weight: 200;
+                        &:first-child {
+                            color: $primary;
+                            border-bottom: 3px solid $primary;
+                        }
+                    }
+                }
+            }
+        }
+        .notice-board-avater {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: $gray;
+            display: inline-block !important;
+            background-color: $gray;
+            margin-top: 25px;
+        }
+        .notice-board-text {
+            padding-left: 15px;
+            h5 {
+                font-size: 14px;
+            }
+            p {
+                font-weight: 200;
+            }
+            .mat-card-actions {
+                border-top: 1px solid #eee;
+                margin: 0;
+                padding: 0;
+                button {
+                    // font-weight: 200;
+                    font-size: 14px;
+                }
+            }
+        }
+
+
+        // link-box
+
+        .link-box{
+            height: 300px;
+            text-align: center !important;
+&:hover{
+    cursor: pointer;
+    background-color: gray;
+    color: #ffffff !important;
+}
+            .mat-icon{
+        font-size: 150px ;
+        height: 200px !important;
+        width: 200px !important;
+        margin: 0 auto !important;
+            }
+            
+        }
+    }
+    //////// Responsive ////////////
+    @media (max-width: 991.93px) {
+        .mat-toolbar {
+            overflow-x: scroll;
+        }
+    }
+}

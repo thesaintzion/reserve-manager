@@ -1,0 +1,118 @@
+.sidenav-container {
+    height: 100%;
+}
+
+:host ::ng-deep {
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: #0022ff !important;
+        border-radius: 60px;
+        color: #ffffff;
+    }
+    // overrides
+    .mat-toolbar {
+        height: 56px;
+        background: #FFFFFF;
+    }
+    .sidenav .mat-toolbar {
+        box-shadow: 0px 4px 20px #EAEBF0;
+    }
+    .content .mat-toolbar {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 20px #EAEBF0;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    .sidenav {
+        width: 256px;
+        // position: relative;
+        // height: 100%;
+        .sidenav-action {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        .mat-nav-list {
+            padding-top: 0;
+            overflow: hidden !important;
+        }
+        .mat-list-item .mat-button-wrapper {
+            margin-left: 0 !important;
+            // display: none;
+        }
+        .main-text {
+            color: rgb(0, 0, 0, 54%);
+        }
+        .main-icon {
+            background-color: transparent;
+            .mat-icon {
+                color: rgb(0, 0, 0, 20%);
+            }
+        }
+        .fancy-icon {
+            background-color: #EAEBF0;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+        }
+        .fancy-text {
+            height: 10px;
+            background-color: #EAEBF0;
+            display: inline-block;
+            width: 700%;
+            border-radius: 60px;
+        }
+        .mat-list-item {
+            span {
+                margin-left: 10px;
+            }
+        }
+        .mat-list-item.main-item {
+            border-bottom: 1px solid #EAEBF0;
+        }
+    }
+    // Content
+    .content {
+        background-color: #EAEBF0 !important;
+        overflow-x: hidden;
+        .nav-others-con {
+            button {
+                margin-left: 15px !important;
+            }
+        }
+        .nav-search-con {
+            text-align: center;
+            .fancy-search-input {
+                height: 30px;
+                width: 50%;
+                background-color: rgb(238, 240, 246);
+                border-radius: 60px;
+            }
+        }
+        .nav-profile-con {
+            button {
+                margin-left: 15px !important;
+            }
+        }
+    }
+    //////// Responsive ////////////
+    @media (max-width: 991.93px) {
+        .mat-toolbar {
+            overflow-x: scroll;
+        }
+    }
+    @media (min-width:768px) {
+        // .ipage-red {
+        //     background: yellow !important;
+        // }
+    }
+}

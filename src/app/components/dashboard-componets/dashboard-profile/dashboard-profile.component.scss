@@ -1,0 +1,88 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-light-primary {
+        background-color: $light-primary;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: $primary !important;
+        border-radius: 60px;
+        color: #ffffff;
+    }
+    .btn-light-primary {
+        background-color: $light-primary !important;
+        border-radius: 60px;
+        color: $primary
+    }
+    .btn-white {
+        background-color: #ffffff !important;
+        border-radius: 60px;
+        color: $primary;
+    }
+    .inner {
+        header {
+            margin-top: 90px;
+        }
+        .general-info {
+            padding: 30px 20px 30px 20px;
+         
+            .profile-avater {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: #F7F8FF;
+                text-align: center;
+                margin-top: 40px;
+                .mat-icon {
+                    font-size: 100px;
+                    vertical-align: middle;
+                    margin-left: -76px !important;
+                }
+                // overflow: hidden;
+                .avater-content {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                    text-align: center;
+                    // background-color: #eee;
+                }
+            }
+            .form-con {
+                padding-left: 15px;
+                .mat-form-field {
+                    // width: 90%;
+                }
+            }
+        }
+        .reset-password {
+            padding: 30px 20px 30px 20px;
+            border-radius: 0px 30px 30px 0px;
+            height: 100%;
+        }
+    }
+    //////// Responsive ////////////
+    @media (max-width: 991.93px) {
+        .mat-toolbar {
+            overflow-x: scroll;
+        }
+    }
+}
