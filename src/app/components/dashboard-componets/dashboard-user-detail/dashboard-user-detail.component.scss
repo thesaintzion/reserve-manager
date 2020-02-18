@@ -21,17 +21,17 @@
     }
     .btn-primary {
         background-color: $primary !important;
-        border-radius: 60px;
+        // border-radius: 60px;
         color: #ffffff;
     }
     .btn-light-primary {
         background-color: $light-primary !important;
-        border-radius: 60px;
+        // border-radius: 60px;
         color: $primary
     }
     .btn-white {
         background-color: #ffffff !important;
-        border-radius: 60px;
+        // border-radius: 60px;
         color: $primary;
     }
     .inner {
@@ -88,6 +88,37 @@
     //     outline: 0;
     //     box-shadow: 0 0 0 0.2rem #eee !important;
     // }
+
+
+
+   
+        .table  {
+    
+         
+            thead th{
+                border: 0 !important;
+            }
+    
+            tr{
+                // border-bottom: 5px solid #eaebf0;
+                // border-top: 5px solid #eaebf0;
+                // border-color:#eaebf0 !important;
+    
+                
+            }
+    
+          td {
+               
+                vertical-align: middle !important;
+                overflow: hidden;
+                border-color:#eaebf0 !important;
+                
+            }
+            
+        }
+    
+
+
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .mat-toolbar {

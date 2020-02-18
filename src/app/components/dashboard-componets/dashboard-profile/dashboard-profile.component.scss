@@ -21,17 +21,18 @@
     }
     .btn-primary {
         background-color: $primary !important;
-        border-radius: 60px;
+        // border-radius: 60px;
+        // display: none;
         color: #ffffff;
     }
     .btn-light-primary {
         background-color: $light-primary !important;
-        border-radius: 60px;
+        // border-radius: 60px;
         color: $primary
     }
     .btn-white {
         background-color: #ffffff !important;
-        border-radius: 60px;
+        // border-radius: 60px;
         color: $primary;
     }
     .inner {
@@ -65,16 +66,16 @@
                 }
             }
         }
-        .reset-password {
-            padding: 30px 20px 30px 20px;
-            border-radius: 0px 30px 30px 0px;
-            height: 100%;
-        }
+      
     }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .mat-toolbar {
             overflow-x: scroll;
         }
+    }
+
+    @media (max-width:767px){
+        
     }
 }

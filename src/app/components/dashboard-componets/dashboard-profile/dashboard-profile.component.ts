@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardProfileComponent implements OnInit {
 loading = false
   constructor() { }
+  fileChange(e){
 
+  }
   onformSubmit(){
 this.loading = true;
 

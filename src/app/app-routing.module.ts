@@ -39,9 +39,7 @@ const routes: Routes = [
 
   
   // Lazy loading
-  { path: 'profile', loadChildren: './components/profile-components/profile.module#ProfileModule'},
   { path: 'dashboard', loadChildren: './components/dashboard-componets/dashboard.module#DashboardModule'},
- 
   { path: '**',  redirectTo: '/404', pathMatch: 'full'}, 
 ];
 

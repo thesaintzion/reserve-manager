@@ -12,6 +12,11 @@ export class DashboardDeleteConfirmDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DashboardDeleteConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data,) { }
 
+
+
+    onFormSubmit(){
+      
+    }
   ngOnInit() {
     console.log(this.data);
   }

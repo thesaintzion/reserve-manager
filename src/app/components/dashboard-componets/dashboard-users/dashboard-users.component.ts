@@ -17,9 +17,9 @@ export class DashboardUsersComponent implements OnInit {
   // confirm delete
   openConfirmDialog(): void {
     
-    let message = 'Are you sure you want to delete this account?'
+    let message = 'Are you sure you want to delete this?'
     const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
-       width: '400px',
+      //  width: '400px', 
        data:{message: message},
     });
 

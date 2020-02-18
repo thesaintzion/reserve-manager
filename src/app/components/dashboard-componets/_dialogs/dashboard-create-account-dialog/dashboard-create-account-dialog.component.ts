@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { SharedService } from 'src/app/services/shared.service';
+// import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-dashboard-create-account-dialog',
@@ -13,7 +13,7 @@ loading = false;
 accountForm;
 utilityFrom;
   constructor(public dialogRef: MatDialogRef< DashboardCreateAccountDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data, private formBuilder: FormBuilder, private sharedService: SharedService) { 
+    @Inject(MAT_DIALOG_DATA) public data, private formBuilder: FormBuilder) { 
 // Account form
       this.accountForm = this.formBuilder.group({
         accountType: ['', [Validators.required]],
@@ -37,7 +37,7 @@ this.loading = false;
 // When Utility form is submited
 onUtilityFormSubmit(){
   if(this.utilityFrom.invalid){
-    this.sharedService.openSnackBar('Please fill in the field', 'ok', 2000, 'bg-danger')
+    // this.sharedService.openSnackBar('Please fill in the field', 'ok', 2000, 'bg-danger')
   }else{
     this.loading = true;
     setTimeout( ()=>{

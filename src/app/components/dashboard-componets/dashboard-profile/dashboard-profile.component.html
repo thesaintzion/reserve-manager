@@ -4,7 +4,7 @@
                 <div class="col-md-12 ">
                     <div class="bg-white general-info">
                         <div class="d-flex ">
-                            <div *ngIf="!loading" class="animated fadeIn text-center" >
+                            <!-- <div *ngIf="!loading" class="animated fadeIn text-center profile-avater-con" >
 
                                 <mat-card class="profile-avater">
                                     <div class="d-flex align-content-center align-items-center justify-content-center text-center">
@@ -16,7 +16,7 @@
             
                                 </mat-card>
                               
-                            </div>
+                            </div> -->
 
                             <div class="form-con">
 
@@ -80,6 +80,20 @@
                                         </mat-form-field>
 
                                     </div>
+
+                                    <div class="col-md-6 form-group">
+                                        <div class="custom-file">
+                                            <input tabindex="-1" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                            <label class="custom-file-label" for="customFile">Id card No.</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <div class="custom-file">
+                                            <input tabindex="-1"  accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                            <label class="custom-file-label" for="customFile">Utility bill</label>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
 
                                 <div *ngIf="!loading" class="row">

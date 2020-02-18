@@ -1,0 +1,28 @@
+:host ::ng-deep {
+    .table  {
+
+     
+        thead th{
+            border: 0 !important;
+        }
+
+        tr{
+            // border-bottom: 5px solid #eaebf0;
+            // border-top: 5px solid #eaebf0;
+            // border-color:#eaebf0 !important;
+
+            
+        }
+
+      td {
+           
+            vertical-align: middle !important;
+            overflow: hidden;
+            border-color:#eaebf0 !important;
+            
+        }
+        
+    }
+
+// #495859597
+}
