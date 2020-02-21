@@ -1,4 +1,58 @@
 :host ::ng-deep {
+
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    $color-success: #03F59E;
+    .color-primary {
+        color: #0022ff !important;
+    }
+    .color-success {
+        color: $color-success !important;
+    }
+    .color-danger {
+        color: $color-danger;
+    }
+    .bg-light-primary {
+        background-color: $light-primary;
+    }
+    .bg-light-success {
+        background-color: #ECFFF8 !important;
+    }
+    .bg-primary {
+        background-color: #0022ff !important;
+    }
+    .bg-gray {
+        background-color: #EAEBF0 !important;
+    }
+    .btn-primary {
+        background-color: $primary !important;
+        // border-radius: 60px;
+        color: #ffffff;
+    }
+    .bg-dark-gray{
+        background-color:  $dark-gray;
+    }
+    .btn-outline-primary {
+        background-color: #ffffff !important;
+        // border-radius: 60px;
+        border: 1px solid $primary;
+        color: $primary;
+    }
+    .btn-outline-success {
+        background-color: #ffffff !important;
+        // border-radius: 60px;
+        border: 1px solid $color-success;
+        color: $color-success;
+    }
+    .btn-light-primary {
+        background-color: $light-primary !important;
+        // border-radius: 60px;
+        color: $primary
+    }
+
     .table  {
 
      

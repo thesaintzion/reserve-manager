@@ -112,6 +112,27 @@ genders = [
       },
       ];
 
+      // promotionTypes
+
+      promotionTypes = [
+        {
+          id: 1,
+          name: 'Flyers',
+        },
+        {
+          id: 2,
+          name: 'Newspapers',
+        },
+        {
+          id: 1,
+          name: 'Social Media',
+        },
+        {
+          id: 1,
+          name: 'Friend',
+        }
+      ]
+
   //   investmentPeriods
     investmentPeriods = [
       {
@@ -157,7 +178,7 @@ genders = [
 openAddUtilityDialog(): void {
   let title = 'Add Utility';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-     width: '400px',
+    //  width: '400px',
      data:{ title:  title, type: 'addUtility' },
   });
 
@@ -175,7 +196,7 @@ openAddUtilityDialog(): void {
 addGenderDialog(): void {
   let title = 'Add Gender';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-      width: '400px',
+      // width: '400px',
       data:{ title:  title, type: 'addUtility' },
   });
 
@@ -195,7 +216,7 @@ addGenderDialog(): void {
 addCountryDialog(): void {
   let title = 'Add Country';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-      width: '400px',
+      // width: '400px',
       data:{ title:  title, type: 'addUtility' },
   });
 
@@ -215,7 +236,7 @@ addCountryDialog(): void {
 addAccountTypeDialog(): void {
   let title = 'Add Account Type';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-      width: '400px',
+      // width: '400px',
       data:{ title:  title, type: 'addUtility' },
   });
 
@@ -236,7 +257,7 @@ addAccountTypeDialog(): void {
 addDenominationDialog(): void {
   let title = 'Add Denomination';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-      width: '400px',
+      // width: '400px',
       data:{ title:  title, type: 'addUtility' },
   });
 
@@ -254,25 +275,22 @@ addDenominationDialog(): void {
 
         // 05. Add Promotion Type
 addPromotionTypeDialog(): void {
-
-  this.sharedService.openSnackBar('Promotion Type Added', '', 3000, 'bg-success');
-
-  // let title = 'Add Promotion Type';
-  // const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-  //     width: '400px',
-  //     data:{ title:  title, type: 'addUtility' },
-  // });
-
-  // dialogRef.afterClosed().subscribe(result => {
-  //   if(result) {
-  //     console.log(result);
-  //     this.denominations.push({
-  //     id: Math.floor(Math.random() * 10),
-  //     name: result
-  //   })
-  //     this.sharedService.openSnackBar('Promotion Type Added', '', 3000, 'bg-success');
-  //   }
-  // });
+  let title = 'Add Promotion Type';
+    const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
+        // width: '400px',
+        data:{ title:  title, type: 'addUtility' },
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log(result);
+        this.promotionTypes.push({
+        id: Math.floor(Math.random() * 10),
+        name: result
+      })
+        this.sharedService.openSnackBar('Promotion Type Added', '', 3000, 'bg-success');
+      }
+    });
   }
 
 
@@ -280,7 +298,7 @@ addPromotionTypeDialog(): void {
   addInvestmentPeriodDialog(){
     let title = 'Add Investment Period';
     const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-        width: '400px',
+        // width: '400px',
         data:{ title:  title, type: 'addUtility' },
     });
   
