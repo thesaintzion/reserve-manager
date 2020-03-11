@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
  loading  = true;
-  constructor() { }
+ contactForm;
+  constructor( private formBuilder: FormBuilder) { 
+    this.contactForm = this.formBuilder.group({
+      email: ['', Validators.required]
+    })
+  }
+
 
   ngOnInit() {
     setTimeout( ()=>{

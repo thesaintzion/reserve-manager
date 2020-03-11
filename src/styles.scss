@@ -1,5 +1,7 @@
 $primary: #0022ff;
-
+$primary: #3f51b5;
+$text-muted: #6c757d;
+$success: rgb(0, 34, 255);
 html,
 body {
     height: 100%;
@@ -25,7 +27,7 @@ body {
     color: #555;
 }
 
-.rounded-btn{
+.rounded-btn {
     // border-radius: 70px !important;
 }
 
@@ -34,7 +36,6 @@ button:focus {
     outline: none !important;
     outline: 0 !important;
     // outline: 5px auto -webkit-focus-ring-color;
-    scroll-behavior: smooth !important;
 }
 
 * {
@@ -46,8 +47,8 @@ button:focus {
     border-bottom: 2px solid rgb(0, 34, 255) !important;
 }
 
-.settingsActive{
-    color: $primary  !important;
+.settingsActive {
+    color: $primary !important;
     border-bottom: 3px solid $primary !important;
 }
 
@@ -89,5 +90,42 @@ button:focus {
     }
     .mat-icon {
         color: #0022ff !important;
+    }
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid $success;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
     }
 }

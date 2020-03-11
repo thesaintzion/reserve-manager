@@ -32,9 +32,11 @@ const routes: Routes = [
     {path: 'bonus', component: BonusComponent},
     {path: 'about-us', component: AboutUsComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'register/upload', component: RegisterComponent},
+    {path: 'register/upload/:userId', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
 
-    {path: '404', component: PageNotFoundComponent,  data: {depth: 2, title: 'Page not found | Profile Me' }}, 
+    {path: '404', component: PageNotFoundComponent,  data: {depth: 2, title: 'Page not found' }}, 
   ]},
 
   

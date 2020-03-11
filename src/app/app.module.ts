@@ -22,6 +22,11 @@ import { RegisterComponent } from './components/site-components/register/registe
 import { ScrollUpComponent } from './components/shared-components/scroll-up/scroll-up.component';
 import { LoginComponent } from './components/site-components/login/login.component';
 import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SharedService } from './services/shared.service';
+import { ApiService } from './services/api.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 
 
@@ -53,9 +58,15 @@ import { AboutUsComponent } from './components/site-components/about-us/about-us
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SharedService, ApiService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
