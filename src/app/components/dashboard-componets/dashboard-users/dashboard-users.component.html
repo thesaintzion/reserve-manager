@@ -1,102 +1,61 @@
-<div class="animated fadeInUp" style="min-height: 100%; margin-bottom: 200px;">
+<div style="min-height: 100%; margin-bottom: 200px;">
     <div class="container">
         <div class="inner mt-4" style="overflow: hidden;">
             <header class="d-flex justify-content-between  ">
                 <div class="d-flex align-content-center  align-items-center">
                     <h4> Users</h4>
-                   
+
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
-                    
-                        <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
-                    
+
+                    <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
+
                 </div>
             </header>
 
 
-            <div class="row mt-3 ">
+            <div class="row mt-3 animated fadeInUp">
                 <div class="col-12 ">
-                <div class="table-con mt-0 bg-white">
-                    <table class="table w-100">
-                        <thead  class="w-100">
-                            <tr>
-                                <th>User name</th>
-                                <th>No. of accounts</th>
-                                <th>Signed up</th>
-                                <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
-                            </tr>
+                    <!-- <div *ngIf="loading else showTable" class="form-spinal-con mt-5 d-flex justify-content-center align-content-center align-items-center">
+                        <div>
+                            <div class="lds-ripple">
+                                <div></div>
+                                <div></div>
 
-                        </thead>
-                        <tbody class="w-100">
-                            <tr class="d-flext justify-content-arround">
-                               
-                                <td routerLink="39458686955"   class="account-no">Saint Zion</td>
-                                <td>5</td>
-                                <td>20/12/2019</td>
-                                
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    <button  routerLink="39458686955" [queryParams]="{ action: 'edit'  }"   mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
-                                    </button>
-                                  
-                                    <button (click)="openConfirmDialog()"  mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="d-flext justify-content-arround">
-                               
-                                <td routerLink="39458686955"   class="account-no">Saint Zion</td>
-                                <td>5</td>
-                                <td>20/12/2019</td>
-                                
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    <button  routerLink="39458686955" [queryParams]="{ action: 'edit'  }"   mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
-                                    </button>
-                                  
-                                    <button (click)="openConfirmDialog()"  mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="d-flext justify-content-arround">
-                               
-                                <td routerLink="39458686955"   class="account-no">Saint Zion</td>
-                                <td>5</td>
-                                <td>20/12/2019</td>
-                                
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    <button  routerLink="39458686955" [queryParams]="{ action: 'edit'  }"   mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
-                                    </button>
-                                  
-                                    <button (click)="openConfirmDialog()"  mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="d-flext justify-content-arround">
-                               
-                                <td routerLink="39458686955"   class="account-no">Saint Zion</td>
-                                <td>5</td>
-                                <td>20/12/2019</td>
-                                
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    <button  routerLink="39458686955" [queryParams]="{ action: 'edit'  }"   mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
-                                    </button>
-                                  
-                                    <button (click)="openConfirmDialog()"  mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
-                                    </button>
-                                </td>
-                            </tr>
+                            </div>
+                        </div>
+                    </div> -->
 
-                        </tbody>
-                    </table>
+                    <div class="table-con mt-0 bg-white">
+                        <table class="table w-100">
+                            <thead class="w-100">
+                                <tr>
+                                    <th>User name</th>
+                                    <th>No. of accounts</th>
+                                    <th>Signed up</th>
+                                    <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
+                                </tr>
+
+                            </thead>
+                            <tbody class="w-100">
+                                <tr *ngFor="let user of users" class="d-flext justify-content-arround">
+                                    <td [routerLink]="user.id" class="account-no">{{user.firstname}} {{user.lastname}}</td>
+                                    <td>0</td>
+                                    <td>{{ user.createdAt | date }}</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        <button [routerLink]="user.id" [queryParams]="{ action: 'edit'  }" mat-icon-button>
+                                        <mat-icon class="color-primary">create</mat-icon>
+                                    </button>
+                                        <button (click)="openConfirmDialog()" mat-icon-button>
+                                        <mat-icon class="text-danger">delete_outline</mat-icon>
+                                    </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-            </div>
             </div>
 
 

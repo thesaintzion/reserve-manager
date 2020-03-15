@@ -12,7 +12,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   intercept(req, next){
     const tokenRequest = req.clone({
  setHeaders: {
-  NO_W_XX: `${localStorage.getItem('NO_W_XX')}`
+  API_KEY: `${localStorage.getItem('API_KEY')}`
  }
     });
     return next.handle(tokenRequest);

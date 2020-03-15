@@ -62,16 +62,16 @@
                 <span *ngIf="fancyBg" class="fancy-text"></span>
 
             </a>
-           
+
             <a *ngIf="fancyBg" mat-list-item href="#">
-                <button  class="fancy-icon" mat-icon-button>
+                <button class="fancy-icon" mat-icon-button>
                         <mat-icon></mat-icon>
                         </button>
                 <span *ngIf="fancyBg" class="fancy-text"></span>
 
             </a>
             <a *ngIf="fancyBg" mat-list-item href="#">
-                <button  class="fancy-icon" mat-icon-button>
+                <button class="fancy-icon" mat-icon-button>
                         <mat-icon></mat-icon>
                         </button>
                 <span *ngIf="fancyBg" class="fancy-text"></span>
@@ -79,7 +79,7 @@
             </a>
 
             <a *ngIf="fancyBg" mat-list-item href="#">
-                <button  class="fancy-icon" mat-icon-button>
+                <button class="fancy-icon" mat-icon-button>
                         <mat-icon></mat-icon>
                         </button>
                 <span *ngIf="fancyBg" class="fancy-text"></span>
@@ -108,7 +108,7 @@
                         <span class="text-dark ml-2"><span class="color-primary">R</span>eserves<span class="color-primary">M</span>anager</span>
                     </a>
                 </div>
-               
+
 
 
                 <div class="nav-search-con w-100 ">
@@ -117,14 +117,15 @@
 
                 <div class="nav-profile-con">
                     <button class="bg-gray" mat-icon-button>
-                    <mat-icon></mat-icon>
+                        <mat-icon>notifications_none</mat-icon>
                     </button>
 
-                    <button class="bg-gray" mat-icon-button>
-                        <mat-icon></mat-icon>
-                        </button>
+                    <button class="bg-gray" [matMenuTriggerFor]="userMenu" mat-icon-button>
+                        <mat-icon>person</mat-icon>
+                        <div class="online-icon"></div>
+                   </button>
 
-                    <button (click)="logOutDialog()"  class="rounded-btn bg-danger text-white" mat-button>
+                    <button (click)="logOutDialog()" color="warn" class="rounded-btn " mat-raised-button>
                         Logout 
                     </button>
 
@@ -132,6 +133,24 @@
                 </div>
             </div>
         </mat-toolbar>
+        <mat-menu #userMenu="matMenu">
+            <!-- <div class="py-3 border mb-2">Saint Sion</div> -->
+            <mat-list class="bg-light">
+                <mat-list-item>
+                    <mat-icon mat-list-icon class="color-primary">person</mat-icon>
+                    <h4 mat-line>{{this.apiService.USER.firstname}}</h4>
+                    <p mat-line>{{this.apiService.USER.email}}</p>
+                </mat-list-item>
+            </mat-list>
+            <button routerLink="settings/profile" mat-menu-item>
+               <mat-icon>settings</mat-icon>
+              <span>Settings</span>
+            </button>
+            <button routerLink="accounts" mat-menu-item>
+                    <mat-icon class="mat-icon">account_balance_wallet</mat-icon>
+              <span>Account</span>
+            </button>
+        </mat-menu>
 
         <!-- Add Content Here -->
         <router-outlet>

@@ -1,290 +1,249 @@
 <div *ngIf="action == 'edit'" class="animated fadeInUp" style="min-height: 100%;">
     <div class="container">
-    <div class="inner mt-4 pb-5" style="overflow: hidden; ">
-        <header class="d-flex justify-content-between  ">
-            <div class="d-flex align-content-center  align-items-center">
-                <h4>Saint Zion </h4>
-               
-            </div>
-            <div class="d-flex align-content-center  align-items-center">
-                
-                    <button  mat-raised-button class="color-primary">Reset Password <mat-icon>refresh</mat-icon> </button>
-                
-            </div>
-        </header>
 
-<form [formGroup]="userForm">
-        <div class="row mt-3 ">
-            <div class="col-md-12 ">
-                <div class="bg-white general-info">
-                    <div class="d-flex ">
-                        <!-- <div *ngIf="!loading" class="animated fadeIn text-center" >
-
-                            <mat-card class="profile-avater">
-                                <div class="d-flex align-content-center align-items-center justify-content-center text-center">
-                                
-                                    <div class="link-box-text">
-                                       <mat-icon class="color-primary mx-auto">person_outline</mat-icon>
-                                    </div>
-                                </div>
-        
-                            </mat-card>
-                          
-                        </div> -->
-
-                        <div class="form-con">
-                            <div  *ngIf="!loading" class="row animated fadeIn">
-                                    <div class="col-md-12">
-                                    <h5 class="text-black">Modify Profile</h5>
-                                    </div>
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="text" formControlName="firstName"  placeholder="First name" required>
-                                    </mat-form-field>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="text" formControlName="lastName" placeholder="Last name" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="email" formControlName="email"  placeholder="Email address" required>
-                                    </mat-form-field>
-                                </div>
-                    
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="tel" formControlName="phone"  placeholder="Phone number" required>
-                                    </mat-form-field>
-                                </div>
-                              
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <mat-select formControlName="gender" placeholder="Genger">
-                                            <mat-option value="option">Option 1</mat-option>
-                                            <mat-option value="option">Option 2</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <mat-select formControlName="country" placeholder="Country">
-                                            <mat-option value="option">Option 1</mat-option>
-                                            <mat-option value="option">Option 2</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <mat-select formControlName="userType" placeholder="User Type">
-                                            <mat-option value="option">Option 1</mat-option>
-                                            <mat-option value="option">Option 2</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <mat-select formControlName="status" placeholder="Status">
-                                            <mat-option value="option">Option 1</mat-option>
-                                            <mat-option value="option">Option 2</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-12">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="text" formControlName="address" placeholder="Address" required>
-                                    </mat-form-field>
-                                </div>
-                                 
-                                <div class="col-md-6 form-group">
-                                    <div class="custom-file">
-                                        <input tabindex="-1" formControlName="idNumber" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
-                                        <label class="custom-file-label" for="customFile">Id card No.</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <div class="custom-file">
-                                        <input tabindex="-1" formControlName="utilityBill" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
-                                        <label class="custom-file-label" for="customFile">Utility bill</label>
-                                    </div>
-                                </div>
-                               
-                        
-                             
-
-
-
-                               
-                            </div>
-
-                            <div *ngIf="!loading" class="row">
-                                <div class="col-md-6">
-                                    <div class="pb-2 mt-2 d-flex justify-content-between">
-                                        <div>
-                                            <button (click)="onformSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
-                                        </div>
-                                      
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center"
-                             style="min-height: 300px;">
-                                <div class="col-md-12">
-                                    <p>Loading... Please wait</p>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </div>
+        <div class="inner mt-4 pb-5" style="overflow: hidden; ">
+            <header class="d-flex justify-content-between  ">
+                <div class="d-flex align-content-center  align-items-center">
+                    <h4>{{user?.firstname}} {{user?.lastname}}</h4>
                 </div>
-            </div>
+                <div class="d-flex align-content-center  align-items-center">
+                    <button mat-raised-button class="color-primary">Reset Password <mat-icon>refresh</mat-icon> </button>
+                </div>
+            </header>
 
-            <div class="col-md-3 d-none">
-                <div class="bg-light-primary reset-password">
-                    <div class="form-co">
-
-
-                        <div class="row ">
-                            <div class="col-md-12">
-                                <h5 class="text-black">Reset Password</h5>
-                            </div>
-                            <div class="col-md-12">
-                                <mat-form-field class="w-100">
-                                    <input matInput type="text" name="firstname" id="firstname" placeholder="Old Password" required>
-                                </mat-form-field>
-                            </div>
-
-                            <div class="col-md-12">
-                                <mat-form-field class="w-100">
-                                    <input matInput type="text" name="lastname" id="lastname" placeholder="New Password" required>
-                                </mat-form-field>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <mat-form-field class="w-100">
-                                    <input matInput type="text" name="username" id="username" placeholder="Confirm Password" required>
-                                </mat-form-field>
-                            </div>
-
-
-
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="pb-2 mt-2 d-flex justify-content-between">
+            <form [formGroup]="userForm">
+                <div class="row mt-3 ">
+                    <div class="col-md-12 ">
+                        <div class="bg-white general-info">
+                            <!-- <div class="form-loading">
+                                <div class="form-spinal-con d-flex justify-content-center align-content-center align-items-center">
                                     <div>
-                                        <button class="btn-white" mat-raised-button>Save changes </button>
+                                        <div class="lds-ripple">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <p>Loading..</p>
                                     </div>
-                                    <!-- <div>
-                                        <button class="btn-white" mat-raised-button>Cancel</button>
-                                    </div> -->
+                                </div>
+                            </div> -->
+
+                            <div class="d-flex ">
+                                <div class="form-con">
+                                    <div class="row animated fadeIn">
+                                        <div class="col-md-12">
+                                            <h5 class="text-black">Modify Profile</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="w-100">
+                                                <input matInput type="text" formControlName="firstname" placeholder="First name" required>
+                                            </mat-form-field>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <mat-form-field class="w-100">
+                                                <input matInput type="text" formControlName="lastname" placeholder="Last name" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <mat-form-field class="w-100">
+                                                <input matInput type="email" formControlName="email" placeholder="Email address" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <mat-form-field class="w-100">
+                                                <input matInput type="tel" formControlName="phone" placeholder="Phone number">
+                                            </mat-form-field>
+                                        </div>
+
+
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <mat-select formControlName="gender_id" placeholder="Gender">
+                                                    <mat-option></mat-option>
+                                                    <mat-option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint *ngIf="submited && f.gender_id.errors?.required || (f.gender_id?.errors && (f.gender_id?.dirty && f.gender_id.errors?.required))" class="text-danger">Gender is required</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <mat-select formControlName="country_id" placeholder="Country">
+
+                                                    <mat-option>Saint Zion</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <mat-select formControlName="country_id" placeholder="Country" required>
+                                                    <mat-option></mat-option>
+                                                    <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint *ngIf="submited && f.country_id.errors?.required || (f.country_id?.errors && (f.country_id?.dirty && f.country_id.errors?.required))" class="text-danger">Country is required</mat-hint> -->
+
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <mat-form-field class="w-100">
+                                                <input matInput type="text" formControlName="address" placeholder="Address" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-6 mt-4">
+                                            <div class="custom-file">
+                                                <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                                <label class="custom-file-label" for="customFile">Upload image</label>
+                                            </div>
+                                            <img width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
+                                            <!-- <img width="100" src="{{defaultImgUrl}}" alt=""> -->
+                                        </div>
+
+                                        <div class="col-md-6 mt-4">
+                                            <div class="custom-file">
+                                                <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                                <label class="custom-file-label" for="customFile">Upload image</label>
+                                            </div>
+                                            <img width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
+                                            <!-- <img width="100" src="{{defaultImgUrl}}" alt=""> -->
+                                        </div>
+
+                                        <!-- <div class="custom-file">
+                                            <input tabindex="-1" formControlName="image" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input " id="customFile">
+                                            <label class="custom-file-label" for="customFile">Upload image</label>
+                                            <img src="{{defaultImgUrl}}" alt="">
+                                        </div> -->
+
+
+                                    </div>
+
+                                    <div *ngIf="!loading" class="row">
+                                        <div class="col-md-6">
+                                            <div class="pb-2 mt-2 d-flex justify-content-between">
+                                                <div>
+                                                    <button (click)="onformSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 300px;">
+                                        <div class="col-md-12">
+                                            <p>Loading... Please wait</p>
+                                        </div>
+                                    </div>
+
+
 
                                 </div>
-
-                                <p class=" text-center mt-5 color-primary">Forgot password?</p>
                             </div>
                         </div>
-
-
-
                     </div>
+
                 </div>
-            </div>
+
+            </form>
+
         </div>
 
-    </form>
-
     </div>
-
-</div>
 </div>
 
 
 <div *ngIf="action !== 'edit'" class="animated fadeInUp edit-user" style="min-height: 100%;">
     <div class="container">
-
-  
         <div class="inner mt-4" style="overflow: hidden;">
             <header class="d-flex justify-content-between  ">
                 <div class="d-flex align-content-center  align-items-center">
-                    <h4> Saint Zion </h4>
-                   
+                    <h4>{{user?.firstname}} {{user?.lastname}}</h4>
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
-                    
-                        <a  routerLink="/dashboard/users/434558857" [queryParams]="{ action: 'edit'  }"  mat-raised-button class="btn-primary">Edit user <mat-icon>create</mat-icon> </a>
-                    
+                    <a routerLink="/dashboard/users/434558857" [queryParams]="{ action: 'edit'  }" mat-raised-button class="btn-primary">Edit user <mat-icon>create</mat-icon> </a>
                 </div>
             </header>
 
 
+            <!-- id: "", -->
+            <!-- firstname: "",
+            lastname: "",
+            email: "",
+            user_type_id: "",
+            password: "",
+            phone_number: "",
+            gender_id: "",
+            address: "",
+            status: "",
+            activated: "",
+            country_id: "",
+            identification_filename: "",
+            proof_of_address_filename: "",
+            promotion_type_id: "", -->
+
+
             <div class="row mt-3  ">
-
                 <div class="col-md-12 mb-4 pt-1">
-
                     <div class=" bg-white ">
                         <div class="d-flex justify-content-between border-bottom p-3 ">
                             <p class="m-0">First Name</p>
-                            <p  class="m-0">Sain</p>
+                            <p class="m-0"><strong>{{user?.firstname}}</strong></p>
                         </div>
                         <div class="d-flex justify-content-between border-bottom p-3 ">
                             <p class="m-0">Last Name</p>
-                            <p class="m-0">Sain</p>
+                            <p class="m-0"><strong>{{user?.lastname}}</strong></p>
                         </div>
                         <div class="d-flex justify-content-between align-content-center  border-bottom p-3 ">
                             <p class="m-0">Email</p>
-                            <p class="m-0">saintzion777@gmial</p>
+                            <p class="m-0"><strong>{{user?.email}}</strong></p>
                         </div>
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Phone</p>
-                            <p class="m-0">+234 856 485 9588</p>
+                            <p class="m-0"><strong>{{user?.phone_number}}</strong></p>
                         </div>
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Country</p>
-                            <p class="m-0">Nifgeria</p>
+
+                            <p class="m-0">
+                                <strong *ngIf="user?.country_id !== ''">{{user?.country_id}}</strong>
+                                <strong>* * * * *</strong>
+                            </p>
                         </div>
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Address</p>
-                            <p class="m-0">No. 30, lekki 1, Lagos, Ni   geria</p>
+                            <p class="m-0"><strong>{{user?.address}}</strong></p>
                         </div>
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Gender</p>
-                            <p class="m-0">Male</p>
+                            <p class="m-0">
+                                <strong *ngIf="user?.gender_id !== ''">{{user?.gender_id}}</strong>
+                                <strong>* * * * *</strong>
+                            </p>
                         </div>
 
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">No. of Accounts</p>
-                            <p class="m-0">5</p>
+                            <p class="m-0"><strong>Unkown</strong></p>
                         </div>
-                        
+
 
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Joined</p>
-                            <p class="m-0">20/12/2019</p>
+                            <p class="m-0"><strong>{{ user?.createdAt | date }}</strong></p>
                         </div>
                         <div class=" p-3">
-                            <button class="" color="warn" (click)="openConfirmDialog()"  mat-raised-button>
+                            <button class="" color="warn" (click)="openConfirmDialog()" mat-raised-button>
                                 Detelte User
                             </button>
                         </div>
@@ -293,113 +252,113 @@
 
                 <!--  -->
                 <div class="col-md-12 d-none">
-                <div class="table-conshadow mt-0 bg-white">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Transaction Type</th>
-                                <th>Amount</th>
-                                <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
-                              
-                               
-                            </tr>
+                    <div class="table-conshadow mt-0 bg-white">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Type</th>
+                                    <th>Amount</th>
+                                    <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
 
-                        </thead>
-                        <tbody>
 
-                            <tr>
-                                <td >Transer</td>
-                                <td >&#8358; 50, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
+                                </tr>
 
-                            
-                            <tr>
-                                <td >Deposite</td>
-                                <td >&#8358; 30, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td >Witdraw</td>
-                                <td >&#8358; 40, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
+                            </thead>
+                            <tbody>
 
-                            <tr>
-                                <td >Transer</td>
-                                <td >&#8358; 50, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
+                                <tr>
+                                    <td>Transer</td>
+                                    <td>&#8358; 50, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
 
-                            
-                            <tr>
-                                <td >Deposite</td>
-                                <td >&#8358; 30, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td >Witdraw</td>
-                                <td >&#8358; 40, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td >Transer</td>
-                                <td >&#8358; 50, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
+                                </tr>
 
-                            
-                            <tr>
-                                <td >Deposite</td>
-                                <td >&#8358; 30, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td >Witdraw</td>
-                                <td >&#8358; 40, 000</td>
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    20/12/2019 | 1:30 pm
-                                </td>
-                                
-                            </tr>
-                           
-                           
-                        
-                           
-                          
 
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td>Deposite</td>
+                                    <td>&#8358; 30, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Witdraw</td>
+                                    <td>&#8358; 40, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Transer</td>
+                                    <td>&#8358; 50, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+                                    <td>Deposite</td>
+                                    <td>&#8358; 30, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Witdraw</td>
+                                    <td>&#8358; 40, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Transer</td>
+                                    <td>&#8358; 50, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+                                    <td>Deposite</td>
+                                    <td>&#8358; 30, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Witdraw</td>
+                                    <td>&#8358; 40, 000</td>
+                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                        20/12/2019 | 1:30 pm
+                                    </td>
+
+                                </tr>
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            </div>
         </div>
-</div>
+    </div>
 </div>

@@ -3,6 +3,8 @@ import { SharedService } from 'src/app/services/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DashboardDeleteConfirmDialogComponent } from '../_dialogs/dashboard-delete-confirm-dialog/dashboard-delete-confirm-dialog.component';
 import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-create-account-dialog/dashboard-create-account-dialog.component';
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-users',
@@ -10,8 +12,11 @@ import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-cre
   styleUrls: ['./dashboard-users.component.scss']
 })
 export class DashboardUsersComponent implements OnInit {
-
-  constructor(public sharedService: SharedService, private dialog: MatDialog) { }
+loading = true;
+users = [];
+  constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
+  
+   }
 
 
   // confirm delete
@@ -57,7 +62,51 @@ openCreatAccountDialog(): void {
   });
  }
 
+
+ getLoggedInUser(){
+   this.apiService.getLoggedInUser().subscribe(
+     res => {
+console.log('Logged In User', res);
+if(res.user.user_type_id === 1){
+  this.apiService.USER.firstname =  res.user.firstname;
+  this.apiService.USER.email =  res.user.email;
+  }else{
+   this.sharedService.openSnackBar('Oops!! Bad Request.', `I'm Sorry`, 2000, 'bg-danger');
+   this.router.navigate(['/dashboard']);
+  }
+     },
+     err => {
+      this.router.navigate(['/login']);
+       console.log(err);
+    
+     }
+   )
+ }
+
+ getUsers(){
+  this.apiService.getUsers().subscribe(
+    res => {
+     setTimeout( () =>{
+this.loading = false;
+     }, 2000);
+console.log(res);
+this.users = res.users;
+
+    },
+    err => {
+      console.log(err);
+     setTimeout( () =>{
+       this.loading = false;
+       }, 2000);
+    }
+  )
+ }
+
   ngOnInit() {
+  
+    this.getUsers();
+    this.getLoggedInUser();
+    
   }
 
 }

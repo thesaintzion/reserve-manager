@@ -36,27 +36,25 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
      this.sharedService.openSnackBar('Please fill in the required fields', 'Ok', 6000, 'bg-danger');
   } else {
+
     this.loading = true;
     this.apiService.login(user).subscribe(
   (res) => {
-    
+  
     console.log(res);
-    setTimeout( () => {
+    let userName = `${res.user.firstname} ${res.user.lastname}`
     this.loading = false;
-    // localStorage.setItem('PMT', res.token);
-    // const {id, userFullName, userEmail, userRole, createdAt} = res.user;
-    // this.sharedService.openSnackBar(`Welcome, ${userFullName}`, 'Ok', 3000, 'bg-success');
-    // this.router.navigate(['/dashboard']);
-  }, 600);
+    this.router.navigate(['/dashboard']);
+    this.sharedService.openSnackBar(`Welcome Home ${userName}`, 'Ok', 6000, 'bg-success');
+    localStorage.setItem('API_KEY', res.token); 
+  
+ 
   },
   (err) => {
     setTimeout( () => {
     this.loading = false;
     if(err.error.statusMsg && err.status > 0){
       this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
-      if(err.error.type === 'NOT_VERIFIED'){
-        this.notVerified = true;
-      }
     }else{
       this.sharedService.openSnackBar('Oopps..!! Something went wrong.. Are you offline??', 'Ok', 7000, 'bg-danger');
     }
@@ -72,6 +70,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.sharedService.openSnackBar('Please Login', '', 2000, '');
   }
 
 }

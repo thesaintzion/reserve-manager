@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router){}
+  constructor(private router: Router, private sharedService: SharedService,){}
   loggedId(){
-    if(localStorage.getItem('NO_W_XX') === undefined || 
-        localStorage.getItem('NO_W_XX') === '' ||
-        localStorage.getItem('NO_W_XX') === "" ||
-        localStorage.getItem('NO_W_XX')   === 'null' ||
-        localStorage.getItem('NO_W_XX') === null
+    if(localStorage.getItem('API_KEY') === undefined || 
+        localStorage.getItem('API_KEY') === '' ||
+        localStorage.getItem('API_KEY') === "" ||
+        localStorage.getItem('API_KEY')   === 'null' ||
+        localStorage.getItem('API_KEY') === null
         ){
           return false
         }else{
@@ -24,6 +25,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.router.navigate(['/login']);
+      this.sharedService.openSnackBar('Please login', 'Ok', 4000, '');
       return false;
     }
     }

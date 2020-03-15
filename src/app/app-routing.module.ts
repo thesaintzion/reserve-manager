@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/shared-components/page-not-f
 import { RegisterComponent } from './components/site-components/register/register.component';
 import { LoginComponent } from './components/site-components/login/login.component';
 import { AboutUsComponent } from './components/site-components/about-us/about-us.component';
+import { AuthGuard } from './services/auth.guard.service';
 
 
 
@@ -39,9 +40,9 @@ const routes: Routes = [
     {path: '404', component: PageNotFoundComponent,  data: {depth: 2, title: 'Page not found' }}, 
   ]},
 
-  
+  // user@reservesmanager.com
   // Lazy loading
-  { path: 'dashboard', loadChildren: './components/dashboard-componets/dashboard.module#DashboardModule'},
+  { path: 'dashboard', loadChildren: './components/dashboard-componets/dashboard.module#DashboardModule', canActivate: [AuthGuard]},
   { path: '**',  redirectTo: '/404', pathMatch: 'full'}, 
 ];
 

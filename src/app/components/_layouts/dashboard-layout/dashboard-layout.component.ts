@@ -5,6 +5,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { SharedService } from 'src/app/services/shared.service';
 import { DashboardDeleteConfirmDialogComponent } from '../../dashboard-componets/_dialogs/dashboard-delete-confirm-dialog/dashboard-delete-confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -21,7 +23,10 @@ export class DashboardLayoutComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public sharedService: SharedService, private dialog: MatDialog) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+     public sharedService: SharedService, 
+     private dialog: MatDialog, 
+     private rouer: Router, private apiService: ApiService) {}
 
   logOutDialog(): void {
     let message = 'Are you sure you want to logout?'
@@ -33,15 +38,19 @@ export class DashboardLayoutComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
      if(result) {
       console.log(result);
-      this.sharedService.openSnackBar('Logging out...', '', 4000, '');
-     
+      this.sharedService.openSnackBar('Logging Out.. Bye!!', '', 3000, '');
+      setTimeout( ()=>{
+localStorage.removeItem('API_KEY');
+this.rouer.navigate(['login']);
+      }, 3000);
     }
    });
    }
 
   ngOnInit() {
+    this.apiService.USER.firstname = '* * * *';
+    this.apiService.USER.email = '* * * * * * * * * *';
   setTimeout( () =>{
-  
     this.fancyBg = false;
   }, 3000);
   }

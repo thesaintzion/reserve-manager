@@ -4,6 +4,7 @@ import { DashboardDeleteConfirmDialogComponent } from '../_dialogs/dashboard-del
 import { MatDialog } from '@angular/material/dialog';
 import { SharedService } from 'src/app/services/shared.service';
 import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-create-account-dialog/dashboard-create-account-dialog.component';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-dashboard-utility',
@@ -16,7 +17,26 @@ active = 'gender';
 detected = 0;
 siteSlug =  this.router.url.split('/')[4];
 loading = false;
-  constructor(private router: Router, private dialog: MatDialog, private sharedService: SharedService) { }
+
+// Country array
+genders = [];
+
+// Country array
+countries = [];
+
+// Account Type
+accountTypes = [ ];
+
+// denominations
+denominations = [];
+
+// promotionTypes
+promotionTypes = [];
+
+//investmentPeriods
+investmentPeriods = [];
+// gettingUtility = true;
+  constructor(private router: Router, private dialog: MatDialog, private sharedService: SharedService, private apiServive: ApiService) { }
 
   getGlug(slug){
 this.active = '';
@@ -36,134 +56,7 @@ onBankFormSubmit(){
         }
 
 
-// Country array
-genders = [
-  {
-    id: 1,
-    "name": "Male"
-  },
-  {
-    id: 2,
-    "name": "Female"
-  }
-  ];
 
-  // Country array
-  countries = [
-    {
-      id: 0,
-    "name": "Afghanistan",
-    },
-    {
-    "name": "Aland Islands",
-   
-    },
-    {
-      id: 0,
-    "name": "Benin",
-    
-    },
-    {
-      id: 0,
-    "name": "Bermuda",
-   
-    },
-    {
-      id: 0,
-    "name": "Zambia",
-   
-    },
-    {
-      id: 0,
-    "name": "Zimbabwe",
-    
-    }
- ];
-
-  // Account Type
-  accountTypes = [
-    {
-      id: 1,
-      "name": "Individual"
-    },
-    {
-      id: 2,
-      "name": "Coporate"
-    },
-    ];
-
-    // denominations
-    denominations = [
-      {
-        id: 1,
-        "name": "US Dollar"
-      },
-      {
-        id: 2,
-        "name": "Naira"
-      },
-      {
-        id: 3,
-        "name": "Pounds"
-      },
-      {
-        id: 4,
-        "name": "Euros"
-      },
-      ];
-
-      // promotionTypes
-
-      promotionTypes = [
-        {
-          id: 1,
-          name: 'Flyers',
-        },
-        {
-          id: 2,
-          name: 'Newspapers',
-        },
-        {
-          id: 1,
-          name: 'Social Media',
-        },
-        {
-          id: 1,
-          name: 'Friend',
-        }
-      ]
-
-  //   investmentPeriods
-    investmentPeriods = [
-      {
-        id: 1,
-        "name": "3 Month"
-      },
-      { 
-        id: 2,
-        "name": "6 Month"
-      },
-      {
-        id: 3,
-        "name": "12 Month"
-      },
-      {
-        id: 4,
-        "name": "18 Month"
-      },
-      {
-        id: 5,
-        "name": "24 Month"
-      },
-      {
-        id: 6,
-        "name": "18 Month"
-      },
-      {
-        id: 7,
-        "name": "2 years +"
-      }
-    ];
 
     
 
@@ -174,22 +67,22 @@ genders = [
 // ADD UTILITY
 // ===========================
 
-        // form dialog
-openAddUtilityDialog(): void {
-  let title = 'Add Utility';
-  const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-    //  width: '400px',
-     data:{ title:  title, type: 'addUtility' },
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if(result) {
-     console.log(result);
-     this.sharedService.openSnackBar('Account deleted', '', 4000, 'bg-success');
-    
-   }
-  });
- }
+        // form dialog
+// openAddUtilityDialog(): void {
+//   let title = 'Add Utility';
+//   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
+//     //  width: '400px',
+//      data:{ title:  title, type: 'addUtility' },
+//   });
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     if(result) {
+//      console.log(result);
+//      this.sharedService.openSnackBar('Account deleted', '', 4000, 'bg-success');
+//    }
+//   });
+// }
 
 
 // 01. add gender
@@ -201,13 +94,19 @@ addGenderDialog(): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    if(result) {
-      console.log(result);
-      this.genders.push({
-      id: Math.floor(Math.random() * 10),
-      name: result
-    })
+
+    if(result) {     
+      this.sharedService.openSnackBar('Please Wait..', '', 3000, 'bg-dark');
+      this.apiServive.addGender({name: result}).subscribe(
+      res => {
+      console.log(res);
+      this.getGengers();
       this.sharedService.openSnackBar('Gender Added', '', 3000, 'bg-success');
+      }, 
+      err =>{
+      console.log(err);
+      this.sharedService.openSnackBar('Error adding Gender', '', 3000, 'bg-danger');
+      });
     }
   });
   }
@@ -222,12 +121,18 @@ addCountryDialog(): void {
 
   dialogRef.afterClosed().subscribe(result => {
     if(result) {
-      console.log(result);
-      this.countries.push({
-      id: Math.floor(Math.random() * 10),
-      name: result
-    })
+      this.sharedService.openSnackBar('Please Wait..', '', 9000, 'bg-dark');
+      this.apiServive.addCountry({name: result}).subscribe(
+      res => {
+      console.log(res);
+      this.getCountries();
       this.sharedService.openSnackBar('Country Added', '', 3000, 'bg-success');
+      }, 
+      err =>{
+      console.log(err);
+      this.sharedService.openSnackBar('Error adding Country', '', 3000, 'bg-danger');
+      });
+  
     }
   });
   }
@@ -242,12 +147,17 @@ addAccountTypeDialog(): void {
 
   dialogRef.afterClosed().subscribe(result => {
     if(result) {
-      console.log(result);
-      this.accountTypes.push({
-      id: Math.floor(Math.random() * 10),
-      name: result
-    })
-      this.sharedService.openSnackBar('Account Type Added', '', 3000, 'bg-success');
+      this.sharedService.openSnackBar('Please Wait..', '', 9000, 'bg-dark');
+      this.apiServive.addAccountType({name: result}).subscribe(
+      res => {
+      console.log(res);
+      this.getAccountTypes();
+      this.sharedService.openSnackBar('Account type Added', '', 3000, 'bg-success');
+      }, 
+      err =>{
+      console.log(err);
+      this.sharedService.openSnackBar('Error adding Account type', '', 3000, 'bg-danger');
+      });
     }
   });
   }
@@ -263,17 +173,22 @@ addDenominationDialog(): void {
 
   dialogRef.afterClosed().subscribe(result => {
     if(result) {
-      console.log(result);
-      this.denominations.push({
-      id: Math.floor(Math.random() * 10),
-      name: result
-    })
+      this.sharedService.openSnackBar('Please Wait..', '', 9000, 'bg-dark');
+      this.apiServive.addDenomination({name: result}).subscribe(
+      res => {
+      console.log(res);
+      this.getDenominations();
       this.sharedService.openSnackBar('Denomination Added', '', 3000, 'bg-success');
+      }, 
+      err =>{
+      console.log(err);
+      this.sharedService.openSnackBar('Error adding Denomination', '', 3000, 'bg-danger');
+      });
     }
   });
   }
 
-        // 05. Add Promotion Type
+// 05. Add Promotion Type
 addPromotionTypeDialog(): void {
   let title = 'Add Promotion Type';
     const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
@@ -283,16 +198,20 @@ addPromotionTypeDialog(): void {
   
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        console.log(result);
-        this.promotionTypes.push({
-        id: Math.floor(Math.random() * 10),
-        name: result
-      })
+        this.sharedService.openSnackBar('Please Wait..', '', 9000, 'bg-dark');
+        this.apiServive.addPromotionType({name: result}).subscribe(
+        res => {
+        console.log(res);
+        this.getPromotionTypes();
         this.sharedService.openSnackBar('Promotion Type Added', '', 3000, 'bg-success');
+        }, 
+        err =>{
+        console.log(err);
+        this.sharedService.openSnackBar('Error adding Promotion Type', '', 3000, 'bg-danger');
+        });
       }
     });
   }
-
 
 // 07. Add investment period
   addInvestmentPeriodDialog(){
@@ -304,26 +223,109 @@ addPromotionTypeDialog(): void {
   
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        console.log(result);
-        this.investmentPeriods.push({
-        id: Math.floor(Math.random() * 10),
-        name: result
-      })
+        this.sharedService.openSnackBar('Please Wait..', '', 9000, 'bg-dark');
+        this.apiServive.addInvestmentPeriod({name: result}).subscribe(
+        res => {
+        console.log(res);
+        this.getInvestmentPeriods();
         this.sharedService.openSnackBar('Investment Period Added', '', 3000, 'bg-success');
+        }, 
+        err =>{
+        console.log(err);
+        this.sharedService.openSnackBar('Error adding Investment Period', '', 3000, 'bg-danger');
+        });
       }
     });
   }
 
+
+  /// GET UTILITY ///
+getCountries(){
+  this.apiServive.getCountries().subscribe(
+    res => {
+     console.log('getCountries', res.country);
+     this.countries = res.country;
+    },
+    err => {
+    console.log('getCountries Error', err);
+    }
+  )
+}
+getGengers(){
+  this.apiServive.getGengers().subscribe(
+    res => {
+     console.log('getGengers', res.gender);
+     this.genders = res.gender;
+    },
+    err => {
+    console.log('getGengers', err);
+    }
+  )
+}
+getPromotionTypes(){
+  this.apiServive.getPromotionTypes().subscribe(
+    res => {
+     console.log('getPromotionTypes', res.promotionType);
+     this.promotionTypes = res.promotionType;
+    },
+    err => {
+    console.log('getPromotionTypes', err);
+    }
+  )
+}
+getDenominations(){
+  this.apiServive.getDenominations().subscribe(
+    res => {
+     console.log('getDenominations', res.denomination);
+     this.denominations = res.denomination;
+    },
+    err => {
+    console.log('getDenominations', err);
+    }
+  )
+}
+getInvestmentPeriods(){
+  this.apiServive.getInvestmentPeriods().subscribe(
+    res => {
+     console.log('getInvestmentPeriods', res.investmentPeriod);
+     this.investmentPeriods =  res.investmentPeriod;
+    },
+    err => {
+    console.log('getInvestmentPeriods', err);
+    }
+  )
+}
+getAccountTypes(){
+  this.apiServive.getAccountTypes().subscribe(
+    res => {
+     console.log('getAccountTypes', res.accountType);
+     this.accountTypes = res.accountType;
+    },
+    err => {
+    console.log('getAccountTypes', err);
+    }
+  )
+}
+getBankDetails(){
+  this.apiServive.getBankDetails().subscribe(
+    res => {
+     console.log('getBankDetails', res);
+    },
+    err => {
+    console.log('getBankDetails', err);
+    }
+  )
+}
 
 
   
 
 
       // confirm delete
-      openConfirmDialog(item: any, utility: any){
+      openConfirmDialog(item: any, utility: any, id, utilityType){
         let message;
         if(item){
-  message = `You really want to delete ${utility} "${item}"?`;
+          message = `You really want to delete ${utility} "${item}" "${id}"?`;
         }else{
           message = `You really want to  delete this?`;
         }
@@ -334,21 +336,110 @@ addPromotionTypeDialog(): void {
     
         dialogRef.afterClosed().subscribe(result => {
          if(result) {
-          console.log(result);
-          this.sharedService.openSnackBar(`${utility} deleted`, '', 3000, 'bg-success');
-  
+           if(utilityType.toLowerCase() === 'gender'){
+        
+            this.apiServive.deleteGender(id).subscribe(
+              res => {
+                this.getGengers();
+                this.sharedService.openSnackBar(`Gender Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting gender`, '', 3000, 'bg-danger');
+              })
+
+           }else if(utilityType.toLowerCase() === 'country'){
+            
+            this.apiServive.deleteCountry(id).subscribe(
+              res => {
+                this.getCountries();
+                this.sharedService.openSnackBar(`Country Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting Country`, '', 3000, 'bg-danger');
+              });
+
+           }else if(utilityType.toLowerCase() === 'accountType'){
+          
+            this.apiServive.deleteAccountType(id).subscribe(
+              res => {
+                this.getAccountTypes();
+                this.sharedService.openSnackBar(`Account Type Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting Accoun Type`, '', 3000, 'bg-danger');
+              });
+
+           }else if(utilityType.toLowerCase() === 'denomination'){
+            this.apiServive.deleteDenomination(id).subscribe(
+              res => {
+                this.getDenominations();
+                this.sharedService.openSnackBar(`Denomination Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting Denomination`, '', 3000, 'bg-danger');
+              });
+           
+           }else if(utilityType.toLowerCase() === 'promotionType'){
+            this.apiServive.deletePromotionType(id).subscribe(
+              res => {
+                this.getPromotionTypes();
+                this.sharedService.openSnackBar(`Prommotion Type Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting Prommotion Type`, '', 3000, 'bg-danger');
+              });
+          
+           }else if(utilityType.toLowerCase() === 'investmentPeriod'){
+            this.apiServive.deleteInvestmentPeriod(id).subscribe(
+              res => {
+                this.getInvestmentPeriods();
+                this.sharedService.openSnackBar(`Investment Period Deleted`, '', 3000, 'bg-success');
+              },
+              err => {
+                console.log(err);
+                this.sharedService.openSnackBar(`Error deleting Investment Period`, '', 3000, 'bg-danger');
+              });
+          
+           }else{
+            this.sharedService.openSnackBar(`Oops!! Invalid utility id.. Please refresh your browser if persist`, '', 3000, 'bg-danger');
+           }
+          // console.log(result);
+          // this.sharedService.openSnackBar(`${utility} deleted - ${id}`, '', 3000, 'bg-success');
         }
        });
-       }
+      }
 
 
   ngOnInit() {
+this.getCountries();
+this.getGengers();
+this.getPromotionTypes();
+this.getDenominations();
+this.getInvestmentPeriods();
+this.getAccountTypes();
+this.getBankDetails();
+
+console.log(this.countries,
+            this.genders, 
+            this.promotionTypes,
+            this.denominations, 
+            this.investmentPeriods,
+            this.accountTypes
+            );
 // console.log(this.countries)
    
     // console.log(this.siteSlug);
+
+
 if(this.siteSlug){
   this.active = this.siteSlug;
 }
+
     
   }
 

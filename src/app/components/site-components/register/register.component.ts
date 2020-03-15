@@ -116,27 +116,13 @@ if(this.registerForm.invalid){
 
 
   upload(){
-    // console.log(this.userId);
-    if(this.userId){
-      console.log('User Id', this.userId);
-    }else{
-      console.log('Invalid Request');
-    }
-
-    this.apiService.get().subscribe(
-      res => {
-console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
-    )
+ 
   }
 
   getCountries(){
 this.apiService.getCountries().subscribe(
   res => {
-    this.countries = res['country'];
+    this.countries = res.country;
   },
   err => {
 console.log(err)
@@ -145,7 +131,7 @@ console.log(err)
   getGengers(){
     this.apiService.getGengers().subscribe(
       res => {
-        this.genders = res['gender'];
+        this.genders = res.gender;
       },
       err => {
     console.log(err)
