@@ -39,12 +39,11 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
     this.apiService.login(user).subscribe(
-  (res) => {
-  
-    console.log(res);
-    let userName = `${res.user.firstname} ${res.user.lastname}`
-    this.loading = false;
+  res => {
     this.router.navigate(['/dashboard']);
+    console.log(res);
+    this.loading = false;
+    let userName = `${res.user.firstname} ${res.user.lastname}`;
     this.sharedService.openSnackBar(`Welcome Home ${userName}`, 'Ok', 6000, 'bg-success');
     localStorage.setItem('API_KEY', res.token); 
   

@@ -11,66 +11,7 @@
     <div *ngIf="!loading" class="home-compo animated fadeIn" style="overflow: hidden !important">
 
         <section class="section-carosel">
-            <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption  d-md-block">
-                            <h3>Solutions that make You Become a Market Broker Because of Your Purchasing Power</h3>
-                            <p>Adequate disposable income ease financial stress. </p>
-                            <p>"Best Financial Futures Merchant"</p>
-                            <p>"We help you plan for every obligation and transactions that would require you to make payments in future"</p>
-                            <a mat-raised-button style="text-decoration: none;" routerLink="/financial-services">Investment Options</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption  d-md-block">
-                            <h3>Governmental and Corporate Failure as Result of Poor Overhead Funding</h3>
-                            <p>Any government and corporate body that cannot generate adequate funds internaly to cover overhead cost is not viable </p>
-                            <p>"Best Financial Futures Merchant"</p>
-                            <p>"We help you plan for every obligation and transactions that would require you to make payments in future"</p>
-                            <a mat-raised-button style="text-decoration: none;" routerLink="/financial-services">Investment Options</a>
-                        </div>
-                    </div>
-
-
-                    <div class="carousel-item">
-                        <div class="carousel-caption  d-md-block">
-                            <h3>Our Rent and School Fees Obligation Planning Are Excellent</h3>
-                            <p> Do you know that if your annual rent is &#8358;500,000 if you invest that amount and hold on that investment "without withdrawal" for 365 days, you rely on the returns pay your rent into perpertuity.</p>
-                            <p>"Best Financial Futures Merchant"</p>
-                            <p>"We help you plan for every obligation and transactions that would require you to make payments in future"</p>
-                            <a mat-raised-button style="text-decoration: none;" routerLink="/financial-services">Investment Options</a>
-                        </div>
-                    </div>
-
-                    <!--  -->
-                    <div class="carousel-item">
-                        <div class="carousel-caption  d-md-block">
-                            <h3>Every Penny You Throw Away Has Potential To Make Substantial Invesment Returns !!!.</h3>
-                            <p>You rather drop it in our Investment Pigibox.</p>
-                            <p>It has potential to grow by more than 500 pencent in 356 days.</p>
-                            <p>"Best Financial Futures Merchant"</p>
-                            <p>"We help you plan for every obligation and transactions that would require you to make payments in future"</p>
-                            <a mat-raised-button style="text-decoration: none;" routerLink="/financial-services">Investment Options</a>
-                        </div>
-                    </div>
-
-
-                </div>
-                <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next " href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <app-carousel [slides]="slides"></app-carousel>
         </section>
         <!-- ./section-carosel -->
 

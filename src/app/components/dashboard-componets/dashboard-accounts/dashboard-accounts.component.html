@@ -4,114 +4,60 @@
             <header class="d-flex justify-content-between  ">
                 <div class="d-flex align-content-center  align-items-center">
                     <h4> Accounts </h4>
-                   
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
-                    
-                        <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
-                    
+                    <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
                 </div>
             </header>
-
-
             <div class="row mt-3 ">
                 <div class="col-12 ">
-                <div class="table-conshadow mt-0 bg-white">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th> Account No.</th>
-                                <th>Owner</th>
-                                <th>Balance</th>
-                                <th>Created</th>
-                                <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td routerLink="495859597" class="account-no">#495859597</td>
-                                <td>Saint Zion</td>
-                                <td> &#8358;990, 000</td>
-                                <td>20/12/2019</td>
-                                
-                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                    <button  (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
-                                    </button>
-                                  
-                                    <button (click)="openConfirmDialog()"  mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
-                                    </button>
-                                </td>
-                                <tr>
-                                    <td routerLink="495859597" class="account-no">#495859597</td>
-                                    <td>Saint Zion</td>
-                                    <td> &#8358;990, 000</td>
-                                    <td>20/12/2019</td>
-                                    
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        <button  (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button>
-                                            <mat-icon class="color-primary">create</mat-icon>
-                                        </button>
-                                      
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td routerLink="495859597" class="account-no">#495859597</td>
-                                    <td>Saint Zion</td>
-                                    <td> &#8358;990, 000</td>
-                                    <td>20/12/2019</td>
-                                    
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        <button  (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button>
-                                            <mat-icon class="color-primary">create</mat-icon>
-                                        </button>
-                                      
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td routerLink="495859597" class="account-no">#495859597</td>
-                                    <td>Saint Zion</td>
-                                    <td> &#8358;990, 000</td>
-                                    <td>20/12/2019</td>
-                                    
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        <button  (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button>
-                                            <mat-icon class="color-primary">create</mat-icon>
-                                        </button>
-                                      
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td routerLink="495859597" class="account-no">#495859597</td>
-                                    <td>Saint Zion</td>
-                                    <td> &#8358;990, 000</td>
-                                    <td>20/12/2019</td>
-                                    
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        <button  (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-icon-button>
-                                            <mat-icon class="color-primary">create</mat-icon>
-                                        </button>
-                                      
-                                        <button (click)="openConfirmDialog()"  mat-icon-button>
-                                            <mat-icon class="text-danger">delete_outline</mat-icon>
-                                        </button>
-                                    </td>
-                                </tr>
-                        </tbody>
-                    </table>
+                    <div class="text-center py-2" *ngIf="accounts.length < 1 else showTable">
+                        <p>No accounts to to display</p>
+                        <button (click)="openCreatAccountDialog()" mat-raised-button class="bg-white text-primary">Create New <mat-icon>add</mat-icon> </button>
+                    </div>
+                    <ng-template #showTable>
+                        <div class="table-conshadow mt-0 bg-white">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Account No.</th>
+                                        <th>Owner</th>
+                                        <th>Balance</th>
+                                        <th>Created</th>
+                                        <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let account of accounts; let index = index">
+                                        <td class="account-no">{{index+1}}</td>
+                                        <td routerLink="{{account.uid}}" class="account-no">#{{account.account_number}}</td>
+                                        <td [ngClass]="{'text-primary': apiService.USER.id === account.uid}">{{account?.firstname}} {{account?.lastname}}</td>
+                                        <td>
+                                            &#8358;
+                                            <span *ngIf="account.balance >= 1000">
+                                                {{account.balance | number:'2.'}}
+                                            </span>
+                                            <span *ngIf="account.balance < 1000">
+                                                {{account.balance}}
+                                            </span>
+                                        </td>
+                                        <td>{{account.createdAt | date:'fullDate'}}</td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button title="Edit account" (click)="openEditAccountDialog(account.account_number)" mat-icon-button>
+                                            <mat-icon  class="color-primary">create</mat-icon>
+                                            </button>
+                                            <button (click)="openConfirmDialog()" mat-icon-button>
+                                        <mat-icon class="text-danger">close</mat-icon>
+                                       </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                    <!-- <p *ngFor="let account of accounts; let index = index"> {{index+1}} {{account | json }}</p> -->
                 </div>
-            </div>
             </div>
         </div>
     </div>

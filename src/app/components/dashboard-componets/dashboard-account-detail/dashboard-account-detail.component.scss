@@ -1,5 +1,4 @@
 :host ::ng-deep {
-
     $primary: #0022ff;
     $gray: #EAEBF0;
     $dark-gray: rgb(0, 0, 0, 54%);
@@ -32,8 +31,8 @@
         // border-radius: 60px;
         color: #ffffff;
     }
-    .bg-dark-gray{
-        background-color:  $dark-gray;
+    .bg-dark-gray {
+        background-color: $dark-gray;
     }
     .btn-outline-primary {
         background-color: #ffffff !important;
@@ -52,31 +51,27 @@
         // border-radius: 60px;
         color: $primary
     }
-
-    .table  {
-
-     
-        thead th{
+    .table {
+        thead th {
             border: 0 !important;
         }
-
-        tr{
+        tr {
             // border-bottom: 5px solid #eaebf0;
             // border-top: 5px solid #eaebf0;
             // border-color:#eaebf0 !important;
-
-            
         }
-
-      td {
-           
+        td {
             vertical-align: middle !important;
             overflow: hidden;
-            border-color:#eaebf0 !important;
-            
+            border-color: #eaebf0 !important;
         }
-        
     }
-
-// #495859597
+    // #495859597
+    .action-footer {
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 0 !important;
+        }
+    }
 }

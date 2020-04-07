@@ -63,15 +63,16 @@ openCreatAccountDialog(): void {
  }
 
 
- getLoggedInUser(){
+getLoggedInUser(){
    this.apiService.getLoggedInUser().subscribe(
      res => {
 console.log('Logged In User', res);
 if(res.user.user_type_id === 1){
   this.apiService.USER.firstname =  res.user.firstname;
-  this.apiService.USER.email =  res.user.email;
+  this.apiService.USER.firstname =  res.user.firstname;
+  this.apiService.USER.user_type_id =  res.user.user_type_id;
   }else{
-   this.sharedService.openSnackBar('Oops!! Bad Request.', `I'm Sorry`, 2000, 'bg-danger');
+   this.sharedService.openSnackBar('Bad Request.', ``, 2000, 'bg-danger');
    this.router.navigate(['/dashboard']);
   }
      },

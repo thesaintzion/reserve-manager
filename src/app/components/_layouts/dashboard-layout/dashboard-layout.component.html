@@ -24,7 +24,7 @@
                 <span *ngIf="fancyBg" class="fancy-text"></span>
 
             </a>
-            <a routerLinkActive="active" routerLink="users" mat-list-item class="main-item ">
+            <a *ngIf="apiService.USER.user_type_id === 1" routerLinkActive="active" routerLink="users" mat-list-item class="main-item">
                 <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
                     <mat-icon class="mat-icon">group</mat-icon>
                     </button>

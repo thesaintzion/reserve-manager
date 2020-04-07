@@ -18,6 +18,7 @@ export class DashboardHomeComponent implements OnInit {
 
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.email =  res.user.email;
+   this.apiService.USER.user_type_id =  res.user.user_type_id;
   
       },
       err => {

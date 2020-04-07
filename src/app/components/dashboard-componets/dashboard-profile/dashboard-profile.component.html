@@ -1,10 +1,10 @@
 <div class="animated fadeInUp" style="min-height: 100%;">
-        <div class="inner pb-5" style="overflow: hidden; ">
-            <div class="row mt-4 no-gutters">
-                <div class="col-md-12 ">
-                    <div class="bg-white general-info">
-                        <div class="d-flex ">
-                            <!-- <div *ngIf="!loading" class="animated fadeIn text-center profile-avater-con" >
+    <div class="inner pb-5" style="overflow: hidden; ">
+        <div class="row mt-4 no-gutters">
+            <div class="col-md-12 ">
+                <div class="bg-white general-info">
+                    <div class="d-flex ">
+                        <!-- <div *ngIf="!loading" class="animated fadeIn text-center profile-avater-con" >
 
                                 <mat-card class="profile-avater">
                                     <div class="d-flex align-content-center align-items-center justify-content-center text-center">
@@ -18,169 +18,183 @@
                               
                             </div> -->
 
-                            <div class="form-con">
 
+                        <!-- <mat-form-field>
+                                <mat-select formControlName="country_id" placeholder="Country" required>
+                                    <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+                                </mat-select>
+                                <mat-hint *ngIf="submited && f.country_id.errors?.required || (f.country_id?.errors && (f.country_id?.dirty && f.country_id.errors?.required))" class="text-danger">Country is required</mat-hint>
+    
+                            </mat-form-field> -->
 
-                                <div  *ngIf="!loading" class="row animated fadeIn">
-                                    <div class="col-md-12">
-                                        <h5 class="text-black">General Info</h5>
+                        <form [formGroup]="profileForm" (ngSubmit)="onformSubmit()" class="form-con">
+                            <div *ngIf="loading" class="form-spinal-con d-flex justify-content-center align-content-center align-items-center">
+                                <div>
+                                    <div class="lds-ripple">
+                                        <div></div>
+                                        <div></div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput type="text" name="firstname" id="firstname" placeholder="Firstname" required>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput type="text" name="lastname" id="lastname" placeholder="Lastname" required>
-                                        </mat-form-field>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput type="text" name="username" id="username" placeholder="Username" required>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput type="email" name="email" id="email" placeholder="Email Address" required>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput type="number" name="phone" id="phone" placeholder="Phone Number" required>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <mat-select placeholder="Genger">
-                                                <mat-option value="option">Option</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <mat-select placeholder="Country">
-                                                <mat-option value="option">Option</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-
-                                  
-
-
-                                    <div class="col-md-6">
-                                        <mat-form-field class="w-100">
-                                            <input matInput name="address" id="address" placeholder="Residential Address" required>
-                                        </mat-form-field>
-
-                                    </div>
-
-                                    <div class="col-md-6 form-group">
-                                        <div class="custom-file">
-                                            <input tabindex="-1" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
-                                            <label class="custom-file-label" for="customFile">Id card No.</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <div class="custom-file">
-                                            <input tabindex="-1"  accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
-                                            <label class="custom-file-label" for="customFile">Utility bill</label>
-                                        </div>
-                                    </div>
-                                   
+                                    <p>Loading..</p>
                                 </div>
-
-                                <div *ngIf="!loading" class="row">
-                                    <div class="col-md-6">
-                                        <div class="pb-2 mt-2 d-flex justify-content-between">
-                                            <div>
-                                                <button (click)="onformSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
-                                            </div>
-                                            <!-- <div>
-                                                <button class="btn-light-primary" mat-raised-button>Cancel</button>
-                                            </div> -->
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center"
-                                 style="min-height: 300px;">
-                                    <div class="col-md-12">
-                                        <p>Loading... Please wait</p>
-                                    </div>
-                                </div>
-
-
-
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 d-none">
-                    <div class="bg-light-primary reset-password">
-                        <div class="form-co">
-
-
-                            <div class="row ">
-                                <div class="col-md-12">
-                                    <h5 class="text-black">Reset Password</h5>
+                            <div *ngIf="imgPrevMode" class="img-prev-con">
+                                <div class="img-prev-close">
+                                    <button (click)="imgPrevMode = false" mat-icon-button class="bg-white shadow">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
                                 </div>
+
+                                <img class="w-100" [src]="imgPrevUrl" alt="">
+                            </div>
+                            <div *ngIf="!imgPrevMode" class="row animated fadeIn">
+
                                 <div class="col-md-12">
+                                    <h5 class="text-black">General Info</h5>
+                                </div>
+                                <div class="col-md-6">
                                     <mat-form-field class="w-100">
-                                        <input matInput type="text" name="firstname" id="firstname" placeholder="Old Password" required>
+                                        <input matInput type="text" formControlName="firstname" placeholder="Firstname" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="text" formControlName="lastname" placeholder="Lastname" required>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="email" formControlName="email" placeholder="Email" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="w-100">
+                                        <mat-select formControlName="gender_id" placeholder="Gender" required>
+                                            <mat-option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</mat-option>
+                                        </mat-select>
+                                        <!-- <mat-hint *ngIf="submited && f.gender_id.errors?.required || (f.gender_id?.errors && (f.gender_id?.dirty && f.gender_id.errors?.required))" class="text-danger">Gender is required</mat-hint> -->
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="w-100">
+                                        <mat-select formControlName="country_id" placeholder="Country" required>
+                                            <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+                                        </mat-select>
+                                        <!-- <mat-hint *ngIf="submited && f.country_id.errors?.required || (f.country_id?.errors && (f.country_id?.dirty && f.country_id.errors?.required))" class="text-danger">Country is required</mat-hint> -->
+
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="w-100">
+                                        <input matInput type="text" formControlName="phone_number" placeholder="Phone Number" required>
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-12">
                                     <mat-form-field class="w-100">
-                                        <input matInput type="text" name="lastname" id="lastname" placeholder="New Password" required>
+                                        <input matInput type="text" formControlName="address" placeholder="Address" required>
                                     </mat-form-field>
+
                                 </div>
 
-
-                                <div class="col-md-12">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="text" name="username" id="username" placeholder="Confirm Password" required>
-                                    </mat-form-field>
+                                <div class="col-md-3 mt-4">
+                                    <div class="text-center">
+                                        <img (click)="viewImg('../../../../assets/img/Aggital-2018-in-Review-16.jpg')" width="100" src="../../../../assets/img/Aggital-2018-in-Review-16.jpg" alt="">
+                                    </div>
+                                    <div class="custom-file mt-2">
+                                        <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                        <label class="custom-file-label" for="customFile">Upload image</label>
+                                    </div>
                                 </div>
 
-
-
+                                <div class="col-md-3 mt-4">
+                                    <div class="text-center">
+                                        <img (click)="viewImg('../../../../assets/img/Aggital-2018-in-Review-10.jpg')" width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
+                                    </div>
+                                    <div class="custom-file mt-2">
+                                        <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
+                                        <label class="custom-file-label" for="customFile">Upload image</label>
+                                    </div>
+                                </div>
 
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="pb-2 mt-2 d-flex justify-content-between">
+                                    <div class="pb-2 mt-2 d-flex justify-content-end">
                                         <div>
-                                            <button class="btn-white" mat-raised-button>Save changes </button>
+                                            <button class="btn-primary" mat-raised-button>Save changes</button>
                                         </div>
-                                        <!-- <div>
-                                            <button class="btn-white" mat-raised-button>Cancel</button>
-                                        </div> -->
-
                                     </div>
-
-                                    <p class=" text-center mt-5 color-primary">Forgot password?</p>
                                 </div>
                             </div>
-
-
-
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
 
+            <div class="col-md-3 d-none">
+                <div class="bg-light-primary reset-password">
+                    <div class="form-co">
+
+
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <h5 class="text-black">Reset Password</h5>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field class="w-100">
+                                    <input matInput type="text" name="firstname" id="firstname" placeholder="Old Password" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-12">
+                                <mat-form-field class="w-100">
+                                    <input matInput type="text" name="lastname" id="lastname" placeholder="New Password" required>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <mat-form-field class="w-100">
+                                    <input matInput type="text" name="username" id="username" placeholder="Confirm Password" required>
+                                </mat-form-field>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="pb-2 mt-2 d-flex justify-content-between">
+                                    <div>
+                                        <button class="btn-white" mat-raised-button>Save changes </button>
+                                    </div>
+                                    <!-- <div>
+                                            <button class="btn-white" mat-raised-button>Cancel</button>
+                                        </div> -->
+
+                                </div>
+
+                                <p class=" text-center mt-5 color-primary">Forgot password?</p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-   
+
+    </div>
+
 </div>

@@ -27,6 +27,7 @@ import { SharedService } from './services/shared.service';
 import { ApiService } from './services/api.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { CarouselComponent } from './components/site-components/carousel/carousel.component';
 
 
 
@@ -51,6 +52,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     ScrollUpComponent,
     LoginComponent,
     AboutUsComponent,
+    CarouselComponent,
    
     
   ],

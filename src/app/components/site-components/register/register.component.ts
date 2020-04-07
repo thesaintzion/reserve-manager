@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { EmailMatch } from 'src/app/helpers/emailMatch';
+import {  PasswordMatch } from 'src/app/helpers/passwordlMatch';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -44,13 +44,13 @@ export class RegisterComponent implements OnInit {
         password:  ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
         conf_password:  ['', Validators.required]
       },
-      {validator: EmailMatch('password', 'conf_password')}
+      {validator:  PasswordMatch('password', 'conf_password')}
       )
     }
     get f() { return this.registerForm.controls; }
 
 
-// REGISTRATIO
+// REGISTRATION
 register(){
 this.submited = true;
 console.log(this.registerForm);
@@ -79,7 +79,8 @@ if(this.registerForm.invalid){
     console.log('res', res);
     setTimeout( () =>{
       this.loading = false;
-      this.sharedService.openSnackBar('Registerted', 'ok', 9000, 'bg-success');
+      this.router.navigate(['/login']);
+      this.sharedService.openSnackBar('Registeration succesful, please login', 'ok', 90000, 'bg-success');
       }, 2000);
   },
 
@@ -87,7 +88,7 @@ if(this.registerForm.invalid){
     console.log('err', err);
     setTimeout( () =>{
       this.loading = false;
-      if(err.error.status == 400){
+      if(err.error && err.error.statusMsg !== ''){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after sometime', 'ok', 9000, 'gb-danger');
@@ -95,15 +96,7 @@ if(this.registerForm.invalid){
       }, 2000);
    
   });
-
-
-  
 }
-
-
-
-
-
 }
 
 // formErrMsg(field){

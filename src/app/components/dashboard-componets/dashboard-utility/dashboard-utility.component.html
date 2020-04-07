@@ -84,25 +84,23 @@
             </div>
         </div>
 
-
         <!-- 
                     ============ ========
                    COUNTRY
                     =============  =======
                     -->
         <div *ngIf=" active == 'country'" class="row mt-3 animated fadeInUp">
-            <div class="col-12 ">
+            <div class="col-12">
                 <header class="d-flex justify-content-between mt-4 mb-3 ">
                     <div class="d-flex align-content-center  align-items-center">
                         <h4> County </h4>
 
                     </div>
                     <div class="d-flex align-content-center  align-items-center">
-
                         <button (click)="addCountryDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
-
                     </div>
                 </header>
+
                 <div class="text-center" *ngIf="countries.length < 1 else showCountry">
                     <p>No Country to display</p>
                 </div>
@@ -299,42 +297,46 @@
                     <div class="col-md-12 ">
                         <div class="bg-white bank-form">
                             <div class="d-flex  ">
-                                <div class="form-con w-100">
-                                    <div *ngIf="!loading" class="row animated fadeIn">
+                                <form [formGroup]="bankDetailsForm" (ngSubmit)="bankDetailsSubmit()" class="form-con w-100">
+                                    <div *ngIf="loading" class="form-spinal-con d-flex justify-content-center align-content-center align-items-center">
+                                        <div>
+                                            <div class="lds-ripple">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <p>Loading..</p>
+                                        </div>
+                                    </div>
+                                    <div class="row animated fadeIn">
                                         <!-- <div class="col-md-12">
                                                         <h5 class="text-black">General Info</h5>
                                                     </div> -->
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
-                                                <input matInput type="number" name="firstname" placeholder="Account Number" required>
+                                                <input matInput type="number" formControlName="account_number" placeholder="Account Number" required>
                                             </mat-form-field>
                                         </div>
 
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
-                                                <mat-select placeholder=" Bank" required>
-
-                                                    <mat-option value="First_Bank">First bank</mat-option>
-                                                    <mat-option value="Eko_Bank">Eko bank</mat-option>
-
-                                                </mat-select>
+                                                <input matInput type="text" formControlName="account_name" placeholder="Account Name" required>
                                             </mat-form-field>
                                         </div>
 
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
-                                                <input matInput type="text" placeholder="Account Name" required>
+                                                <input matInput type="text" formControlName="bank_name" placeholder="Bank Name" required>
                                             </mat-form-field>
                                         </div>
 
 
                                     </div>
 
-                                    <div *ngIf="!loading" class="row">
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="pb-2 mt-5 d-flex justify-content-between">
                                                 <div>
-                                                    <button (click)="onBankFormSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
+                                                    <button class="btn-primary" mat-raised-button>Save changes</button>
                                                 </div>
                                                 <!-- <div>
                                                                 <button class="btn-light-primary" mat-raised-button>Cancel</button>
@@ -344,16 +346,16 @@
                                         </div>
                                     </div>
 
-
+                                    <!-- 
                                     <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 200px;">
                                         <div class="col-md-12">
                                             <p>Loading... Please wait</p>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
 
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

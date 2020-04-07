@@ -26,10 +26,13 @@ createdAt: null,
 updatedAt:  null,
   }
 
-  devUrl = 'http://localhost:1111/api/v2';
+  devUrl = 'http://localhost:9000/api/v2';
+
   constructor(private http: HttpClient) {
 
    }
+
+  //  USER   //
 
    addUser(user: any){
 return this.http.post<any>(`${this.devUrl}/user`, user)
@@ -51,11 +54,30 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
         return this.http.get<any>(`${this.devUrl}/user`);
        }
 
-       editUser(uid: any  ){
-        return this.http.put<any>(`${this.devUrl}`, uid);
+       editUser(user: any,  uid: any ){
+        return this.http.put<any>(`${this.devUrl}/user/${uid}`, user);
        }
 
-  //  UTILITIES
+       editPassword(password: any, uid: any){
+        return this.http.put<any>(`${this.devUrl}/user/password/${uid}`, password);
+       }
+
+      // USER ACCOUNT  //
+
+  addAccount(account: any){
+    return this.http.post<any>(`${this.devUrl}/account`, account);
+  }
+  getAccount(uid, account_number, query){
+    return this.http.get<any>(`${this.devUrl}/account?uid=${uid}&account_number=${account_number}&query=${query}`);
+  }
+  editAccount(account: any,  account_id: any ){
+    return this.http.put<any>(`${this.devUrl}/account/${account_id}`, account);
+  }
+  deleteAccount(account_number: any){
+    return this.http.delete<any>(`${this.devUrl}/account/${account_number}`);
+  }
+
+  //  UTILITIES //
   getCountries(){
     return this.http.get<any>(`${this.devUrl}/country`);
   }
@@ -65,9 +87,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deleteCountry(id: any){
     return this.http.delete<any>(`${this.devUrl}/country/${id}`);
   }
-
-
-
   getGengers(){
     return this.http.get<any>(`${this.devUrl}/gender`);
   }
@@ -77,9 +96,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deleteGender(id: any){
     return this.http.delete<any>(`${this.devUrl}/gender/${id}`);
   }
-
- 
-
   getPromotionTypes(){
     return this.http.get<any>(`${this.devUrl}/promotion_type`);
   }
@@ -89,10 +105,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deletePromotionType(id: any){
     return this.http.delete<any>(`${this.devUrl}/promotion_type/${id}`);
   }
-
-
-
-
   getDenominations(){
     return this.http.get<any>(`${this.devUrl}/denomination`);
   }
@@ -102,8 +114,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deleteDenomination(id: any){
     return this.http.delete<any>(`${this.devUrl}/denomination/${id}`);
   }
-
-  
   getInvestmentPeriods(){
     return this.http.get<any>(`${this.devUrl}/investment_period`);
   }
@@ -113,8 +123,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deleteInvestmentPeriod(id: any){
     return this.http.delete<any>(`${this.devUrl}/investment_period/${id}`);
   }
-
-
   getAccountTypes(){
     return this.http.get<any>(`${this.devUrl}/account_type`);
   }
@@ -127,45 +135,18 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
 
 
 
+
+
+  // Admin Bank Details
   getBankDetails(){
     return this.http.get<any>(`${this.devUrl}/bank_details`);
   }
   addBankDetails(accountTypes: any){
-    return this.http.post<any>(`${this.devUrl}/account_type`, accountTypes);
+    return this.http.post<any>(`${this.devUrl}/bank_details`, accountTypes);
   }
-  deleteBankDetails(id: any){
-    return this.http.delete<any>(`${this.devUrl}/account_type/${id}`);
+  editBankDetails(body: any, id: any){
+    return this.http.put<any>(`${this.devUrl}/bank_details/${id}`, body);
   }
-
-
- 
-  // addAccountType: "/api/v2/account_type",
-  // getAccountType: "/api/v2/account_type",
-  // deleteAccountType: "/api/v2/account_type/:id",
-
-  // addBankDetails: "/api/v2/bank_details",
-  // getBankDetails: "/api/v2/bank_details",
-  // editBankDetails: "/api/v2/bank_details/:id",
-
-  // addCountry: "/api/v2/country",
-  // getCountry: "/api/v2/country",
-  // deleteCountry: "/api/v2/country/:id",
-
-  // addDenomination: "/api/v2/denomination",
-  // getDenomination: "/api/v2/denomination",
-  // deleteDenomination: "/api/v2/denomination/:id",
-
-  // addGender: "/api/v2/gender",
-  // getGender: "/api/v2/gender",
-  // deleteGender: "/api/v2/gender/:id",
-
-  // addInvestmentPeriod: "/api/v2/investment_period",
-  // getInvestmentPeriod: "/api/v2/investment_period",
-  // deleteInvestmentPeriod: "/api/v2/investment_period/:id",
-
-  // addPromotionType: "/api/v2/promotion_type",
-  // getPromotionType: "/api/v2/promotion_type",
-  // deletePromotionType: "/api/v2/promotion_type/:id",  
  
     
 }

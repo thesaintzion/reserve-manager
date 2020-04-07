@@ -26,25 +26,28 @@ export class DashboardLayoutComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
      public sharedService: SharedService, 
      private dialog: MatDialog, 
-     private rouer: Router, private apiService: ApiService) {}
+     private rouer: Router, public apiService: ApiService) {}
 
   logOutDialog(): void {
-    let message = 'Are you sure you want to logout?'
-    const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
-       width: '300px',
-       data:{message: message},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-     if(result) {
-      console.log(result);
-      this.sharedService.openSnackBar('Logging Out.. Bye!!', '', 3000, '');
-      setTimeout( ()=>{
-localStorage.removeItem('API_KEY');
+    localStorage.removeItem('API_KEY');
 this.rouer.navigate(['login']);
-      }, 3000);
-    }
-   });
+
+//     let message = 'Are you sure you want to logout?'
+//     const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
+//       //  width: '300px',
+//        data:{message: message},
+//     });
+
+//     dialogRef.afterClosed().subscribe(result => {
+//      if(result) {
+//       console.log(result);
+//       this.sharedService.openSnackBar('Logging Out.. Bye!!', '', 3000, '');
+//       setTimeout( ()=>{
+// localStorage.removeItem('API_KEY');
+// this.rouer.navigate(['login']);
+//       }, 3000);
+//     }
+//    });
    }
 
   ngOnInit() {

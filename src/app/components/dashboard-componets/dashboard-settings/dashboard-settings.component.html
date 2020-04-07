@@ -12,14 +12,14 @@
                             Profile
                         </button>
 
-                        <button routerLink="utility" routerLinkActive="settingsActive" mat-button>
+                            <button *ngIf="apiService.USER.user_type_id === 1" routerLink="utility" routerLinkActive="settingsActive" mat-button>
                         Utility
                     </button>
-                    <button routerLink="change-password" routerLinkActive="settingsActive" mat-button>
+                            <button routerLink="change-password" routerLinkActive="settingsActive" mat-button>
                       Change password
                     </button>
 
-                    <button routerLink="bank-details" routerLinkActive="settingsActive" mat-button>
+                            <button routerLink="bank-details" *ngIf="apiService.USER.user_type_id === 2" routerLinkActive="settingsActive" mat-button>
                         Bank Details
                       </button>
                         </div>
@@ -29,10 +29,10 @@
             </div>
 
 
-            <div class="router-con" >
+            <div class="router-con">
                 <router-outlet #routeData="outlet"></router-outlet>
             </div>
 
-          </div>
-          </div>
-          </div>
+        </div>
+    </div>
+</div>

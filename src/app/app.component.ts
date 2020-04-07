@@ -3,7 +3,6 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators'
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +18,7 @@ sub: Subscription;
   scrollToTop(){
 
   }
+
   ngOnInit(){
    
 

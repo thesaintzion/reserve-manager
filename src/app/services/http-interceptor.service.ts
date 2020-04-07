@@ -7,8 +7,6 @@ import { HttpInterceptor } from '@angular/common/http';
 export class HttpInterceptorService implements HttpInterceptor {
 
   constructor() { }
-
-
   intercept(req, next){
     const tokenRequest = req.clone({
  setHeaders: {
