@@ -67,14 +67,15 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   addAccount(account: any){
     return this.http.post<any>(`${this.devUrl}/account`, account);
   }
-  getAccount(uid, account_number, query){
-    return this.http.get<any>(`${this.devUrl}/account?uid=${uid}&account_number=${account_number}&query=${query}`);
+  getAccount(uid, account_id, query){
+    return this.http.get<any>(`${this.devUrl}/account?uid=${uid}&account_id=${account_id}&query=${query}`);
   }
   editAccount(account: any,  account_id: any ){
     return this.http.put<any>(`${this.devUrl}/account/${account_id}`, account);
   }
-  deleteAccount(account_number: any){
-    return this.http.delete<any>(`${this.devUrl}/account/${account_number}`);
+
+  deleteAccount(account_id: any){
+    return this.http.delete<any>(`${this.devUrl}/account/${account_id}`);
   }
 
   //  UTILITIES //

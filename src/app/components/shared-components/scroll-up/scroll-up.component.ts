@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./scroll-up.component.scss']
 })
 export class ScrollUpComponent implements OnInit {
+  
   windowScrolled: boolean;
   constructor(@Inject(DOCUMENT) private document: Document) { }
 

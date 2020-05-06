@@ -12,7 +12,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class DashboardProfileComponent implements OnInit {
 loading = false;
 profileForm;
-imgPrevUrl = '../../../../assets/img/Aggital-2018-in-Review-16.jpg';
+imgPrevUrl = '../../../../assets/img/b1.jpg';
 imgPrevMode = false;
 countries = [];
 genders = [];

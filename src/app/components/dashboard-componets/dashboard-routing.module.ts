@@ -13,6 +13,7 @@ import { DashboardChangePasswordComponent } from './dashboard-change-password/da
 import { DashboardBankDetailsComponent } from './dashboard-bank-details/dashboard-bank-details.component';
 import { DashboardAllUtilityComponent } from './dashboard-all-utility/dashboard-all-utility.component';
 import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
+import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 
 const routes: Routes = [
  {path: '', component: DashboardLayoutComponent, children: 
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'users', component: DashboardUsersComponent},
   {path: 'users/:userId', component: DashboardUserDetailComponent},
   {path: 'accounts', component: DashboardAccountsComponent},
-  {path: 'accounts/:accountNumber', component:   DashboardAccountDetailComponent},
+  {path: 'accounts/:account_id', component:   DashboardAccountDetailComponent},
+  {path: 'add-new-user', component: AddNewUserComponent},
   {path: 'settings', component:  DashboardSettingsComponent, children: [
     { path: '', component:  DashboardProfileComponent},
     { path: 'profile', component:  DashboardProfileComponent},

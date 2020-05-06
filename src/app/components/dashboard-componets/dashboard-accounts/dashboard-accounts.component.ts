@@ -14,54 +14,79 @@ import { Router } from '@angular/router';
 export class DashboardAccountsComponent implements OnInit {
 
 accounts = [];
+accntAdded = false;
+editedAccntId = '';
 
   constructor(public sharedService: SharedService, private dialog: MatDialog, public apiService: ApiService, private router: Router) { }
 
 
   // confirm delete
-  openConfirmDialog(): void {
+  openConfirmDialog(account_id): void {
     let message = 'Are you sure you want to delete this account?'
     const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
-       width: '400px',
+       width: '300px',
        data:{message: message},
     });
 
     dialogRef.afterClosed().subscribe(result => {
      if(result) {
-      console.log(result);
-      this.sharedService.openSnackBar('Account deleted', '', 4000, 'bg-success');
+      this.sharedService.openSnackBar('Delete in progress..', '', 30000000, '');
+
+      this.apiService.deleteAccount(account_id).subscribe(
+       res => {
+       this.getLoggedInUser();
+       this.sharedService.openSnackBar('Account deleted..', '', 3000, 'bg-success');
+      
      
+       },
+       err => {
+       console.log(err);
+       this.sharedService.openSnackBar('Could not delete account please try again later', '', 3000, 'bg-danger');
+       });
     }
+
    });
    }
 
 
-   // form dialog
-openEditAccountDialog(account_number): void {
+   // Open dialog for editing accont
+openEditAccountDialog(account_id): void {
   let title = 'Edit Account';
   const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
      width: '400px',
-     data:{account_number, title:  title, type: 'editAccount' },
+     data:{account_id, title:  title, type: 'editAccount' },
   });
-
   dialogRef.afterClosed().subscribe(result => {
     if(result) {
      let account = {
-      account_number: result.account_number,
-      denomination_id: result.denomination,
-      account_type_id: result.accountType,
-      investment_period_id:  result.investmentPeriod
+      denomination_id: result.denomination_id,
+      account_type_id: result.account_type_id,
+      investment_period_id:  result.investment_period_id
      }
-     console.log('Edit account', account);
-     this.sharedService.openSnackBar('Editing account..', '', 3000, 'bg-success');
-     
-   }else{
-    this.sharedService.openSnackBar('Not Editing Account..', '', 3000, 'bg-danger');
+     this.sharedService.openSnackBar('Edit in progress..', '', 30000000, '');
+     this.apiService.editAccount(account, result.account_id).subscribe(
+      res => {
+      this.getLoggedInUser();
+      this.editedAccntId = result.account_id;
+      setTimeout( ()=>{
+        this.editedAccntId = '';
+            }, 3000);
+          
+      this.sharedService.openSnackBar('Successful!!', 'Ok', 3000, 'bg-success');
+      },
+      err => {
+      console.log(err);
+      if(err.error && err.error.statusMsg !== ''){
+        this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
+      }else{
+      this.sharedService.openSnackBar('Could not edit account please try again later', 'Ok', 9000, 'bg-danger');
+      }
+      });
    }
   });
  }
 
-   // form dialog
+   // Open dialog for adding accont
 openCreatAccountDialog(): void {
   let title = 'Create New Account';
 
@@ -74,9 +99,9 @@ openCreatAccountDialog(): void {
       this.sharedService.openSnackBar('Creating account..', '', 30000000, '');
       let account = {
       uid: this.apiService.USER.id,
-      denomination_id: result.denomination,
-      account_type_id: result.accountType,
-      investment_period_id:  result.investmentPeriod
+      denomination_id: result.denomination_id,
+      account_type_id: result.account_type_id,
+      investment_period_id:  result.investment_period_id
      }
      console.log('account', account);
     this.apiService.addAccount(account).subscribe(
@@ -85,15 +110,19 @@ openCreatAccountDialog(): void {
     console.log('Account created', res);
 
     this.sharedService.openSnackBar('Account Created', '', 3000, 'bg-success');
+    this.accntAdded = true;
+    setTimeout( ()=>{
+this.accntAdded = false;
+    }, 3000);
     },
     err => {
     console.log(err);
+    if(err.error && err.error.statusMsg !== ''){
+      this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
+    }else{
     this.sharedService.openSnackBar('Could not create account please try again later', '', 3000, 'bg-danger');
+    }
     });
-
-     
-   }else{
-    this.sharedService.openSnackBar('Not Creating Account..', '', 3000, 'bg-danger');
    }
   });
 
@@ -107,12 +136,12 @@ this.apiService.USER.firstname =  res.user.firstname;
 this.apiService.USER.firstname =  res.user.firstname;
 this.apiService.USER.user_type_id =  res.user.user_type_id;
 this.apiService.USER.id = res.user.id;
-let account_number = '1360742278';
+let account_id = '1360742278';
 let query = 'user';
 if(res.user.user_type_id === 1){
 query = 'all';
 }
-this.getAccount(res.user.id, account_number, query);
+this.getAccount(res.user.id, account_id, query);
 
     },
     err => {
@@ -122,7 +151,8 @@ this.getAccount(res.user.id, account_number, query);
     })
 }
 
- getAccount(uid, account_number, query){
+
+getAccount(uid, account_number, query){
    this.apiService.getAccount(uid, account_number, query).subscribe(
      res => {
        console.log(res);

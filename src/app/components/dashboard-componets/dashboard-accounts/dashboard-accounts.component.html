@@ -9,6 +9,7 @@
                     <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
                 </div>
             </header>
+            <!-- accntAdded  -->
             <div class="row mt-3 ">
                 <div class="col-12 ">
                     <div class="text-center py-2" *ngIf="accounts.length < 1 else showTable">
@@ -28,11 +29,12 @@
                                         <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let account of accounts; let index = index">
+                                <tbody [ngClass]="{'flesh-tr': accntAdded}">
+                                    <tr *ngFor="let account of accounts; let index = index" [ngClass]="{'color-danger': !account.status, 'flash-yellow': account.id == editedAccntId }">
                                         <td class="account-no">{{index+1}}</td>
-                                        <td routerLink="{{account.uid}}" class="account-no">#{{account.account_number}}</td>
-                                        <td [ngClass]="{'text-primary': apiService.USER.id === account.uid}">{{account?.firstname}} {{account?.lastname}}</td>
+                                        <td routerLink="{{account.id}}" *ngIf="account.status" class="account-no">#{{account.account_number}}</td>
+                                        <td *ngIf="!account.status">#{{account.account_number}}</td>
+                                        <td [ngClass]="{'text-mute': apiService.USER.id === account.uid}">{{account?.firstname}} {{account?.lastname}}</td>
                                         <td>
                                             &#8358;
                                             <span *ngIf="account.balance >= 1000">
@@ -44,19 +46,24 @@
                                         </td>
                                         <td>{{account.createdAt | date:'fullDate'}}</td>
                                         <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                            <button title="Edit account" (click)="openEditAccountDialog(account.account_number)" mat-icon-button>
+                                            <button *ngIf="account.status" title="Edit account" (click)="openEditAccountDialog(account.id)" mat-icon-button>
                                             <mat-icon  class="color-primary">create</mat-icon>
                                             </button>
-                                            <button (click)="openConfirmDialog()" mat-icon-button>
-                                        <mat-icon class="text-danger">close</mat-icon>
-                                       </button>
+                                            <button *ngIf="account.status" (click)="openConfirmDialog(account.id)" mat-icon-button>
+                                            <mat-icon class="text-danger">delete_outline</mat-icon>
+                                        </button>
+                                            <button *ngIf="!account.status" title="Edit account" mat-icon-button>
+                                            <mat-icon  class="text-muted">create</mat-icon>
+                                            </button>
+                                            <button *ngIf="!account.status" mat-icon-button>
+                                            <mat-icon class="text-muted">delete_outline</mat-icon>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </ng-template>
-                    <!-- <p *ngFor="let account of accounts; let index = index"> {{index+1}} {{account | json }}</p> -->
                 </div>
             </div>
         </div>

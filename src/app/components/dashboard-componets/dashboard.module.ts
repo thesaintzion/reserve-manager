@@ -18,6 +18,7 @@ import { DashboardChangePasswordComponent } from './dashboard-change-password/da
 import { DashboardBankDetailsComponent } from './dashboard-bank-details/dashboard-bank-details.component';
 import { DashboardAllUtilityComponent } from './dashboard-all-utility/dashboard-all-utility.component';
 import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
+import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-
     DashboardChangePasswordComponent,
     DashboardBankDetailsComponent,
     DashboardAllUtilityComponent,
-    DashboardUserDetailComponent
+    DashboardUserDetailComponent,
+    AddNewUserComponent
   ],
   imports: [
     CommonModule,

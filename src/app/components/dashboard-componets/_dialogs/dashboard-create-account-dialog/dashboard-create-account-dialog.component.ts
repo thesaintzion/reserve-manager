@@ -18,6 +18,7 @@ accountTypes = [];
 denominations = [];
 investmentPeriods = [];
 account = [];
+
 accountEdit =  {
 accountNo: '',
 uid: '',
@@ -26,6 +27,7 @@ createdAt: '',
 type: '',
 denomination: '',
 period: '',
+account_id: ''
 }
 
 selected = 'option3';
@@ -42,30 +44,32 @@ selected = 'option3';
       this.utilityFrom = this.formBuilder.group({
         utility: ['', [Validators.required]]
       });
-
-      // \\
-      // this.accountTypeSelected = '3';
-      // this.denominationSelected = '3';
-      // this.investmentPeriodSelected = '3';
     }
 
+
+    // Add an account
   onAccountFormSubmit(){
   if(this.data.type == 'editAccount'){
     let account = {
-      account_number: this.data.selectedAccount.accountNo,
+      account_id:  this.accountEdit.account_id,
       denomination_id: this.accountForm.value.denomination,
       account_type_id:  this.accountForm.value.accountType,
-      investment_period_id:   this.accountForm.value.investmentPeriod,
-    }
-    console.log('Form value', account);
+      investment_period_id: this.accountForm.value.investmentPeriod,
+    } 
     this.dialogRef.close(account);
   }else{
-    console.log('Form value', this.accountForm.value);
-  this.dialogRef.close(this.accountForm.value);
+    let account = {
+      denomination_id: this.accountForm.value.denomination,
+      account_type_id:  this.accountForm.value.accountType,
+      investment_period_id: this.accountForm.value.investmentPeriod,
+    }
+    this.dialogRef.close(account)
+
+
   } 
 }
 
-// When Utility form is submited
+// Add utility
 onUtilityFormSubmit(){
   if(this.utilityFrom.invalid){
     // this.sharedService.openSnackBar('Please fill in the field', 'ok', 2000, 'bg-danger')
@@ -79,31 +83,7 @@ onUtilityFormSubmit(){
   
 }
 
-
-//prefill form
-fillForm(){
-// if(this.data.type == 'editAccount' && this.data.selectedAccount){
-//   this.accountForm.patchValue({
-// accountType: this.data.selectedAccount.type,
-// denomination: this.data.selectedAccount.denomination,
-// investmentPeriod: this.data.selectedAccount.period,
-//     });
-//   this.accountEdit.uid = this.data.selectedAccount.uid;
-//   this.accountEdit.balance = this.data.selectedAccount.balance;
-//   this.accountEdit.createdAt = this.data.selectedAccount.createdAt;
-//   this.accountEdit.accountNo = this.data.selectedAccount.accountNo;
-//   this.accountEdit.type = this.data.selectedAccount.type;
-//   this.accountEdit.denomination = this.data.selectedAccount.denomination;
-//   this.accountEdit.period  = this.data.selectedAccount.period;
-
-// console.log('To edit data', this.data, 'data', this.accountEdit,'form',  this.accountForm );
-
-// }
-
-}
-
-
-// 
+// Get account types
 getAccountTypes(){
   this.apiService.getAccountTypes().subscribe(
     res => {
@@ -114,6 +94,8 @@ getAccountTypes(){
       console.log(err); 
     })
 }
+
+// Get denominations types
 getDenominations(){
   this.apiService.getDenominations().subscribe(
     res => {
@@ -135,23 +117,21 @@ getInvestmentPeriods(){
     })
 }
 
-getAccount(uid, account_number, query){
-  this.apiService.getAccount(uid, account_number, query).subscribe(
+getAccount(uid, account_id, query){
+  this.apiService.getAccount(uid, account_id, query).subscribe(
     res => {
       console.log('the account', res);
-  res.accounts;
-      if(this.data.type == 'editAccount' && this.data.account_number){
-
+    if(this.data.type == 'editAccount' && this.data.account_id){
   this.accountForm.patchValue({
 accountType: res.accounts[0].account_type_id,
 denomination:  res.accounts[0].denomination_id,
 investmentPeriod:  res.accounts[0].investment_period_id,
     });
-
   this.accountEdit.uid =   `${res.accounts[0].firstname} ${res.accounts[0].lastname}`;
   this.accountEdit.balance = res.accounts[0].balance;
   this.accountEdit.createdAt =  res.accounts[0].createdAt;
   this.accountEdit.accountNo =  res.accounts[0].account_number;
+  this.accountEdit.account_id =  res.accounts[0].id;
 
 }
     },
@@ -168,9 +148,10 @@ this.apiService.USER.firstname =  res.user.firstname;
 this.apiService.USER.firstname =  res.user.firstname;
 this.apiService.USER.user_type_id =  res.user.user_type_id;
 this.apiService.USER.id = res.user.id;
-let account_number =  this.data.account_number;
+let account_id =  this.data.account_id;
+
 let query = 'single';
-this.getAccount(res.user.id, account_number, query);
+this.getAccount(res.user.id, account_id, query);
 
     },
     err => {
@@ -180,17 +161,10 @@ this.getAccount(res.user.id, account_number, query);
     })
 }
 
-
-
-
   ngOnInit() {
-
-    this.fillForm();
     this.getAccountTypes();
     this.getDenominations();
     this.getInvestmentPeriods();
-    this.getLoggedInUser();
-    console.log( this.data.selectedAccount);
-   
+    this.getLoggedInUser(); 
   }
 }

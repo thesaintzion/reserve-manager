@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class DashboardUsersComponent implements OnInit {
 loading = true;
 users = [];
+accounts = [];
+objectKeys = Object.length;
   constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
   
    }
@@ -71,6 +73,14 @@ if(res.user.user_type_id === 1){
   this.apiService.USER.firstname =  res.user.firstname;
   this.apiService.USER.firstname =  res.user.firstname;
   this.apiService.USER.user_type_id =  res.user.user_type_id;
+  this.apiService.USER.id = res.user.id;
+  let account_id = '1360742278';
+let query = 'user';
+if(res.user.user_type_id === 1){
+query = 'all';
+}
+this.getAccount(res.user.id, account_id, query);
+
   }else{
    this.sharedService.openSnackBar('Bad Request.', ``, 2000, 'bg-danger');
    this.router.navigate(['/dashboard']);
@@ -84,13 +94,24 @@ if(res.user.user_type_id === 1){
    )
  }
 
+getAccount(uid, account_number, query){
+   this.apiService.getAccount(uid, account_number, query).subscribe(
+     res => {
+       console.log(res);
+       this.accounts = res.accounts;
+     },
+     err => {
+       console.log(err);
+     });
+ }
+
  getUsers(){
   this.apiService.getUsers().subscribe(
     res => {
      setTimeout( () =>{
 this.loading = false;
      }, 2000);
-console.log(res);
+console.log('Users', res);
 this.users = res.users;
 
     },

@@ -1,0 +1,35 @@
+.form-con {
+    background-color: #ffffff;
+    position: relative;
+    .form-spinal-con {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 3;
+    }
+    .col-6>* {
+        width: 100%;
+    }
+    .col-12>* {
+        width: 100%;
+    }
+    button {
+        background: rgb(0, 34, 255);
+        color: #ffffff;
+        &:hover {
+            background-color: #ffffff;
+            color: rgb(0, 34, 255);
+        }
+    }
+    .radio-group {
+        // display: flex;
+        // flex-direction: column;
+        // margin: 15px 0;
+    }
+    .radio-button {
+        margin: 5px;
+    }
+}

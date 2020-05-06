@@ -134,24 +134,24 @@ getCountries(){
     }
 
 
-  //  get user
-  getLoggedInUser(){
-    this.apiService.getLoggedInUser().subscribe(
-      res => {
-
-   this.apiService.USER.firstname =  res.user.firstname;
-   this.apiService.USER.email =  res.user.email;
-   
-      },
-      err => {
-       this.router.navigate(['/login']);
-        console.log('PLEASE LOGIN', err);
-    
-      });
-  }
   
 
-  // get user if
+ //  Get logged in user
+getLoggedInUser(){
+  this.apiService.getLoggedInUser().subscribe(
+    res => {
+this.apiService.USER.firstname =  res.user.firstname;
+this.apiService.USER.firstname =  res.user.firstname;
+this.apiService.USER.user_type_id =  res.user.user_type_id;
+this.apiService.USER.id = res.user.id;
+
+    },
+    err => {
+     this.router.navigate(['/login']);
+      console.log(err);
+   
+    })
+}
   
   ngOnInit() {
     this.getLoggedInUser();
@@ -170,6 +170,8 @@ getCountries(){
         }
     
       })
+
+      
 
   
   }

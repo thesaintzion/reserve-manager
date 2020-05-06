@@ -1,8 +1,20 @@
-<div class="animated fadeInUp" style="min-height: 100%;">
+<div class="animated fadeIn" style="min-height: 100%;">
     <div class="inner pb-5" style="overflow: hidden; ">
         <div class="row mt-4 no-gutters">
             <div class="col-md-12 ">
-                <div class="bg-white general-info">
+                <div class="d-flex ">
+                    <div *ngIf="imgPrevMode" class="img-prev-con">
+                        <div class="img-prev-close">
+                            <button (click)="imgPrevMode = false" mat-icon-button class="bg-white border shadow">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+
+                        <img class="w-100" [src]="imgPrevUrl" alt="">
+                    </div>
+                </div>
+
+                <div *ngIf="!imgPrevMode" class="bg-white general-info">
                     <div class="d-flex ">
                         <!-- <div *ngIf="!loading" class="animated fadeIn text-center profile-avater-con" >
 
@@ -37,16 +49,8 @@
                                     <p>Loading..</p>
                                 </div>
                             </div>
-                            <div *ngIf="imgPrevMode" class="img-prev-con">
-                                <div class="img-prev-close">
-                                    <button (click)="imgPrevMode = false" mat-icon-button class="bg-white shadow">
-                                        <mat-icon>close</mat-icon>
-                                    </button>
-                                </div>
 
-                                <img class="w-100" [src]="imgPrevUrl" alt="">
-                            </div>
-                            <div *ngIf="!imgPrevMode" class="row animated fadeIn">
+                            <div class="row animated fadeIn">
 
                                 <div class="col-md-12">
                                     <h5 class="text-black">General Info</h5>
@@ -104,8 +108,8 @@
                                 </div>
 
                                 <div class="col-md-3 mt-4">
-                                    <div class="text-center">
-                                        <img (click)="viewImg('../../../../assets/img/Aggital-2018-in-Review-16.jpg')" width="100" src="../../../../assets/img/Aggital-2018-in-Review-16.jpg" alt="">
+                                    <div class="text-center form-img-con">
+                                        <img (click)="viewImg('../../../../assets/img/b1.jpg')" width="100" src="../../../../assets/img/b2.jpg" alt="">
                                     </div>
                                     <div class="custom-file mt-2">
                                         <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
@@ -114,18 +118,14 @@
                                 </div>
 
                                 <div class="col-md-3 mt-4">
-                                    <div class="text-center">
-                                        <img (click)="viewImg('../../../../assets/img/Aggital-2018-in-Review-10.jpg')" width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
+                                    <div class="text-center form-img-con">
+                                        <img (click)="viewImg('../../../../assets/img/b1.jpg')" width="100" src="../../../../assets/img/b2.jpg" alt="">
                                     </div>
                                     <div class="custom-file mt-2">
                                         <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
                                         <label class="custom-file-label" for="customFile">Upload image</label>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="pb-2 mt-2 d-flex justify-content-end">
                                         <div>
@@ -134,6 +134,10 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+
                         </form>
                     </div>
                 </div>

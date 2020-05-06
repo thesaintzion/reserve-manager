@@ -8,7 +8,7 @@
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
 
-                    <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
+                    <button routerLink="/dashboard/add-new-user" mat-raised-button class="btn-primary">Add new user <mat-icon>add</mat-icon> </button>
 
                 </div>
             </header>
@@ -16,45 +16,46 @@
 
             <div class="row mt-3 animated fadeInUp">
                 <div class="col-12 ">
-                    <!-- <div *ngIf="loading else showTable" class="form-spinal-con mt-5 d-flex justify-content-center align-content-center align-items-center">
-                        <div>
-                            <div class="lds-ripple">
-                                <div></div>
-                                <div></div>
+                    <div class="text-center py-2" *ngIf=" users.length < 1 else showTable">
+                        <p>No users to to display</p>
+                        <button routerLink="/dashboard/add-new-user" mat-raised-button class="bg-white text-primary">Create New <mat-icon>add</mat-icon> </button>
+                    </div>
+                    <ng-template #showTable>
+                        <div class="table-con mt-0 bg-white">
+                            <table class="table w-100">
+                                <thead class="w-100">
+                                    <tr>
+                                        <th>User name</th>
+                                        <th>No. of accounts</th>
+                                        <th>Signed up</th>
+                                        <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
+                                    </tr>
 
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <div class="table-con mt-0 bg-white">
-                        <table class="table w-100">
-                            <thead class="w-100">
-                                <tr>
-                                    <th>User name</th>
-                                    <th>No. of accounts</th>
-                                    <th>Signed up</th>
-                                    <th class=" d-flex justify-content-end align-content-center align-items-center ">Action</th>
-                                </tr>
-
-                            </thead>
-                            <tbody class="w-100">
-                                <tr *ngFor="let user of users" class="d-flext justify-content-arround">
-                                    <td [routerLink]="user.id" class="account-no">{{user.firstname}} {{user.lastname}}</td>
-                                    <td>0</td>
-                                    <td>{{ user.createdAt | date }}</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        <button [routerLink]="user.id" [queryParams]="{ action: 'edit'  }" mat-icon-button>
+                                </thead>
+                                <tbody class="w-100">
+                                    <tr *ngFor="let user of users" class="d-flext justify-content-arround">
+                                        <td [routerLink]="user.id" class="account-no">{{user.firstname}} {{user.lastname}}</td>
+                                        <td>
+                                            <ng-container *ngFor="let account of accounts  let i = index">
+                                                <span>{{objectKeys(account.uid)}}</span>
+                                            </ng-container>
+                                        </td>
+                                        <td>{{ user.createdAt | date }}</td>
+                                        <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                            <button [routerLink]="user.id" [queryParams]="{ action: 'edit'  }" mat-icon-button>
                                         <mat-icon class="color-primary">create</mat-icon>
                                     </button>
-                                        <button (click)="openConfirmDialog()" mat-icon-button>
+                                            <button (click)="openConfirmDialog()" mat-icon-button>
                                         <mat-icon class="text-danger">delete_outline</mat-icon>
                                     </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
 
+                    <p *ngFor="let account of accounts ">{{account | json }}</p>
                 </div>
             </div>
 

@@ -3,44 +3,58 @@
         <div class="inner mt-4" style="overflow: hidden;">
             <header class="d-flex justify-content-between  ">
                 <div class="d-flex align-content-center  align-items-center">
-                    <h4> #495859597 </h4>
-
+                    <button (click)="location.back()" mat-icon-button><mat-icon>arrow_back</mat-icon></button>
                 </div>
+
                 <div class="d-flex align-content-center  align-items-center">
-
-                    <button (click)="openEditAccountDialog('#495859597', 'individual', 'naira', '18')" mat-raised-button class="btn-primary">Edit account <mat-icon>create</mat-icon> </button>
+                    <h4> #{{account.account_number}} </h4>
 
                 </div>
+
             </header>
 
 
             <div class="row mt-3  ">
 
                 <div class="col-md-12 mb-4 pt-1">
+                    <div class=" bg-white" [ngClass]="{'color-danger': !account.status}">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Balance</p>
+                            <p class="m-0">&#8358;
+                                <span *ngIf="account.balance >= 1000">
+                                    {{account.balance | number:'2.'}}
+                                </span>
+                                <span *ngIf="account.balance < 1000">
+                                    {{account.balance}}
+                                </span>
 
-                    <div class=" bg-white">
+                            </p>
+                        </div>
+
                         <div class="d-flex justify-content-between border-bottom  py-3 px-2">
                             <p class="m-0">Account Type</p>
-                            <p class="m-0">Individual</p>
+                            <p class="m-0">{{account.account_type}}</p>
                         </div>
 
                         <div class="d-flex justify-content-between border-bottom  py-3 px-2">
                             <p class="m-0">Denomination</p>
-                            <p class="m-0">Naira</p>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
-                            <p class="m-0">Balance</p>
-                            <p class="m-0">&#8358; 990, 000</p>
+                            <p class="m-0">{{account.denomination}}</p>
                         </div>
 
                         <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Investment Period</p>
+                            <p class="m-0">{{account.investment_period}}</p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
                             <p class="m-0">Owner</p>
-                            <p class="m-0">Saint Zion</p>
+                            <p class="m-0">{{account.firstname}} {{account.lastname}}</p>
                         </div>
 
                         <div class="d-flex justify-content-between border-bottom  py-3 px-2">
                             <p class="m-0">Created</p>
-                            <p class="m-0">20/12/2019</p>
+                            <p class="m-0">{{account.createdAt | date:'fullDate'}}</p>
                         </div>
 
                         <div class="row no-gutters action-footer">
@@ -174,7 +188,7 @@
                 </div>
 
 
-                <div class="col-md-12 mt-4">
+                <!-- <div class="col-md-12 mt-4">
                     <div class=" bg-white">
                         <div class="py-3 px-2">
                             <button class="" color="warn" (click)="openConfirmDialog()" mat-raised-button>
@@ -182,7 +196,7 @@
                         </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
