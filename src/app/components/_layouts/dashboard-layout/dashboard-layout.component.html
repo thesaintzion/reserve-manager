@@ -2,7 +2,7 @@
 
 
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-        <mat-toolbar class="">
+        <mat-toolbar class="border-bottom">
             <a routerLink="/profile" class="sidenav-logo">
                 <img src="../../../../assets/img/logo1.png">
                 <span class="text-dark ml-2"><span class="color-primary">R</span>eserves<span class="color-primary">M</span>anager</span>

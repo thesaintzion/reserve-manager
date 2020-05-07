@@ -39,6 +39,10 @@ investmentPeriods = [];
 // gettingUtility = true;
 
 bankDetailsForm;
+   // gfet index
+   getIndex(length){
+    return new Array(length);
+  } 
   constructor(private router: Router,
      private dialog: MatDialog, 
      private sharedService: SharedService,
@@ -244,14 +248,16 @@ addPromotionTypeDialog(): void {
 getCountries(){
   this.apiServive.getCountries().subscribe(
     res => {
-     console.log('getCountries', res.country);
+    //  this.countries = [];
      this.countries = res.country;
     },
     err => {
+      this.countries = [];
     console.log('getCountries Error', err);
     }
   )
 }
+
 getGengers(){
   this.apiServive.getGengers().subscribe(
     res => {
@@ -259,6 +265,7 @@ getGengers(){
      this.genders = res.gender;
     },
     err => {
+      this.genders = [];
     console.log('getGengers', err);
     }
   )
@@ -270,10 +277,12 @@ getPromotionTypes(){
      this.promotionTypes = res.promotionType;
     },
     err => {
+      this.promotionTypes = [];
     console.log('getPromotionTypes', err);
     }
   )
 }
+
 getDenominations(){
   this.apiServive.getDenominations().subscribe(
     res => {
@@ -281,6 +290,7 @@ getDenominations(){
      this.denominations = res.denomination;
     },
     err => {
+      this.denominations = [];
     console.log('getDenominations', err);
     }
   )
@@ -292,6 +302,7 @@ getInvestmentPeriods(){
      this.investmentPeriods =  res.investmentPeriod;
     },
     err => {
+      this.investmentPeriods = [];
     console.log('getInvestmentPeriods', err);
     }
   )
@@ -303,6 +314,7 @@ getAccountTypes(){
      this.accountTypes = res.accountType;
     },
     err => {
+      this.accountTypes = [];
     console.log('getAccountTypes', err);
     }
   )
@@ -370,9 +382,9 @@ this.apiServive.editBankDetails(body, id).subscribe(
       openConfirmDialog(item: any, utility: any, id, utilityType){
         let message;
         if(item){
-          message = `You really want to delete ${utility} "${item}" "${id}"?`;
+          message = `Delete ${utility} "${item}"?`;
         }else{
-          message = `You really want to  delete this?`;
+          message = `Delete this?`;
         }
         const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
           //  width: '300px',
@@ -482,8 +494,11 @@ this.apiServive.editBankDetails(body, id).subscribe(
           }
         )
       }
+
+        
+
   ngOnInit() {
-    this. getLoggedInUser();
+this.getLoggedInUser();
 this.getCountries();
 this.getGengers();
 this.getPromotionTypes();

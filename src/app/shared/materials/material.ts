@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule, MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
@@ -57,7 +58,8 @@ import {MatDividerModule} from '@angular/material/divider';
         MatRippleModule,
         MatSnackBarModule,
         MatSidenavModule,
-        MatDividerModule
+        MatDividerModule,
+        MatProgressBarModule
     ],
     exports: [
         MatButtonModule,
@@ -85,7 +87,8 @@ import {MatDividerModule} from '@angular/material/divider';
         MatRippleModule,
         MatSnackBarModule,
         MatSidenavModule,
-        MatDividerModule
+        MatDividerModule,
+        MatProgressBarModule
     ]
 })
 export class MaterialModule {}

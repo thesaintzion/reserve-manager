@@ -1,7 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators'
 import { Subscription } from 'rxjs';
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +19,28 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'reserves-m';
 sub: Subscription;
 
+loading = false;
 
-  constructor(private router: Router){}
+  constructor(private router: Router){
+    this.router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
   scrollToTop(){
 

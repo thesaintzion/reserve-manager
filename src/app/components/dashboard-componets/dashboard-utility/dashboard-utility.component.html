@@ -14,6 +14,7 @@
                         <button [ngClass]="{'active': active == 'country'}" (click)="getGlug('country')" routerLink="country" mat-button>
                       Country
                     </button>
+
                         <button [ngClass]="{'active': active == 'account-type'}" routerLink="account-type" (click)="getGlug('account-type')" mat-button>
                       Account Type
                     </button>
@@ -68,7 +69,7 @@
                     <div class="table-conshadow mt-0 table-responsive bg-white ">
                         <table class="table mb-0 ">
                             <tbody>
-                                <tr *ngFor="let gender of genders">
+                                <tr [ngClass]="{'bg-light': odd }" *ngFor="let gender of genders | slice:0:3; let odd = odd">
                                     <td> <span>{{gender.name}}</span></td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
                                         <button (click)="openConfirmDialog(gender?.name, 'Gender', gender?.id, 'gender')" mat-icon-button>
@@ -79,7 +80,30 @@
 
                             </tbody>
                         </table>
+
                     </div>
+                    <nav aria-label="..." class="mt-2">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </ng-template>
             </div>
         </div>
@@ -94,7 +118,6 @@
                 <header class="d-flex justify-content-between mt-4 mb-3 ">
                     <div class="d-flex align-content-center  align-items-center">
                         <h4> County </h4>
-
                     </div>
                     <div class="d-flex align-content-center  align-items-center">
                         <button (click)="addCountryDialog()" mat-raised-button class="btn-primary">Add new <mat-icon>add</mat-icon></button>
@@ -105,10 +128,12 @@
                     <p>No Country to display</p>
                 </div>
                 <ng-template #showCountry>
+                    <!-- <app-dashboard-display-utility [countries]="promotionTypes"></app-dashboard-display-utility> -->
+                    <!-- <p>{{countries | json}}</p> -->
                     <div class="table-conshadow mt-0 table-responsive  ">
                         <table class="table mb-0">
                             <tbody>
-                                <tr *ngFor="let country of countries" class="bg-white">
+                                <tr *ngFor="let country of countries | slice:0:10" class="bg-white">
                                     <td> <span>{{country?.name}}</span></td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
                                         <button (click)="openConfirmDialog(country?.name, 'Country', country?.id, 'country')" mat-icon-button>
@@ -121,6 +146,24 @@
                             </tbody>
                         </table>
                     </div>
+                    <nav aria-label="..." class="mt-2 mx-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li *ngFor="let i of getIndex(countries.length); let index = index" class="page-item"><a class="page-link" href="#">{{index+1}}</a></li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </ng-template>
             </div>
         </div>
