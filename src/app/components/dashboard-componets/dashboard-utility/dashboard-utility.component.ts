@@ -18,6 +18,11 @@ active = 'gender';
 detected = 0;
 siteSlug =  this.router.url.split('/')[4];
 loading = false;
+pagePrevEnd = true;
+pageNextEnd = false;
+pageStart: number = 0;
+pageEnd: number = 10;
+countryLength;
 
 // Country array
 genders = [];
@@ -250,6 +255,7 @@ getCountries(){
     res => {
     //  this.countries = [];
      this.countries = res.country;
+  this.countryLength = res.country;
     },
     err => {
       this.countries = [];
@@ -496,6 +502,46 @@ this.apiServive.editBankDetails(body, id).subscribe(
       }
 
         
+      // Pagination
+      pagePrev(pageStart, pageEnd, countries){
+        this.pageNextEnd = false;
+let countryLenght =  countries.length - this.pageEnd;
+        
+if(this.pageStart  == 0){
+  this.pageStart = 0;
+  this.pageEnd = 10;
+  this.pagePrevEnd = true;
+}else{
+  this.pageStart -= 10;
+  this.pageEnd -= 10;
+}
+
+console.log('PAGE START', pageStart, 'PAGE END', pageEnd, 'COUNTRIES', countries.length, 'COUNTRIES LENGHT',  countryLenght)
+      }
+
+
+      pageNext(pageStart, pageEnd, countries){
+        this.pagePrevEnd = false;
+        let countryLenght =  countries.length - this.pageEnd;
+        
+        if(countryLenght <= 10){
+          this.pageStart = this.pageStart;
+          this.pageEnd = countries.length;
+        
+          this.pageNextEnd = true;
+         
+      
+        }else{
+          this.pageStart += 10;
+          this.pageEnd += 10;
+        }
+       
+        console.log('PAGE START', pageStart, 'PAGE END', pageEnd, 'COUNTRIES', countries.length, 'COUNTRIES LENGHT',  countryLenght)
+      
+      }
+getCountryLength(length){
+return  10 / length+1;
+}
 
   ngOnInit() {
 this.getLoggedInUser();
@@ -507,20 +553,21 @@ this.getInvestmentPeriods();
 this.getAccountTypes();
 this.getBankDetails();
 
-console.log(this.countries,
-            this.genders, 
-            this.promotionTypes,
-            this.denominations, 
-            this.investmentPeriods,
-            this.accountTypes
-            );
-// console.log(this.countries)
+// console.log(this.countries,
+//             this.genders, 
+//             this.promotionTypes,
+//             this.denominations, 
+//             this.investmentPeriods,
+//             this.accountTypes
+//             );
+// // console.log(this.countries)
    
-    // console.log(this.siteSlug);
+//     // console.log(this.siteSlug);
 
 
 if(this.siteSlug){
   this.active = this.siteSlug;
+  console.log('ksksksskkskskssssssssssss', this.countryLength);
 }
 
     

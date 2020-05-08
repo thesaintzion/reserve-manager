@@ -61,7 +61,7 @@
 
 
                                         <div class="col-6">
-                                            <mat-form-field>
+                                            <mat-form-field class="w-100">
                                                 <mat-select formControlName="gender_id" placeholder="Gender">
                                                     <mat-option></mat-option>
                                                     <mat-option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</mat-option>
@@ -70,17 +70,9 @@
                                             </mat-form-field>
                                         </div>
 
-                                        <div class="col-6">
-                                            <mat-form-field>
-                                                <mat-select formControlName="country_id" placeholder="Country">
-
-                                                    <mat-option>Saint Zion</mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
 
                                         <div class="col-6">
-                                            <mat-form-field>
+                                            <mat-form-field class="w-100">
                                                 <mat-select formControlName="country_id" placeholder="Country" required>
                                                     <mat-option></mat-option>
                                                     <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
