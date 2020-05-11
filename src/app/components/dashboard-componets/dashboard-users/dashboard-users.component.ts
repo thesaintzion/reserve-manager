@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-users.component.scss']
 })
 export class DashboardUsersComponent implements OnInit {
+  
 loading = true;
 users = [];
 accounts = [];

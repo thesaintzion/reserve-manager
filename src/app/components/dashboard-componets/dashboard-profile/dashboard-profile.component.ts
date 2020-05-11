@@ -65,12 +65,12 @@ this.apiService.editUser(user, uid).subscribe(
     console.log(err);
     setTimeout( () =>{
       this.loading = false;
-      if(err.error && err.error.statusMsg !== ''){
+      if(err.error.statusMsg){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after sometime.', 'ok', 9000, 'bg-danger');
       }
-    }, 1000);
+    }, 2000);
   });
   }
 

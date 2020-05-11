@@ -69,7 +69,7 @@
                     <div class="table-conshadow mt-0 table-responsive bg-white ">
                         <table class="table mb-0 ">
                             <tbody>
-                                <tr [ngClass]="{'bg-light': odd }" *ngFor="let gender of genders | slice:0:3; let odd = odd">
+                                <tr [ngClass]="{'bg-ligh': odd }" *ngFor="let gender of genders; let odd = odd">
                                     <td> <span>{{gender.name}}</span></td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
                                         <button (click)="openConfirmDialog(gender?.name, 'Gender', gender?.id, 'gender')" mat-icon-button>
@@ -82,28 +82,6 @@
                         </table>
 
                     </div>
-                    <nav aria-label="..." class="mt-2">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </ng-template>
             </div>
         </div>
@@ -130,11 +108,11 @@
                 <ng-template #showCountry>
                     <!-- <app-dashboard-display-utility [countries]="promotionTypes"></app-dashboard-display-utility> -->
                     <!-- <p>{{countries | json}}</p> -->
-                    <div class="table-conshadow mt-0 table-responsive  ">
+                    <div class="table-conshadow mt-0 table-responsive  bg-white">
                         <table class="table mb-0">
                             <tbody>
-                                <tr *ngFor="let country of countries | slice:pageStart:pageEnd; let index = index " class="bg-white">
-                                    <td> <span>{{index+1}} {{country?.name}}</span></td>
+                                <tr [ngClass]="{'bg-ligh': odd }" *ngFor="let country of countries | slice:pageStart:pageEnd; let odd = odd; let index = index">
+                                    <td> <span>{{country?.name}}</span></td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
                                         <button (click)="openConfirmDialog(country?.name, 'Country', country?.id, 'country')" mat-icon-button>
                                                 <mat-icon class="text-danger">cancel</mat-icon>
@@ -153,8 +131,9 @@
                                     <span class="sr-only">Previous</span>
                                 </button>
                             </li>
-
-
+                            <!-- <ng-container *ngFor="let country of countries | slice:pageStart:pageEnd; let index = index ">
+                                <li class="page-item"><a class="page-link" href="#">{{index}}</a></li>
+                            </ng-container> -->
                             <li class="page-item">
                                 <button [disabled]="pageNextEnd" class="page-link" (click)="pageNext(pageStart, pageEnd, countries)" aria-label="Next">
                                     <span [ngClass]="{'text-muted': pageNextEnd}" aria-hidden="true">Next</span>
@@ -337,18 +316,14 @@
             <div class="col-12 ">
                 <div class="row  no-gutters">
                     <div class="col-md-12 ">
+                        <div *ngIf="loading" class="progress-bar-con">
+                            <mat-progress-bar mode="indeterminate">
+                            </mat-progress-bar>
+                        </div>
                         <div class="bg-white bank-form">
                             <div class="d-flex  ">
                                 <form [formGroup]="bankDetailsForm" (ngSubmit)="bankDetailsSubmit()" class="form-con w-100">
-                                    <div *ngIf="loading" class="form-spinal-con d-flex justify-content-center align-content-center align-items-center">
-                                        <div>
-                                            <div class="lds-ripple">
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                            <p>Loading..</p>
-                                        </div>
-                                    </div>
+
                                     <div class="row animated fadeIn">
                                         <!-- <div class="col-md-12">
                                                         <h5 class="text-black">General Info</h5>

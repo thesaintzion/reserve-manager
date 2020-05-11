@@ -1,5 +1,4 @@
 $primary: #0022ff;
-$primary: #3f51b5;
 $text-muted: #6c757d;
 $success: rgb(0, 34, 255);
 html,
@@ -21,14 +20,36 @@ body {
     }
 }
 
+:host ::ng-deep {
+    .mat-progress-bar .mat-progress-bar-fill::after {
+        background-color: blue !important;
+        // background-image: linear-gradient(to bottom, yellow, blue) !important;
+    }
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     color: #555;
 }
 
+a {
+    &:hover {
+        text-decoration: none !important;
+    }
+}
+
 .rounded-btn {
     // border-radius: 70px !important;
+}
+
+.btn-outline-primary {
+    color: $primary !important;
+    border-color: $primary !important;
+    &:hover {
+        background-color: $primary !important;
+        color: #ffffff !important;
+    }
 }
 
 button:focus {
@@ -121,6 +142,21 @@ button:focus {
     height: 100%;
     background: rgba(255, 255, 255, 0.9);
     z-index: 3;
+}
+
+// progress bar 
+.progress-bar-con {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+    .mat-progress-bar .mat-progress-bar-fill::after {
+        background-color: blue !important;
+        // background-image: linear-gradient(to bottom, yellow, blue) !important;
+    }
 }
 
 @keyframes lds-ripple {

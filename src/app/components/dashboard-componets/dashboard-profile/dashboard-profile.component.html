@@ -13,43 +13,13 @@
                         <img class="w-100" [src]="imgPrevUrl" alt="">
                     </div>
                 </div>
-
+                <div *ngIf="loading" class="progress-bar-con">
+                    <mat-progress-bar mode="indeterminate">
+                    </mat-progress-bar>
+                </div>
                 <div *ngIf="!imgPrevMode" class="bg-white general-info">
                     <div class="d-flex ">
-                        <!-- <div *ngIf="!loading" class="animated fadeIn text-center profile-avater-con" >
-
-                                <mat-card class="profile-avater">
-                                    <div class="d-flex align-content-center align-items-center justify-content-center text-center">
-                                    
-                                        <div class="link-box-text">
-                                           <mat-icon class="color-primary mx-auto">person_outline</mat-icon>
-                                        </div>
-                                    </div>
-            
-                                </mat-card>
-                              
-                            </div> -->
-
-
-                        <!-- <mat-form-field>
-                                <mat-select formControlName="country_id" placeholder="Country" required>
-                                    <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
-                                </mat-select>
-                                <mat-hint *ngIf="submited && f.country_id.errors?.required || (f.country_id?.errors && (f.country_id?.dirty && f.country_id.errors?.required))" class="text-danger">Country is required</mat-hint>
-    
-                            </mat-form-field> -->
-
                         <form [formGroup]="profileForm" (ngSubmit)="onformSubmit()" class="form-con">
-                            <div *ngIf="loading" class="form-spinal-con d-flex justify-content-center align-content-center align-items-center">
-                                <div>
-                                    <div class="lds-ripple">
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                    <p>Loading..</p>
-                                </div>
-                            </div>
-
                             <div class="row animated fadeIn">
 
                                 <div class="col-md-12">
@@ -77,6 +47,7 @@
                                 <div class="col-md-6">
                                     <mat-form-field class="w-100">
                                         <mat-select formControlName="gender_id" placeholder="Gender" required>
+                                            <mat-option value=""></mat-option>
                                             <mat-option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</mat-option>
                                         </mat-select>
                                         <!-- <mat-hint *ngIf="submited && f.gender_id.errors?.required || (f.gender_id?.errors && (f.gender_id?.dirty && f.gender_id.errors?.required))" class="text-danger">Gender is required</mat-hint> -->

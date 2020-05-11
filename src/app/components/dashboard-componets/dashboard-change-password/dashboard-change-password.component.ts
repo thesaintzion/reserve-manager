@@ -11,10 +11,11 @@ import { PasswordMatch } from 'src/app/helpers/passwordlMatch';
   styleUrls: ['./dashboard-change-password.component.scss']
 })
 export class DashboardChangePasswordComponent implements OnInit {
-
   loading = false;
   passwordForm;
   submited = false;
+  successful = false;
+
   constructor(private formBuilder: FormBuilder, 
               private apiService: ApiService, 
               private sharedService: SharedService, private router: Router) { 
@@ -50,7 +51,7 @@ this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-dan
       newpassword: this.passwordForm.value.new_pass,
     }
     let uid =  this.passwordForm.value.uid; 
-    console.log('BodyPass', body.newpassword, 'Uid', uid);
+   
 this.apiService.editPassword(body, uid).subscribe(
   res => {
     console.log(res);
@@ -59,6 +60,7 @@ this.apiService.editPassword(body, uid).subscribe(
       this.loading = false;
       this.sharedService.openSnackBar('User Password Updated Successfully', 'ok', 9000, 'bg-success');
       this.passwordForm.reset();
+      this.successful = true;
     }, 1000);  
   },
   err => {
@@ -75,6 +77,7 @@ this.apiService.editPassword(body, uid).subscribe(
 )
   }
 }
+
 getPassword(){
 
 }

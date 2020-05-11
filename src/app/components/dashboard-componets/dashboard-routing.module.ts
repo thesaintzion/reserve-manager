@@ -14,6 +14,8 @@ import { DashboardBankDetailsComponent } from './dashboard-bank-details/dashboar
 import { DashboardAllUtilityComponent } from './dashboard-all-utility/dashboard-all-utility.component';
 import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
+import { DashboardTransactionsComponent } from './dashboard-transactions/dashboard-transactions.component';
+import { DashboardTransactionDetailComponent } from './dashboard-transaction-detail/dashboard-transaction-detail.component';
 
 const routes: Routes = [
  {path: '', component: DashboardLayoutComponent, children: 
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path: 'users/:userId', component: DashboardUserDetailComponent},
   {path: 'accounts', component: DashboardAccountsComponent},
   {path: 'accounts/:account_id', component:   DashboardAccountDetailComponent},
-  {path: 'add-new-user', component: AddNewUserComponent},
+  {path: 'users/new/user', component: AddNewUserComponent},
+  {path: 'transactions', component: DashboardTransactionsComponent},
+  {path: 'transactions/:transactionId', component: DashboardTransactionDetailComponent},
   {path: 'settings', component:  DashboardSettingsComponent, children: [
     { path: '', component:  DashboardProfileComponent},
     { path: 'profile', component:  DashboardProfileComponent},

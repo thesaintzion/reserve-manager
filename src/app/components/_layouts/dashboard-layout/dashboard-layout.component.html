@@ -50,6 +50,20 @@
 
             </a>
 
+            <a mat-list-item routerLinkActive="active" routerLink="transactions" class="main-item">
+                <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
+                    <mat-icon>transform</mat-icon>
+                    <!-- <mat-icon>sync</mat-icon> -->
+                    </button>
+                <span *ngIf="!fancyBg" class="main-text">Transactions</span>
+
+                <button *ngIf="fancyBg" class="fancy-icon" mat-icon-button>
+                        <mat-icon></mat-icon>
+                        </button>
+                <span *ngIf="fancyBg" class="fancy-text"></span>
+
+            </a>
+
             <a mat-list-item routerLinkActive="active" routerLink="settings/profile" class="main-item">
                 <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
                     <mat-icon >settings</mat-icon>

@@ -1,0 +1,19 @@
+:host ::ng-deep {
+    $primary: #0022ff;
+    $gray: #EAEBF0;
+    $dark-gray: rgb(0, 0, 0, 54%);
+    $color-danger: #FFBBBB;
+    $light-primary: #D1D8FF;
+    $color-success: #03F59E;
+    // #495859597
+    .action-footer {
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 0 !important;
+            .mat-icon {
+                vertical-align: middle !important;
+            }
+        }
+    }
+}

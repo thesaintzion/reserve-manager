@@ -5,6 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DashboardDeleteConfirmDialogComponent } from '../_dialogs/dashboard-delete-confirm-dialog/dashboard-delete-confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-dashboard-user-detail',
@@ -29,7 +31,10 @@ genders = [];
     public sharedService: SharedService,
      private formBuilder: FormBuilder,
       private dialog: MatDialog,
-       private apiService: ApiService, private router: Router) {
+       private apiService: ApiService, 
+       private router: Router,
+       public location: Location
+       ) {
 this.userForm = this.formBuilder.group({
 firstname: [''],
 lastname: [''],
@@ -60,7 +65,12 @@ country_id: [''],
   }
 
    onformSubmit(){
-    // this.loading = true;
+    this.loading = true;
+
+    setTimeout( () =>{
+      this.loading = false;
+      this.sharedService.openSnackBar('Not ready yet...', 'ok', 3000, 'bg-s');
+    }, 3000);
    }
 
    openConfirmDialog(): void {
@@ -89,17 +99,19 @@ country_id: [''],
           res => {
         console.log(res);
         this.user = res.user;
-        if(this.action === 'edit'){
+     
           this.userForm.patchValue({
-            firstname:  this.user.firstname,
-            lastname: this.user.lastname,
-            email: this.user.email,
-            phone: this.user.phone_number,
-            address: this.user.address,
-            gender_id: this.user.gender_id,
-            country_id: this.user.country_id,
+            uid: res.user.id,
+           firstname: res.user.firstname,
+           lastname:  res.user.lastname,
+           email:  res.user.email,
+           phone_number:   res.user.phone_number,
+           gender_id:   res.user.gender_id,
+           address:   res.user.address,
+           country_id:   res.user.country_id,
           });
-        }
+       
+        
        
         },
         err => {
@@ -112,6 +124,8 @@ country_id: [''],
     });
 
 }
+
+
 
 getCountries(){
   this.apiService.getCountries().subscribe(
@@ -162,7 +176,7 @@ this.apiService.USER.id = res.user.id;
         console.log('the full params', params);
         if(params.action && params.action.toLowerCase() === 'edit' ){
           this.action = params.action;
-     
+     this.getUserInfo();
           this.sharedService.openSnackBar('Edit Mode', '', 3000, 'bg-success');
           //Set form values... Begins
         }else{

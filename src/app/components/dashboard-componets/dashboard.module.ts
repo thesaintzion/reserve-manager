@@ -20,6 +20,8 @@ import { DashboardAllUtilityComponent } from './dashboard-all-utility/dashboard-
 import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { DashboardDisplayUtilityComponent } from './dashboard-display-utility/dashboard-display-utility.component';
+import { DashboardTransactionsComponent } from './dashboard-transactions/dashboard-transactions.component';
+import { DashboardTransactionDetailComponent } from './dashboard-transaction-detail/dashboard-transaction-detail.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { DashboardDisplayUtilityComponent } from './dashboard-display-utility/da
     DashboardAllUtilityComponent,
     DashboardUserDetailComponent,
     AddNewUserComponent,
-    DashboardDisplayUtilityComponent
+    DashboardDisplayUtilityComponent,
+    DashboardTransactionsComponent,
+    DashboardTransactionDetailComponent
   ],
   imports: [
     CommonModule,

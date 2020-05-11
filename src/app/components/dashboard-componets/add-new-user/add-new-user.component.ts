@@ -44,6 +44,10 @@ export class AddNewUserComponent implements OnInit {
 // REGISTRATION
 register(){
 this.submited = true;
+this.loading = true;
+setTimeout( ()=>{
+this.loading = false;
+}, 3000);
 console.log(this.registerForm);
 let user = {
 firstname: this.registerForm.value.firstname,
@@ -59,7 +63,7 @@ password: this.registerForm.value.password,
 
 }
 console.log( JSON.stringify(user));
-debugger
+
 if(this.registerForm.invalid){
   this.sharedService.openSnackBar('Please fill in the required fields', 'ok', 9000, 'bg-danger');
 }else{
@@ -134,7 +138,7 @@ console.log(err)
   }
 
   ngOnInit() {
-    this.upload();
+    // this.upload();
     this.getCountries();
     this.getGengers();
     this.getPromotionTypes();

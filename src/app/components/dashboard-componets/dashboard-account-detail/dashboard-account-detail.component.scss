@@ -26,25 +26,8 @@
     .bg-gray {
         background-color: #EAEBF0 !important;
     }
-    .btn-primary {
-        background-color: $primary !important;
-        // border-radius: 60px;
-        color: #ffffff;
-    }
     .bg-dark-gray {
         background-color: $dark-gray;
-    }
-    .btn-outline-primary {
-        background-color: #ffffff !important;
-        // border-radius: 60px;
-        border: 1px solid $primary;
-        color: $primary;
-    }
-    .btn-outline-success {
-        background-color: #ffffff !important;
-        // border-radius: 60px;
-        border: 1px solid $color-success;
-        color: $color-success;
     }
     .btn-light-primary {
         background-color: $light-primary !important;
@@ -72,6 +55,9 @@
             width: 100%;
             height: 50px;
             border-radius: 0 !important;
+            .mat-icon {
+                vertical-align: middle !important;
+            }
         }
     }
 }
