@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { DashboardDeleteConfirmDialogComponent } from '../_dialogs/dashboard-delete-confirm-dialog/dashboard-delete-confirm-dialog.component';
 import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-create-account-dialog/dashboard-create-account-dialog.component';
+import { DasboardAddTransactionDialogComponent } from '../_dialogs/dasboard-add-transaction-dialog/dasboard-add-transaction-dialog.component';
 
 @Component({
   selector: 'app-dashboard-transactions',
@@ -13,19 +14,20 @@ import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-cre
 })
 export class DashboardTransactionsComponent implements OnInit {
 
- 
-  loading = true;
+ result = false;
+  loading = false;
   users = [];
   accounts = [];
   objectKeys = Object.length;
     constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
-    
+      if(this.result){
+        // this.apiService.LOADING.isLoading =  true;
+      }
      }
   
   
     // confirm delete
     openConfirmDialog(): void {
-      
       let message = 'Are you sure you want to delete this?'
       const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
         //  width: '400px', 
@@ -42,28 +44,53 @@ export class DashboardTransactionsComponent implements OnInit {
      }
   
   
-     // form dialog
-  openEditAccountDialog(accountNo, type, denomination, period): void {
-    let title = 'Edit Account';
-    let selectedAccount  = {
-      accountNo: accountNo,
-      type: type,
-      denomination: denomination,
-      period:  period
-    }
-    const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-       width: '400px',
-       data:{selectedAccount: selectedAccount, title:  title, type: 'editAccount' },
-    });
-   }
-  
-      // form dialog
-  openCreatAccountDialog(): void {
-    let title = 'Create New Account';
-    const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-       width: '400px',
+   // Open dialog for adding transaction
+   openAddTransactionDialog(): void {
+    let title = 'Add Transaction';
+    const  dialogRef = this.dialog.open(DasboardAddTransactionDialogComponent, {  
+       width: '600px',
        data:{ title:  title, type: 'createAccount' },
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.result = true;
+        this.apiService.LOADING.isLoading =  true;
+        this.loading = true;
+        setTimeout( ()=>{
+          this.apiService.LOADING.isLoading =  false;
+          this.loading = false;
+          this.sharedService.openSnackBar('Transaction added...', '', 3000, 'bg-success');
+        }, 4000);
+
+      //   let account = {
+      //   uid: this.apiService.USER.id,
+      //   denomination_id: result.denomination_id,
+      //   account_type_id: result.account_type_id,
+      //   investment_period_id:  result.investment_period_id
+      //  }
+      //  console.log('account', account);
+      // this.apiService.addAccount(account).subscribe(
+      // res => {
+      //   this.getLoggedInUser();
+      // console.log('Account created', res);
+
+      // this.sharedService.openSnackBar('Account Created', '', 3000, 'bg-success');
+      // this.accntAdded = true;
+      // setTimeout( ()=>{
+      // this.accntAdded = false;
+      // }, 3000);
+      // },
+      // err => {
+      // console.log(err);
+      // if(err.error && err.error.statusMsg !== ''){
+      //   this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
+      // }else{
+      // this.sharedService.openSnackBar('Could not create account please try again later', '', 3000, 'bg-danger');
+      // }
+      // });
+     }
+    });
+  
    }
   
   
@@ -111,7 +138,7 @@ export class DashboardTransactionsComponent implements OnInit {
     this.apiService.getUsers().subscribe(
       res => {
        setTimeout( () =>{
-  this.loading = false;
+  // this.loading = false;
        }, 2000);
   console.log('Users', res);
   this.users = res.users;
@@ -120,7 +147,7 @@ export class DashboardTransactionsComponent implements OnInit {
       err => {
         console.log(err);
        setTimeout( () =>{
-         this.loading = false;
+        //  this.loading = false;
          }, 2000);
       }
     )
@@ -128,6 +155,8 @@ export class DashboardTransactionsComponent implements OnInit {
   
     ngOnInit() {
     
+    
+
       this.getUsers();
       this.getLoggedInUser();
       

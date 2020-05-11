@@ -46,6 +46,7 @@ this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-dan
 
   }else{
     this.loading = true;
+    this.apiService.LOADING.isLoading =  true;
     let body = {
       oldpassword: this.passwordForm.value.old_pass,
       newpassword: this.passwordForm.value.new_pass,
@@ -58,6 +59,7 @@ this.apiService.editPassword(body, uid).subscribe(
     this.getPassword();
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       this.sharedService.openSnackBar('User Password Updated Successfully', 'ok', 9000, 'bg-success');
       this.passwordForm.reset();
       this.successful = true;
@@ -67,6 +69,7 @@ this.apiService.editPassword(body, uid).subscribe(
     console.log(err);
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       if(err.error && err.error.statusMsg !== ''){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{

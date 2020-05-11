@@ -1,0 +1,63 @@
+<!-- ADD AND EDIT ACCOUNT -->
+<form [formGroup]="transactionForm" (ngSubmit)="onAccountOperationFormSubmit()">
+    <div *ngIf="!loading" class="row animated fadeIn">
+        <div class="col-md-12">
+            <h5 class="text-black mb-3">
+                {{data?.title}} | {{data?.type}}
+
+            </h5>
+        </div>
+
+        <div class="col-md-12">
+            <h5 class="text-black mb-3">
+                #{{data?.account_number}}
+            </h5>
+        </div>
+
+
+        <div class="col-md-12">
+            <mat-form-field class="w-100">
+                <input matInput formControlName="amount" type="number" placeholder="Amount" required tabindex="-1">
+            </mat-form-field>
+        </div>
+
+        <ng-container *ngIf="data?.type == 'transfer'">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="account_transfer_from" placeholder="From:" required tabindex="-1">
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <!-- <mat-option *ngFor="let  denomination of denominations" value="{{denomination.id}}">{{denomination.name}}</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="account_transfer_from" placeholder="To:" required tabindex="-1">
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <!-- <mat-option *ngFor="let  denomination of denominations" value="{{denomination.id}}">{{denomination.name}}</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </ng-container>
+
+
+        <div class="col-md-12 mt-3">
+            <div class="  d-flex justify-content-end w-100">
+                <div>
+                    <button class="btn-light-primary" tabindex="-1" mat-dialog-close mat-raised-button>Cancel</button>
+                </div>
+                <div class="ml-3">
+                    <button class="btn-primary" tabindex="-1" mat-raised-button>Save transaction</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

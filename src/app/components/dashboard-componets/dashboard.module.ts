@@ -22,6 +22,8 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { DashboardDisplayUtilityComponent } from './dashboard-display-utility/dashboard-display-utility.component';
 import { DashboardTransactionsComponent } from './dashboard-transactions/dashboard-transactions.component';
 import { DashboardTransactionDetailComponent } from './dashboard-transaction-detail/dashboard-transaction-detail.component';
+import { DasboardAddTransactionDialogComponent } from './_dialogs/dasboard-add-transaction-dialog/dasboard-add-transaction-dialog.component';
+import { DashboardAccountOperationDialogComponent } from './_dialogs/dashboard-account-operation-dialog/dashboard-account-operation-dialog.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { DashboardTransactionDetailComponent } from './dashboard-transaction-det
     AddNewUserComponent,
     DashboardDisplayUtilityComponent,
     DashboardTransactionsComponent,
-    DashboardTransactionDetailComponent
+    DashboardTransactionDetailComponent,
+    DasboardAddTransactionDialogComponent,
+    DashboardAccountOperationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +57,9 @@ import { DashboardTransactionDetailComponent } from './dashboard-transaction-det
 providers: [SharedService],
   entryComponents: [
     DashboardCreateAccountDialogComponent,
-    DashboardDeleteConfirmDialogComponent
+    DashboardDeleteConfirmDialogComponent,
+    DasboardAddTransactionDialogComponent,
+    DashboardAccountOperationDialogComponent
   ]
 })
 export class DashboardModule { }

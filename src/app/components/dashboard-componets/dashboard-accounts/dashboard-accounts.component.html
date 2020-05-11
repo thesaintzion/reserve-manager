@@ -6,7 +6,7 @@
                     <h4> Accounts </h4>
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
-                    <button (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
+                    <button [disabled]="loading" (click)="openCreatAccountDialog()" mat-raised-button class="btn-primary">Create New <mat-icon>add</mat-icon> </button>
                 </div>
             </header>
             <!-- accntAdded  -->
@@ -14,7 +14,7 @@
                 <div class="col-12 ">
                     <div class="text-center py-2" *ngIf="accounts.length < 1 else showTable">
                         <p>No accounts to to display</p>
-                        <button (click)="openCreatAccountDialog()" mat-raised-button class="bg-white text-primary">Create New <mat-icon>add</mat-icon> </button>
+                        <button [disabled]="loading" (click)="openCreatAccountDialog()" mat-raised-button class="bg-white text-primary">Create New <mat-icon>add</mat-icon> </button>
                     </div>
                     <ng-template #showTable>
                         <div class="table-conshadow mt-0 bg-white">

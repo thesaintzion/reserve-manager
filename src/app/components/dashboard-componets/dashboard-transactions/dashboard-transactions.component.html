@@ -1,5 +1,7 @@
-<div style="min-height: 100%; margin-bottom: 200px;">
+<div style="min-height: 100%; margin-bottom: 200px; position: relative;">
+
     <div class="container animated fadeInUp">
+
         <div class="inner mt-4" style="overflow: hidden;">
             <header class="d-flex justify-content-between  ">
                 <div class="d-flex align-content-center  align-items-center">
@@ -8,7 +10,7 @@
                 </div>
                 <div class="d-flex align-content-center  align-items-center">
 
-                    <button routerLink="/dashboard/add-new-user" mat-raised-button class="btn-primary">Add Transaction <mat-icon>add</mat-icon> </button>
+                    <button [disabled]="loading" (click)="openAddTransactionDialog()" mat-raised-button class="btn-primary">Add Transaction <mat-icon>add</mat-icon> </button>
 
                 </div>
             </header>
@@ -17,6 +19,7 @@
             <div class="row mt-3 ">
                 <!-- Transactions -->
                 <div class="col-md-12 ">
+
                     <div class="table-conshadow mt-0 bg-white">
                         <table class="table">
                             <thead>

@@ -69,25 +69,25 @@
                 }
             }
         }
-
-
         // link-box
-
-        .link-box{
+        .link-box {
             // height: 200px;
             text-align: center !important;
-&:hover{
-    cursor: pointer;
-    background-color: gray;
-    color: #ffffff !important;
-}
-            .mat-icon{
-        font-size: 150px ;
-        height: 150px !important;
-        width: 150px !important;
-        margin: 0 auto !important;
+            .mat-icon {
+                font-size: 100px;
+                height: 100px !important;
+                // color: gray !important;
+                width: 100px !important;
+                margin: 0 auto !important;
             }
-            
+            &:hover {
+                cursor: pointer;
+                background-color: gray;
+                color: #ffffff !important;
+                .mat-icon {
+                    // color: black !important;
+                }
+            }
         }
     }
     //////// Responsive ////////////

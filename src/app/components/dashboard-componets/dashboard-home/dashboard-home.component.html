@@ -1,93 +1,56 @@
-<div class="animated fadeInUp">
+<div class="">
     <div class="container">
-
         <div class="inner mt-4 ">
-            <h4 class="">Welcome, Saint Zion</h4>
-            <!-- <div class="home-nav-con">
-                <mat-toolbar>
-                    <div class="d-flex justify-content-between align-content-center align-items-center w-100">
-                        <div class="nav-con">
-                            <button mat-button>
-                            All history
-                        </button>
+            <header class="d-flex justify-content-between align-content-center align-items-center">
+                <h4>Home</h4>
+                <h4 class=""><span class="text-muted">Welcome</span>, {{apiService.USER.firstname}} 😀!</h4>
+            </header>
+            <div class="row mt-4  animated fadeInUp">
 
-                            <button mat-button>
-                            Deposites
-                        </button>
-                            <button mat-button>
-                            Withdrawal
-                        </button>
-
-                            <button mat-button>
-                            Transfer
-                        </button>
-                        </div>
-
-
-
-
-                        <div class="nav-profile-con">
-
-                            <button mat-icon-button>
-                    
-                            <mat-icon class="color-primary ">dashboard</mat-icon>
-                </button>
-
-
-                        </div>
-                    </div>
-                </mat-toolbar>
-            </div> -->
-
-
-
-
-
-            <div class="row mt-4">
-
-                <div class="col-md-4 col-lg-3  mb-4">
-                    <mat-card routerLink="users" class="link-box">
-                        <div class="">
-
+                <div class="col-md-4 col-lg-3  mb-4 ">
+                    <mat-card routerLink="transactions" class="link-box">
+                        <div class="d-flex align-content-center align-items-center justify-content-center">
                             <div class="link-box-text">
-                                <mat-icon>group</mat-icon>
-                                <h5>Users</h5>
-
+                                <mat-icon>cached</mat-icon>
+                                <h5>Transactions</h5>
                             </div>
                         </div>
-
                     </mat-card>
                 </div>
 
                 <div class="col-md-4 col-lg-3  mb-4">
                     <mat-card routerLink="accounts" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
-
                             <div class="link-box-text">
                                 <mat-icon>account_balance_wallet</mat-icon>
                                 <h5>Accounts</h5>
-
                             </div>
                         </div>
+                    </mat-card>
+                </div>
 
+                <div class="col-md-4 col-lg-3  mb-4">
+                    <mat-card routerLink="users" class="link-box">
+                        <div class="">
+                            <div class="link-box-text">
+                                <mat-icon>group</mat-icon>
+                                <h5>Users</h5>
+                            </div>
+                        </div>
                     </mat-card>
                 </div>
 
                 <div class="col-md-4 col-lg-3  mb-4 ">
                     <mat-card routerLink="settings" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
-
                             <div class="link-box-text">
                                 <mat-icon>settings</mat-icon>
                                 <h5>Settings</h5>
-
                             </div>
                         </div>
-
                     </mat-card>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

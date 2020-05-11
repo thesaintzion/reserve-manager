@@ -18,6 +18,8 @@ export interface User  {
 export class SharedService {
 user: User;
 
+
+
 sharedSlug =  this.router.url.split('/')[1];
   goUp(){
       window.scrollTo(0, 0);

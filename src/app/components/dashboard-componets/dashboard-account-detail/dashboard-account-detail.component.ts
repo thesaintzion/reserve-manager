@@ -6,6 +6,8 @@ import { SharedService } from 'src/app/services/shared.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { DasboardAddTransactionDialogComponent } from '../_dialogs/dasboard-add-transaction-dialog/dasboard-add-transaction-dialog.component';
+import { DashboardAccountOperationDialogComponent } from '../_dialogs/dashboard-account-operation-dialog/dashboard-account-operation-dialog.component';
 
 @Component({
   selector: 'app-dashboard-account-detail',
@@ -13,7 +15,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./dashboard-account-detail.component.scss']
 })
 export class DashboardAccountDetailComponent implements OnInit {
-
+loading;
+result;
   accountId =  this.router.url.split('/')[3];
   account =  {
 id:  '',
@@ -129,6 +132,27 @@ console.log('the main account', this.account);
       this.router.navigate(['/dashboard/accounts']);
     });
 }
+
+// Opean account operation dialog
+   openAccountOperationDialog(title, type, account_number): void {
+    const  dialogRef = this.dialog.open(DashboardAccountOperationDialogComponent, {  
+       width: '350px',
+       data:{ title: title, type: type, account_number },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.result = true;
+        this.apiService.LOADING.isLoading =  true;
+        this.loading = true;
+        setTimeout( ()=>{
+          this.apiService.LOADING.isLoading =  false;
+          this.loading = false;
+          this.sharedService.openSnackBar('Transaction added...', '', 3000, 'bg-success');
+        }, 4000);
+     }
+    });
+  
+   }
 
 
 

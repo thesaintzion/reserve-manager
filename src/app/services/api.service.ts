@@ -26,6 +26,10 @@ createdAt: null,
 updatedAt:  null,
   }
 
+  LOADING = {
+    isLoading: null,
+  }
+
   devUrl = 'http://localhost:9000/api/v2';
 
   constructor(private http: HttpClient) {

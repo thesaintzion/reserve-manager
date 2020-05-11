@@ -1,0 +1,104 @@
+<!-- ADD AND EDIT ACCOUNT -->
+<form [formGroup]="transactionForm" (ngSubmit)="onTransactionFormSubmit()">
+    <div *ngIf="!loading" class="row animated fadeIn">
+        <div class="col-md-12">
+            <h5 class="text-black mb-3">
+                <!-- {{data?.title}} -->
+                Add Transaction
+            </h5>
+        </div>
+        <div class="col-md-12">
+            <mat-form-field class="w-100">
+                <mat-select (change)="onChange()" formControlName="transaction_type" placeholder="Transaction type" required tabindex="-1">
+                    <mat-option value="transfer">Transfer</mat-option>
+                    <mat-option value="deposite">Deposite</mat-option>
+                    <mat-option value="widthdraw">Widthdraw</mat-option>
+
+                    <!-- <mat-option *ngFor="let accountType of accountTypes" value="{{accountType.id}}">{{accountType.name}}</mat-option> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <ng-container *ngIf="transactionForm.value.transaction_type != ''">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="uid" placeholder="User" required tabindex="-1">
+                        <mat-option value="28374643">Saint Zion</mat-option>
+                        <!-- <mat-option *ngFor="let accountType of accountTypes" value="{{accountType.id}}">{{accountType.name}}</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field class="w-100">
+                    <input matInput formControlName="account_number" type="number" placeholder="Account number" required tabindex="-1">
+                    <!-- <mat-hint *ngIf="submited && f.lastname.errors?.required || (f.lastname?.errors && (f.lastname?.dirty && f.lastname.errors?.required))" class="text-danger">Lastname is required</mat-hint>
+                        <mat-hint *ngIf="f.lastname.errors?.maxlength && f.lastname.dirty" class="text-danger">Maxlength is 30</mat-hint>
+                     -->
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                    <input matInput formControlName="amount" type="number" placeholder="Amount" required tabindex="-1">
+                    <!-- <mat-hint *ngIf="submited && f.lastname.errors?.required || (f.lastname?.errors && (f.lastname?.dirty && f.lastname.errors?.required))" class="text-danger">Lastname is required</mat-hint>
+                        <mat-hint *ngIf="f.lastname.errors?.maxlength && f.lastname.dirty" class="text-danger">Maxlength is 30</mat-hint>
+                     -->
+                </mat-form-field>
+            </div>
+
+
+
+            <div *ngIf="transactionForm.value.transaction_type == 'transfer'" class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="account_transfer_from" placeholder="From:" required tabindex="-1">
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <!-- <mat-option *ngFor="let  denomination of denominations" value="{{denomination.id}}">{{denomination.name}}</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="transactionForm.value.transaction_type == 'transfer'" class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="account_transfer_from" placeholder="To:" required tabindex="-1">
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <mat-option value="Saint Zion">Saint Zion</mat-option>
+                        <!-- <mat-option *ngFor="let  denomination of denominations" value="{{denomination.id}}">{{denomination.name}}</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <label matLabel>Comment <small>(optional)</small></label>
+                    <textarea class="bg-light" matInput formControlName="comment" placeholder="Comment" tabindex="-1">
+
+                </textarea>
+                </mat-form-field>
+            </div>
+
+
+
+            <div class="col-md-12 mt-3">
+                <p>{{transaction | json}}</p>
+                <div class="  d-flex justify-content-end w-100">
+                    <div>
+                        <button class="btn-light-primary" tabindex="-1" mat-dialog-close mat-raised-button>Cancel</button>
+                    </div>
+                    <div class="ml-3">
+                        <button class="btn-primary" tabindex="-1" mat-raised-button>Save transaction</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+
+
+</form>

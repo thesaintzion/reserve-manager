@@ -317,17 +317,11 @@
                 <div class="row  no-gutters">
                     <div class="col-md-12 ">
                         <div *ngIf="loading" class="progress-bar-con">
-                            <mat-progress-bar mode="indeterminate">
-                            </mat-progress-bar>
                         </div>
                         <div class="bg-white bank-form">
                             <div class="d-flex  ">
                                 <form [formGroup]="bankDetailsForm" (ngSubmit)="bankDetailsSubmit()" class="form-con w-100">
-
                                     <div class="row animated fadeIn">
-                                        <!-- <div class="col-md-12">
-                                                        <h5 class="text-black">General Info</h5>
-                                                    </div> -->
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
                                                 <input matInput type="number" formControlName="account_number" placeholder="Account Number" required>
@@ -353,39 +347,19 @@
                                         <div class="col-md-6">
                                             <div class="pb-2 mt-5 d-flex justify-content-between">
                                                 <div>
-                                                    <button class="btn-primary" mat-raised-button>Save changes</button>
+                                                    <button *ngIf="noBankDetails" class="btn-primary" mat-raised-button>Save</button>
+                                                    <button *ngIf="!noBankDetails" class="btn-primary" mat-raised-button>Save changes</button>
                                                 </div>
-                                                <!-- <div>
-                                                                <button class="btn-light-primary" mat-raised-button>Cancel</button>
-                                                            </div> -->
-
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- 
-                                    <div *ngIf="loading" class="row animated fadeIn text-center d-flex align-items-center align-content-center" style="min-height: 200px;">
-                                        <div class="col-md-12">
-                                            <p>Loading... Please wait</p>
-                                        </div>
-                                    </div> -->
-
-
-
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
-        <!-- <div class="router-con" >
-                <router-outlet #routeData="outlet"></router-outlet>
-            </div> -->
-
     </div>
 
 </div>

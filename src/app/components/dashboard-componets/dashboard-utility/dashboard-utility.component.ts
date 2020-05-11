@@ -23,6 +23,7 @@ pageNextEnd = false;
 pageStart: number = 0;
 pageEnd: number = 10;
 countryLength;
+noBankDetails;
 
 // Country array
 genders = [];
@@ -325,10 +326,12 @@ getAccountTypes(){
     }
   )
 }
+
 getBankDetails(){
   this.apiServive.getBankDetails().subscribe(
     res => {
      console.log('getBankDetails', res);
+     this.noBankDetails = false;
      this.bankDetailsForm.patchValue({
       account_number: res.bankDetails[0].account_number,
       account_name: res.bankDetails[0].account_name,
@@ -336,7 +339,10 @@ getBankDetails(){
      })
     },
     err => {
-    console.log('getBankDetails', err);
+    console.log('getBankDetails', err, err.status);
+    if(err.status == 404){
+      this.noBankDetails = true;
+    }
     }
   )
 }
@@ -349,6 +355,7 @@ bankDetailsSubmit(){
 this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-danger');
   }else{
     this.loading = true;
+    this.apiService.LOADING.isLoading =  true;
     let body = {
       account_number: this.bankDetailsForm.value.account_number,
       account_name: this.bankDetailsForm.value.account_name,
@@ -363,20 +370,21 @@ this.apiServive.editBankDetails(body, id).subscribe(
     this.getBankDetails();
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       this.sharedService.openSnackBar('Updated', 'ok', 9000, 'bg-success');
     }, 1000);  
   },
   err => {
-   
     console.log(err);
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       if(err.error.statusMsg){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after some time.', 'ok', 9000, 'bg-danger');
       }
-    }, 2000);
+    }, 1000);
   }
 )
   }

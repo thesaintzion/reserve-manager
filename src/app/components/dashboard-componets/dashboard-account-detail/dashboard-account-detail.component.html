@@ -61,20 +61,19 @@
 
                     <div class="row action-footer mt-3">
                         <div class="col-md-4">
-                            <button class="btn btn-outline-primary">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('Deposite', 'deposite', account.account_number)" class="btn btn-outline-primary">
                                 <mat-icon>add_circle</mat-icon>  Doposite
                         </button>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-outline-danger">
-                               
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('Transfer', 'transfer', account.account_number)" class="btn btn-outline-danger">
                                 <mat-icon> publish</mat-icon>
                                 Transfer
                         </button>
                         </div>
 
                         <div class="col-md-4">
-                            <button class="btn btn-outline-dark">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('Withdraw', 'withdraw', account.account_number)" class="btn btn-outline-success">
                                 <mat-icon>archive</mat-icon>  withdraw
                         </button>
                         </div>

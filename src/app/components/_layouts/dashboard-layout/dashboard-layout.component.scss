@@ -3,20 +3,6 @@
 }
 
 :host ::ng-deep {
-    .color-primary {
-        color: #0022ff !important;
-    }
-    .bg-primary {
-        background-color: #0022ff !important;
-    }
-    .bg-gray {
-        background-color: #EAEBF0 !important;
-    }
-    .btn-primary {
-        background-color: #0022ff !important;
-        // border-radius: 60px;
-        color: #ffffff;
-    }
     // overrides
     .mat-toolbar {
         height: 56px;

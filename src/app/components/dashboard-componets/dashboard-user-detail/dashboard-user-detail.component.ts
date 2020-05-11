@@ -66,9 +66,11 @@ country_id: [''],
 
    onformSubmit(){
     this.loading = true;
+    this.apiService.LOADING.isLoading =  true;
 
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       this.sharedService.openSnackBar('Not ready yet...', 'ok', 3000, 'bg-s');
     }, 3000);
    }

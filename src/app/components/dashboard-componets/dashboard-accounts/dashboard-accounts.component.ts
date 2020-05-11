@@ -16,6 +16,7 @@ export class DashboardAccountsComponent implements OnInit {
 accounts = [];
 accntAdded = false;
 editedAccntId = '';
+loading;
 
   constructor(public sharedService: SharedService, private dialog: MatDialog, public apiService: ApiService, private router: Router) { }
 
@@ -63,24 +64,35 @@ openEditAccountDialog(account_id): void {
       account_type_id: result.account_type_id,
       investment_period_id:  result.investment_period_id
      }
-     this.sharedService.openSnackBar('Edit in progress..', '', 30000000, '');
+    //  this.sharedService.openSnackBar('Edit in progress..', '', 30000000, '');
+     this.loading = true;
+     this.apiService.LOADING.isLoading =  true;
      this.apiService.editAccount(account, result.account_id).subscribe(
       res => {
-      this.getLoggedInUser();
-      this.editedAccntId = result.account_id;
+      setTimeout( ()=>{
+        this.getLoggedInUser();
+        this.editedAccntId = result.account_id;
+        this.loading = false;
+        this.apiService.LOADING.isLoading =  false;
+      this.sharedService.openSnackBar('Successful!!', 'Ok', 3000, 'bg-success');
+
       setTimeout( ()=>{
         this.editedAccntId = '';
-            }, 3000);
-          
-      this.sharedService.openSnackBar('Successful!!', 'Ok', 3000, 'bg-success');
+      },2000);
+            }, 3000); 
       },
       err => {
       console.log(err);
-      if(err.error && err.error.statusMsg !== ''){
-        this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
-      }else{
-      this.sharedService.openSnackBar('Could not edit account please try again later', 'Ok', 9000, 'bg-danger');
-      }
+      setTimeout( ()=>{
+        this.loading = false;
+        this.apiService.LOADING.isLoading =  false;
+        if(err.error && err.error.statusMsg !== ''){
+          this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
+        }else{
+        this.sharedService.openSnackBar('Could not edit account please try again later', 'Ok', 9000, 'bg-danger');
+        }
+            }, 3000); 
+    
       });
    }
   });
@@ -96,7 +108,9 @@ openCreatAccountDialog(): void {
   });
   dialogRef.afterClosed().subscribe(result => {
     if(result) {
-      this.sharedService.openSnackBar('Creating account..', '', 30000000, '');
+      this.loading = true;
+      this.apiService.LOADING.isLoading =  true;
+
       let account = {
       uid: this.apiService.USER.id,
       denomination_id: result.denomination_id,
@@ -106,22 +120,28 @@ openCreatAccountDialog(): void {
      console.log('account', account);
     this.apiService.addAccount(account).subscribe(
     res => {
-      this.getLoggedInUser();
     console.log('Account created', res);
-
-    this.sharedService.openSnackBar('Account Created', '', 3000, 'bg-success');
-    this.accntAdded = true;
     setTimeout( ()=>{
-this.accntAdded = false;
+      this.getLoggedInUser();
+      this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
+      this.accntAdded = true;
+      setTimeout( ()=>{
+        this.accntAdded = false;
+      },2000);
     }, 3000);
     },
     err => {
     console.log(err);
-    if(err.error && err.error.statusMsg !== ''){
-      this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
-    }else{
-    this.sharedService.openSnackBar('Could not create account please try again later', '', 3000, 'bg-danger');
-    }
+    setTimeout( ()=>{
+      this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
+      if(err.error && err.error.statusMsg !== ''){
+        this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
+      }else{
+      this.sharedService.openSnackBar('Could not edit account please try again later', 'Ok', 9000, 'bg-danger');
+      }
+          }, 3000); 
     });
    }
   });

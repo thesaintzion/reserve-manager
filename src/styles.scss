@@ -52,6 +52,24 @@ a {
     }
 }
 
+.color-primary {
+    color: #0022ff !important;
+}
+
+.bg-primary {
+    background-color: #0022ff !important;
+}
+
+.bg-gray {
+    background-color: #EAEBF0 !important;
+}
+
+.btn-primary {
+    background-color: #0022ff !important;
+    // border-radius: 60px;
+    color: #ffffff;
+}
+
 button:focus {
     outline: 1px dotted;
     outline: none !important;
@@ -103,11 +121,8 @@ button:focus {
 .mat-list-item.active {
     border-right: 3px solid #0022ff !important;
     .main-text {
-        color: rgb(0, 0, 0, 100%) !important;
-        font-weight: 400;
-    }
-    .mat-icon {
-        color: #0022ff !important;
+        color: black !important;
+        // font-weight: ;
     }
     .mat-icon {
         color: #0022ff !important;
@@ -156,6 +171,12 @@ button:focus {
     .mat-progress-bar .mat-progress-bar-fill::after {
         background-color: blue !important;
         // background-image: linear-gradient(to bottom, yellow, blue) !important;
+    }
+    .position-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
     }
 }
 

@@ -39,6 +39,7 @@ this.profileForm = this.formBuilder.group({
 
   onformSubmit(){
 this.loading = true;
+this.apiService.LOADING.isLoading =  true;
 let user = {
   uid: this.profileForm.value.uid,
   firstname: this.profileForm.value.firstname,
@@ -58,19 +59,21 @@ this.apiService.editUser(user, uid).subscribe(
     this.getLoggedInUser();
     setTimeout( () =>{
       this.loading = false;
-      this.sharedService.openSnackBar('Updated', 'ok', 9000, 'bg-success');
+      this.apiService.LOADING.isLoading =  false;
+      this.sharedService.openSnackBar('Updated', 'ok', 3000, 'bg-success');
     }, 1000);
   },
   err =>{
     console.log(err);
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       if(err.error.statusMsg){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after sometime.', 'ok', 9000, 'bg-danger');
       }
-    }, 2000);
+    }, 1000);
   });
   }
 

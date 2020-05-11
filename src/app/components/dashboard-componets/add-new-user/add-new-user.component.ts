@@ -44,10 +44,6 @@ export class AddNewUserComponent implements OnInit {
 // REGISTRATION
 register(){
 this.submited = true;
-this.loading = true;
-setTimeout( ()=>{
-this.loading = false;
-}, 3000);
 console.log(this.registerForm);
 let user = {
 firstname: this.registerForm.value.firstname,
@@ -68,27 +64,30 @@ if(this.registerForm.invalid){
   this.sharedService.openSnackBar('Please fill in the required fields', 'ok', 9000, 'bg-danger');
 }else{
   this.loading = true;
+  this.apiService.LOADING.isLoading =  true;
 
   this.apiService.addUser(user).subscribe(
   res => {
     console.log('res', res);
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       this.router.navigate(['/login']);
       this.sharedService.openSnackBar('Registeration succesful, please login', 'ok', 90000, 'bg-success');
-      }, 2000);
+      }, 1000);
   },
 
   err => {
     console.log('err', err);
     setTimeout( () =>{
       this.loading = false;
+      this.apiService.LOADING.isLoading =  false;
       if(err.error && err.error.statusMsg !== ''){
         this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
       }else{
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after sometime', 'ok', 9000, 'gb-danger');
       }
-      }, 2000);
+      }, 1000);
    
   });
 }

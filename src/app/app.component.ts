@@ -9,6 +9,8 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+import { SharedService } from './services/shared.service';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,7 @@ sub: Subscription;
 
 loading = false;
 
-  constructor(private router: Router){
+  constructor(private router: Router, public sharedService: SharedService, public apiService: ApiService){
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
