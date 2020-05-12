@@ -320,7 +320,7 @@
                         </div>
                         <div class="bg-white bank-form">
                             <div class="d-flex  ">
-                                <form [formGroup]="bankDetailsForm" (ngSubmit)="bankDetailsSubmit()" class="form-con w-100">
+                                <form [formGroup]="bankDetailsForm" class="form-con w-100">
                                     <div class="row animated fadeIn">
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
@@ -347,8 +347,8 @@
                                         <div class="col-md-6">
                                             <div class="pb-2 mt-5 d-flex justify-content-between">
                                                 <div>
-                                                    <button *ngIf="noBankDetails" class="btn-primary" mat-raised-button>Save</button>
-                                                    <button *ngIf="!noBankDetails" class="btn-primary" mat-raised-button>Save changes</button>
+                                                    <button (click)="bankDetailsSubmit('add')" *ngIf="noBankDetails" class="btn-primary" mat-raised-button>Save details</button>
+                                                    <button (click)="bankDetailsSubmit('edit')" *ngIf="!noBankDetails" class="btn-primary" mat-raised-button>Save changes</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -109,6 +109,14 @@
             border-color: #eaebf0 !important;
         }
     }
+    table {
+        .mat-icon {
+            vertical-align: middle;
+            width: 15px;
+            height: 15px;
+            font-size: 15px;
+        }
+    }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .table {

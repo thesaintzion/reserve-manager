@@ -29,7 +29,7 @@
                     </mat-card>
                 </div>
 
-                <div class="col-md-4 col-lg-3  mb-4">
+                <div *ngIf="apiService.USER.user_type_id == 1" class="col-md-4 col-lg-3  mb-4">
                     <mat-card routerLink="users" class="link-box">
                         <div class="">
                             <div class="link-box-text">

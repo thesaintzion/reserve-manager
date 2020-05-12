@@ -327,6 +327,8 @@ getAccountTypes(){
   )
 }
 
+
+// GET BANK DETAILS
 getBankDetails(){
   this.apiServive.getBankDetails().subscribe(
     res => {
@@ -347,13 +349,12 @@ getBankDetails(){
   )
 }
 
-
-
 // Add bank details
-bankDetailsSubmit(){
+bankDetailsSubmit(status){
   if(this.bankDetailsForm.invalid){
 this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-danger');
   }else{
+    
     this.loading = true;
     this.apiService.LOADING.isLoading =  true;
     let body = {
@@ -361,17 +362,17 @@ this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-dan
       account_name: this.bankDetailsForm.value.account_name,
       bank_name: this.bankDetailsForm.value.bank_name
     }
-
-    let id = 1;
-    
-this.apiServive.editBankDetails(body, id).subscribe(
+    console.log(body);
+    debugger;
+    // ADD
+    if(status == 'add'){
+this.apiService.addBankDetails(body).subscribe(
   res => {
-    // console.log(res);
-    this.getBankDetails();
     setTimeout( () =>{
+      this.getBankDetails();
       this.loading = false;
       this.apiService.LOADING.isLoading =  false;
-      this.sharedService.openSnackBar('Updated', 'ok', 9000, 'bg-success');
+      this.sharedService.openSnackBar('Added', 'ok', 9000, 'bg-success');
     }, 1000);  
   },
   err => {
@@ -385,8 +386,33 @@ this.apiServive.editBankDetails(body, id).subscribe(
         this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after some time.', 'ok', 9000, 'bg-danger');
       }
     }, 1000);
-  }
-)
+  });
+    }else if(status == 'edit'){
+      let id = 1;  
+      this.apiServive.editBankDetails(body, id).subscribe(
+        res => {
+          setTimeout( () =>{
+            this.getBankDetails();
+            this.loading = false;
+            this.apiService.LOADING.isLoading =  false;
+            this.sharedService.openSnackBar('Updated', 'ok', 9000, 'bg-success');
+          }, 1000);  
+        },
+        err => {
+          console.log(err);
+          setTimeout( () =>{
+            this.loading = false;
+            this.apiService.LOADING.isLoading =  false;
+            if(err.error.statusMsg){
+              this.sharedService.openSnackBar(err.error.statusMsg, 'ok', 9000, 'bg-danger');
+            }else{
+              this.sharedService.openSnackBar('Oops!! An Error Occurred.. Please try again after some time.', 'ok', 9000, 'bg-danger');
+            }
+          }, 1000);
+        });
+    }
+
+
   }
 }
   
@@ -495,6 +521,7 @@ this.apiServive.editBankDetails(body, id).subscribe(
        this.apiService.USER.email =  res.user.email;
        this.apiService.USER.firstname =  res.user.firstname;
        this.apiService.USER.user_type_id =  res.user.user_type_id;
+       this.apiService.USER.id =  res.user.id;
 
        if( res.user.user_type_id != 1){
         this.sharedService.openSnackBar(`Bad request`, '', 3000, 'bg-danger');

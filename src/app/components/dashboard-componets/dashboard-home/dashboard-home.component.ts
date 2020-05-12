@@ -15,7 +15,6 @@ export class DashboardHomeComponent implements OnInit {
   getLoggedInUser(){
     this.apiService.getLoggedInUser().subscribe(
       res => {
-
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.lastname =  res.user.lastname;
    this.apiService.USER.email =  res.user.email;

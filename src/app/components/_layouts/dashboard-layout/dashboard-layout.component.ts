@@ -7,6 +7,7 @@ import { DashboardDeleteConfirmDialogComponent } from '../../dashboard-componets
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { FeaturesUpdateDialogComponent } from '../../dashboard-componets/_dialogs/features-update-dialog/features-update-dialog.component';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class DashboardLayoutComponent implements OnInit {
      private dialog: MatDialog, 
      private rouer: Router, public apiService: ApiService) {}
 
+
+    //  Logout dialog
   logOutDialog(): void {
     localStorage.removeItem('API_KEY');
 this.rouer.navigate(['login']);
@@ -49,6 +52,15 @@ this.rouer.navigate(['login']);
 //     }
 //    });
    }
+
+  //  Features update dialog
+    // confirm delete
+    openFeaturesUpdateDialog(): void {
+      const  dialogRef = this.dialog.open(FeaturesUpdateDialogComponent, {  
+               width: '400px',
+            });
+    
+     }
 
   ngOnInit() {
     this.apiService.USER.firstname = '* * * *';

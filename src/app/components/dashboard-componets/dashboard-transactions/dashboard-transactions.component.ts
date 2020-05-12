@@ -19,10 +19,74 @@ export class DashboardTransactionsComponent implements OnInit {
   users = [];
   accounts = [];
   objectKeys = Object.length;
+  transactions = [];
     constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
-      if(this.result){
-        // this.apiService.LOADING.isLoading =  true;
-      }
+    let transactions = [
+      {
+        id: 1,
+        uid: 'K49485494N',
+        type: 'Deposite',
+        amount: '9000',
+        date: Date.now()
+      },
+      {
+        id: 2,
+        uid: 'K4785494N',
+        type: 'Transfer',
+        amount: '700000',
+        date: Date.now()
+      },
+      {
+        id: 3,
+        uid: 'K494878494N',
+        type: 'Withdraw',
+        amount: '900000',
+        date: Date.now()
+      },
+      {
+        id: 4,
+        uid: 'K49485494N',
+        type: 'Deposite',
+        amount: '20000',
+        date: Date.now()
+      },
+      {
+        id: 5,
+        uid: 'K4785494N',
+        type: 'Transfer',
+        amount: '10000',
+        date: Date.now()
+      },
+      {
+        id: 6,
+        uid: 'K494878494N',
+        type: 'Withdraw',
+        amount: '900000',
+        date: Date.now()
+      },
+      {
+        id: 5,
+        uid: 'K4785494N',
+        type: 'Transfer',
+        amount: '700000',
+        date: Date.now()
+      },
+      {
+        id: 6,
+        uid: 'K494878494N',
+        type: 'Withdraw',
+        amount: '900000',
+        date: Date.now()
+      },
+      {
+        id: 6,
+        uid: 'K494878494N',
+        type: 'Withdraw',
+        amount: '900000',
+        date: Date.now()
+      },
+    ];
+    this.transactions = transactions;
      }
   
   
@@ -98,22 +162,10 @@ export class DashboardTransactionsComponent implements OnInit {
      this.apiService.getLoggedInUser().subscribe(
        res => {
   console.log('Logged In User', res);
-  if(res.user.user_type_id === 1){
     this.apiService.USER.firstname =  res.user.firstname;
     this.apiService.USER.firstname =  res.user.firstname;
     this.apiService.USER.user_type_id =  res.user.user_type_id;
     this.apiService.USER.id = res.user.id;
-    let account_id = '1360742278';
-  let query = 'user';
-  if(res.user.user_type_id === 1){
-  query = 'all';
-  }
-  this.getAccount(res.user.id, account_id, query);
-  
-    }else{
-     this.sharedService.openSnackBar('Bad Request.', ``, 2000, 'bg-danger');
-     this.router.navigate(['/dashboard']);
-    }
        },
        err => {
         this.router.navigate(['/login']);
@@ -154,9 +206,6 @@ export class DashboardTransactionsComponent implements OnInit {
    }
   
     ngOnInit() {
-    
-    
-
       this.getUsers();
       this.getLoggedInUser();
       

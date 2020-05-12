@@ -146,8 +146,8 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   getBankDetails(){
     return this.http.get<any>(`${this.devUrl}/bank_details`);
   }
-  addBankDetails(accountTypes: any){
-    return this.http.post<any>(`${this.devUrl}/bank_details`, accountTypes);
+  addBankDetails(bankDetails: any){
+    return this.http.post<any>(`${this.devUrl}/bank_details`, bankDetails);
   }
   editBankDetails(body: any, id: any){
     return this.http.put<any>(`${this.devUrl}/bank_details/${id}`, body);
