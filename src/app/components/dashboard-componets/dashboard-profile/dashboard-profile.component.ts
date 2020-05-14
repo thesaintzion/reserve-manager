@@ -17,6 +17,8 @@ imgPrevMode = false;
 countries = [];
 genders = [];
 promotionTypes = [];
+identification_filename;
+proof_of_address_filename;
   constructor(private apiService: ApiService, 
              private router: Router, private formBuilder: FormBuilder, private sharedService: SharedService) {
 
@@ -24,7 +26,7 @@ this.profileForm = this.formBuilder.group({
   uid: [''],
   firstname: ['', [Validators.required]],
   lastname:  ['', [Validators.required]],
-  email:  ['', [Validators.required]],
+  email:  [{value : '', disabled: true }, [Validators.required]],
   phone_number:   [''],
   gender_id:   [''],
   address:   [''],
@@ -32,6 +34,7 @@ this.profileForm = this.formBuilder.group({
   identification_filename:  [''],
   proof_of_address_filename:  [''],
 });
+this.apiService.LOADING.isLoading =  true;
      }
   fileChange(e){
 
@@ -49,6 +52,8 @@ let user = {
   gender_id: this.profileForm.value.gender_id,
   address: this.profileForm.value.address,
   country_id: this.profileForm.value.country_id,
+  identification_filename: 'identification-1.svg',
+  proof_of_address_filename: 'identification-1.svg'
 }
 let uid =  this.profileForm.value.uid;
 
@@ -80,12 +85,15 @@ this.apiService.editUser(user, uid).subscribe(
 
   // get logged  user
   getLoggedInUser(){
+   
     this.apiService.getLoggedInUser().subscribe(
       res => {
-        console.log('USER', res);
+        console.log(res)
+        this.apiService.LOADING.isLoading =  false;
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.email =  res.user.email;
    this.apiService.USER.user_type_id =  res.user.user_type_id;
+   this.apiService.USER.id =  res.user.d;
    this.profileForm.patchValue({
      uid: res.user.id,
     firstname: res.user.firstname,
@@ -95,10 +103,12 @@ this.apiService.editUser(user, uid).subscribe(
     gender_id:   res.user.gender_id,
     address:   res.user.address,
     country_id:   res.user.country_id,
-   })
-
+   });
+      this.identification_filename = res.user.identification_filename;
+      this.proof_of_address_filename = res.user.proof_of_address_filename;
       },
       err => {
+        this.apiService.LOADING.isLoading =  false;
        this.router.navigate(['/login']);
         console.log(err);
      

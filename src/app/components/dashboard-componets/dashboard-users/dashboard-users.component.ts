@@ -109,15 +109,15 @@ getAccount(uid, account_number, query){
  getUsers(){
   this.apiService.getUsers().subscribe(
     res => {
+      console.log('The Userrs', res)
      setTimeout( () =>{
 this.loading = false;
      }, 2000);
-console.log('Users', res);
 this.users = res.users;
 
     },
     err => {
-      console.log(err);
+      console.log('Get users error', err);
      setTimeout( () =>{
        this.loading = false;
        }, 2000);

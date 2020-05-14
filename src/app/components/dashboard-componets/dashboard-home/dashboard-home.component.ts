@@ -10,11 +10,16 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class DashboardHomeComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router, private sharedService: SharedService ) { }
+  constructor(private apiService: ApiService, private router: Router, private sharedService: SharedService ) {
+    this.getLoggedInUser();
+
+   }
 
   getLoggedInUser(){
+    this.apiService.LOADING.isLoading =  true;
     this.apiService.getLoggedInUser().subscribe(
       res => {
+        this.apiService.LOADING.isLoading =  false;
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.lastname =  res.user.lastname;
    this.apiService.USER.email =  res.user.email;
@@ -22,6 +27,7 @@ export class DashboardHomeComponent implements OnInit {
   
       },
       err => {
+        this.apiService.LOADING.isLoading =  false;
        this.router.navigate(['/login']);
         console.log(err);
      

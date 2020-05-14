@@ -38,9 +38,7 @@
                                     <tr *ngFor="let user of users" class="d-flext justify-content-arround">
                                         <td [routerLink]="user.id" class="account-no">{{user.firstname}} {{user.lastname}}</td>
                                         <td>
-                                            <ng-container *ngFor="let account of accounts  let i = index">
-                                                <span>{{objectKeys(account.uid)}}</span>
-                                            </ng-container>
+                                            Unknown
                                         </td>
                                         <td>{{ user.createdAt | date }}</td>
                                         <td class=" d-flex justify-content-end align-content-center align-items-center ">
@@ -57,7 +55,7 @@
                         </div>
                     </ng-template>
 
-                    <p *ngFor="let account of accounts ">{{account | json }}</p>
+                    <!-- <p *ngFor="let account of accounts ">{{account | json }}</p> -->
                 </div>
             </div>
 

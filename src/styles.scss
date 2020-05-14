@@ -10,13 +10,22 @@ body {
      ::-webkit-scrollbar,
      ::-webkit-scrollbar-thumb {
         width: 8px;
-        border-radius: 13px;
+        // border-radius: 13px;
         // background-clip: padding-box;
         height: 7px;
-        border: 1px solid gray;
+        border: 1px solid #eee;
+        &:hover {
+            width: 15px;
+            transition: 900ms;
+        }
     }
      ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.5);
+        // background: rgba(0, 0, 0, 0.5);
+        background-color: #0022ff;
+        border-radius: 20px;
+        &:hover {
+            background-color: #5067fd;
+        }
     }
 }
 

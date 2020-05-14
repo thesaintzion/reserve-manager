@@ -38,8 +38,8 @@
 
 
                                 <div class="col-md-6">
-                                    <mat-form-field class="w-100">
-                                        <input matInput type="email" formControlName="email" placeholder="Email" required>
+                                    <mat-form-field title="Sorry, you can not edit your email." class="w-100">
+                                        <input disabled matInput type="email" formControlName="email" placeholder="Email" required>
                                     </mat-form-field>
                                 </div>
 
@@ -78,8 +78,9 @@
                                 </div>
 
                                 <div class="col-md-3 mt-4">
+                                    <label> Identification file</label>
                                     <div class="text-center form-img-con">
-                                        <img (click)="viewImg('../../../../assets/img/b1.jpg')" width="100" src="../../../../assets/img/b2.jpg" alt="">
+                                        <img (click)="viewImg('../../../../assets/img/'+identification_filename)" width="100" src="../../../../assets/img/{{identification_filename}}" alt="">
                                     </div>
                                     <div class="custom-file mt-2">
                                         <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
@@ -88,8 +89,9 @@
                                 </div>
 
                                 <div class="col-md-3 mt-4">
+                                    <label>Proof of address file </label>
                                     <div class="text-center form-img-con">
-                                        <img (click)="viewImg('../../../../assets/img/b1.jpg')" width="100" src="../../../../assets/img/b2.jpg" alt="">
+                                        <img (click)="viewImg('../../../../assets/img/'+proof_of_address_filename)" width="100" src="../../../../assets/img/{{proof_of_address_filename}}" alt="">
                                     </div>
                                     <div class="custom-file mt-2">
                                         <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">

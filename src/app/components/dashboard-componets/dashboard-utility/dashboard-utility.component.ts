@@ -363,7 +363,6 @@ this.sharedService.openSnackBar('Please fill in all fields', 'Ok', 6000, 'bg-dan
       bank_name: this.bankDetailsForm.value.bank_name
     }
     console.log(body);
-    debugger;
     // ADD
     if(status == 'add'){
 this.apiService.addBankDetails(body).subscribe(

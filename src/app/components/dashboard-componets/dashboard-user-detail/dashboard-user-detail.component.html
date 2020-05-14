@@ -155,23 +155,7 @@
                 </div>
             </header>
 
-
-            <!-- id: "", -->
-            <!-- firstname: "",
-            lastname: "",
-            email: "",
-            user_type_id: "",
-            password: "",
-            phone_number: "",
-            gender_id: "",
-            address: "",
-            status: "",
-            activated: "",
-            country_id: "",
-            identification_filename: "",
-            proof_of_address_filename: "",
-            promotion_type_id: "", -->
-
+            ,
 
             <div class="row mt-3  ">
                 <div class="col-md-12 mb-4 pt-1">
@@ -198,8 +182,8 @@
                             <p class="m-0">Country</p>
 
                             <p class="m-0">
-                                <strong *ngIf="user?.country_id !== ''">{{user?.country_id}}</strong>
-                                <strong>* * * * *</strong>
+                                <strong *ngIf="user?.country_id != ''">{{user?.country}}</strong>
+                                <!-- <strong>* * * * *</strong> -->
                             </p>
                         </div>
 
@@ -211,8 +195,8 @@
                         <div class="d-flex justify-content-between  border-bottom p-3">
                             <p class="m-0">Gender</p>
                             <p class="m-0">
-                                <strong *ngIf="user?.gender_id !== ''">{{user?.gender_id}}</strong>
-                                <strong>* * * * *</strong>
+                                <strong *ngIf="user?.gender_id != ''">{{user?.gender}}</strong>
+
                             </p>
                         </div>
 

@@ -99,9 +99,8 @@ country_id: [''],
       if(params.userId !== ''){
         this.apiService.getUserInfo(params.userId).subscribe(
           res => {
-        console.log(res);
+        console.log('User Info', res);
         this.user = res.user;
-     
           this.userForm.patchValue({
             uid: res.user.id,
            firstname: res.user.firstname,
@@ -112,9 +111,6 @@ country_id: [''],
            address:   res.user.address,
            country_id:   res.user.country_id,
           });
-       
-        
-       
         },
         err => {
           console.log(err);
@@ -129,25 +125,27 @@ country_id: [''],
 
 
 
-getCountries(){
-  this.apiService.getCountries().subscribe(
-    res => {
-      this.countries = res.country;
-    },
-    err => {
-  console.log(err)
-    });
-    }
-    getGengers(){
-      this.apiService.getGengers().subscribe(
-        res => {
-          this.genders = res.gender;
-        },
-        err => {
-      console.log(err)
-        });
-  
-    }
+  // GET UTILITIES
+  getCountries(){
+    this.apiService.getCountries().subscribe(
+      res => {
+        this.countries = res.country;
+      },
+      err => {
+    console.log(err)
+      });
+      }
+      getGengers(){
+        this.apiService.getGengers().subscribe(
+          res => {
+            console.log('Gender', res.gender);
+            this.genders = res.gender;
+          },
+          err => {
+        console.log(err)
+          });
+    
+      }
 
 
   
@@ -178,7 +176,7 @@ this.apiService.USER.id = res.user.id;
         console.log('the full params', params);
         if(params.action && params.action.toLowerCase() === 'edit' ){
           this.action = params.action;
-     this.getUserInfo();
+        this.getUserInfo();
           this.sharedService.openSnackBar('Edit Mode', '', 3000, 'bg-success');
           //Set form values... Begins
         }else{
