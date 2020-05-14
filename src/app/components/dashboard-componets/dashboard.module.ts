@@ -25,6 +25,7 @@ import { DashboardTransactionDetailComponent } from './dashboard-transaction-det
 import { DasboardAddTransactionDialogComponent } from './_dialogs/dasboard-add-transaction-dialog/dasboard-add-transaction-dialog.component';
 import { DashboardAccountOperationDialogComponent } from './_dialogs/dashboard-account-operation-dialog/dashboard-account-operation-dialog.component';
 import { FeaturesUpdateDialogComponent } from './_dialogs/features-update-dialog/features-update-dialog.component';
+import { DasboardRequestsComponent } from './dasboard-requests/dasboard-requests.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { FeaturesUpdateDialogComponent } from './_dialogs/features-update-dialog
     DashboardTransactionDetailComponent,
     DasboardAddTransactionDialogComponent,
     DashboardAccountOperationDialogComponent,
-    FeaturesUpdateDialogComponent
+    FeaturesUpdateDialogComponent,
+    DasboardRequestsComponent
   ],
   imports: [
     CommonModule,

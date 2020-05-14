@@ -50,13 +50,27 @@
 
             </a>
 
+
             <a mat-list-item routerLinkActive="active" routerLink="transactions" class="main-item">
                 <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
                     <mat-icon>cached</mat-icon>
                     <!-- <mat-icon>sync</mat-icon> -->
                     </button>
-                <span *ngIf="!fancyBg" class="main-text">Transactions</span>
+                <span matBadge="4" matBadgeOverlap="false" matBadgeColor="warn" *ngIf="!fancyBg" class="main-text">Transactions</span>
 
+                <button *ngIf="fancyBg" class="fancy-icon" mat-icon-button>
+                        <mat-icon></mat-icon>
+                        </button>
+                <span *ngIf="fancyBg" class="fancy-text"></span>
+
+            </a>
+
+
+            <a *ngIf="apiService.USER.user_type_id === 1" mat-list-item routerLinkActive="active" routerLink="requests" class="main-item">
+                <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
+                    <mat-icon>star_half</mat-icon>
+                    </button>
+                <span matBadge="8" matBadgeOverlap="false" matBadgeColor="warn" *ngIf="!fancyBg" class="main-text">Requests</span>
                 <button *ngIf="fancyBg" class="fancy-icon" mat-icon-button>
                         <mat-icon></mat-icon>
                         </button>
@@ -131,7 +145,7 @@
 
                 <div class="nav-profile-con">
                     <button class="bg-gray" mat-icon-button>
-                        <mat-icon>notifications_none</mat-icon>
+                        <mat-icon matBadge="15" matBadgeColor="warn">notifications_none</mat-icon>
                     </button>
 
                     <button class="bg-gray" [matMenuTriggerFor]="userMenu" mat-icon-button>
