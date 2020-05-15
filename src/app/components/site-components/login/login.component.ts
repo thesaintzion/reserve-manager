@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.sharedService.openSnackBar('Please Login', '', 2000, '');
+    // this.sharedService.openSnackBar('Please Login', '', 2000, '');
   }
 
 }

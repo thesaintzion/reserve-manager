@@ -85,11 +85,10 @@ this.apiService.editUser(user, uid).subscribe(
 
   // get logged  user
   getLoggedInUser(){
-   
     this.apiService.getLoggedInUser().subscribe(
       res => {
         console.log(res)
-        this.apiService.LOADING.isLoading =  false;
+   this.apiService.LOADING.isLoading =  false;
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.email =  res.user.email;
    this.apiService.USER.user_type_id =  res.user.user_type_id;

@@ -159,10 +159,8 @@ export class DashboardTransactionsComponent implements OnInit {
   
   
   getLoggedInUser(){
-    this.apiService.LOADING.isLoading =  true;
      this.apiService.getLoggedInUser().subscribe(
        res => {
-        this.apiService.LOADING.isLoading =  false;
   console.log('Logged In User', res);
     this.apiService.USER.firstname =  res.user.firstname;
     this.apiService.USER.firstname =  res.user.firstname;
@@ -170,7 +168,6 @@ export class DashboardTransactionsComponent implements OnInit {
     this.apiService.USER.id = res.user.id;
        },
        err => {
-        this.apiService.LOADING.isLoading =  false;
         this.router.navigate(['/login']);
          console.log(err);
       

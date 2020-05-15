@@ -90,6 +90,14 @@
             border-color: #eaebf0 !important;
         }
     }
+    .form-img-con {
+        img {
+            border-radius: 10px;
+        }
+        &:hover {
+            cursor: zoom-in;
+        }
+    }
     .action-footer {
         button {
             width: 100%;

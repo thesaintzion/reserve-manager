@@ -25,10 +25,6 @@ export class DashboardBankDetailsComponent implements OnInit {
                 })
 
                }
-
-              //  addUserBankDetails: "/api/v2/user_bank_details",
-              //  getUserBankDetails: "/api/v2/user_bank_details",
-              //  editUserBankDetails: "/api/v2/user_bank_details/:bank_details_id",
             
    
 // onBankFormSubmit
@@ -48,11 +44,11 @@ onBankFormSubmit(status){
 
 // ADD
     if(status == 'add'){
-      this.apiService.addBankDetails(bank).subscribe(
+      this.apiService.addUserBankDetails(bank).subscribe(
         res => {
           console.log('Added', res);
           setTimeout( () =>{
-            this.getUserBankDetails();
+            this.getLoggedInUser();
             this.loading = false;
             this.apiService.LOADING.isLoading =  false;
             this.sharedService.openSnackBar('Added', 'ok', 9000, 'bg-success');
@@ -74,11 +70,11 @@ onBankFormSubmit(status){
 // EDIT
           }else if(status == 'edit'){
             let id =  this.apiService.USER.id;  
-            this.apiServive.editBankDetails(bank, id).subscribe(
+            this.apiServive.editUserBankDetails(bank, id).subscribe(
               res => {
                 console.log('Edited', res);
                 setTimeout( () =>{
-                  this.getUserBankDetails();
+                  this.getLoggedInUser();
                   this.loading = false;
                   this.apiService.LOADING.isLoading =  false;
                   this.sharedService.openSnackBar('Updated', 'ok', 9000, 'bg-success');
@@ -103,8 +99,7 @@ onBankFormSubmit(status){
 
 
     // GET USER BANK DETAILS
-getUserBankDetails(){
-  let uid =  this.apiService.USER.id;
+getUserBankDetails(uid){
   let all = false;
   this.apiServive.getUserBankDetails(uid, all).subscribe(
     res => {
@@ -136,6 +131,8 @@ getUserBankDetails(){
      this.apiService.USER.firstname =  res.user.firstname;
      this.apiService.USER.user_type_id =  res.user.user_type_id;
      this.apiService.USER.id =  res.user.id;
+     this.getUserBankDetails(res.user.id);
+  
 
      if( res.user.user_type_id != 2){
       this.sharedService.openSnackBar(`Bad request`, '', 3000, 'bg-danger');
@@ -151,8 +148,6 @@ getUserBankDetails(){
     }
   ngOnInit() {
     this.getLoggedInUser();
-    this.getUserBankDetails();
-    console.log(this.apiService.USER.id);
   }
 
 }

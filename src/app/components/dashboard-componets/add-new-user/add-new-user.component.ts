@@ -72,7 +72,7 @@ if(this.registerForm.invalid){
     setTimeout( () =>{
       this.loading = false;
       this.apiService.LOADING.isLoading =  false;
-      this.router.navigate(['/login']);
+      this.router.navigate(['/dashboard/users']);
       this.sharedService.openSnackBar('Registeration succesful, please login', 'ok', 90000, 'bg-success');
       }, 1000);
   },
@@ -92,16 +92,6 @@ if(this.registerForm.invalid){
   });
 }
 }
-
-// formErrMsg(field){
-//   if(this.submited && this.registerForm.controls.field.errors.required){
-//  return true
-//   }else{
-//     return false;
-//   }
-// }
-
-
   upload(){
  
   }
@@ -136,11 +126,32 @@ console.log(err)
       });
   }
 
+  getLoggedInUser(){
+    this.apiService.LOADING.isLoading =  true;
+    this.apiService.getLoggedInUser().subscribe(
+      res => {
+        this.apiService.LOADING.isLoading =  false;
+   this.apiService.USER.firstname =  res.user.firstname;
+   this.apiService.USER.lastname =  res.user.lastname;
+   this.apiService.USER.email =  res.user.email;
+   this.apiService.USER.user_type_id =  res.user.user_type_id;
+  
+      },
+      err => {
+        this.apiService.LOADING.isLoading =  false;
+       this.router.navigate(['/login']);
+        console.log(err);
+     
+      }
+    )
+  }
+
   ngOnInit() {
     // this.upload();
     this.getCountries();
     this.getGengers();
     this.getPromotionTypes();
+    this.getLoggedInUser();
     
     this.activatedRoute.queryParams.subscribe( params =>{
       if(params.user){
@@ -148,17 +159,7 @@ console.log(err)
       }else{
         console.log('Take Em Back now');
       }
-    });
-
-  
-
-//     setTimeout( () =>{
-//       this.userId = '3948585654094';
-// this.router.navigate([`/register/upload/${this.userId}`]);
-
-//     }, 3000);
-
-   
+    });   
 
   }
 

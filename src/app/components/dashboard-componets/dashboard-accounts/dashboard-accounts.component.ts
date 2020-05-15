@@ -31,9 +31,11 @@ loading;
 
     dialogRef.afterClosed().subscribe(result => {
      if(result) {
+
       this.sharedService.openSnackBar('Delete in progress..', '', 30000000, '');
 
       this.apiService.deleteAccount(account_id).subscribe(
+
        res => {
        this.getLoggedInUser();
        this.sharedService.openSnackBar('Account deleted..', '', 3000, 'bg-success');
@@ -43,7 +45,8 @@ loading;
        err => {
        console.log(err);
        this.sharedService.openSnackBar('Could not delete account please try again later', '', 3000, 'bg-danger');
-       });
+       }
+       );
     }
 
    });

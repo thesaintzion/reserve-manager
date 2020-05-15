@@ -5,7 +5,7 @@
                 <div class="d-flex ">
                     <div *ngIf="imgPrevMode" class="img-prev-con">
                         <div class="img-prev-close">
-                            <button (click)="imgPrevMode = false" mat-icon-button class="bg-white border shadow">
+                            <button (click)="imgPrevMode = false" color="warn" mat-icon-button mat-raised-button class="bg-white border">
                                 <mat-icon>close</mat-icon>
                             </button>
                         </div>
@@ -77,8 +77,8 @@
 
                                 </div>
 
-                                <div class="col-md-3 mt-4">
-                                    <label> Identification file</label>
+                                <div class="col-md-6 mt-4">
+                                    <label> Identification file*</label>
                                     <div class="text-center form-img-con">
                                         <img (click)="viewImg('../../../../assets/img/'+identification_filename)" width="100" src="../../../../assets/img/{{identification_filename}}" alt="">
                                     </div>
@@ -88,8 +88,8 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 mt-4">
-                                    <label>Proof of address file </label>
+                                <div class="col-md-6 mt-4">
+                                    <label>Proof of address file* </label>
                                     <div class="text-center form-img-con">
                                         <img (click)="viewImg('../../../../assets/img/'+proof_of_address_filename)" width="100" src="../../../../assets/img/{{proof_of_address_filename}}" alt="">
                                     </div>
@@ -98,7 +98,7 @@
                                         <label class="custom-file-label" for="customFile">Upload image</label>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-5">
                                     <div class="pb-2 mt-2 d-flex justify-content-end">
                                         <div>
                                             <button class="btn-primary" mat-raised-button>Save changes</button>

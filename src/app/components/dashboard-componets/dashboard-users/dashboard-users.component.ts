@@ -17,15 +17,15 @@ loading = true;
 users = [];
 accounts = [];
 objectKeys = Object.length;
+userToDelete: any = '';
   constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
   
    }
 
 
   // confirm delete
-  openConfirmDialog(): void {
-    
-    let message = 'Are you sure you want to delete this?'
+  openConfirmDialog(uid): void {
+    let message = 'Delete this user?'
     const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
       //  width: '400px', 
        data:{message: message},
@@ -33,9 +33,16 @@ objectKeys = Object.length;
 
     dialogRef.afterClosed().subscribe(result => {
      if(result) {
-      console.log(result);
-      this.sharedService.openSnackBar('Account deleted', '', 4000, 'bg-success');
-     
+      this.apiService.deleteUser(uid).subscribe(
+        res => {
+         this. getUsers();
+          this.sharedService.openSnackBar('User deleted..', '', 3000, 'bg-success');
+          },
+          err => {
+          console.log(err);
+          this.sharedService.openSnackBar('Could not delete user please try again later.', '', 3000, 'bg-danger');
+          });
+      // this.sharedService.openSnackBar('Account deleted'+ uid, '', 4000, 'bg-success');
     }
    });
    }
@@ -69,23 +76,10 @@ openCreatAccountDialog(): void {
 getLoggedInUser(){
    this.apiService.getLoggedInUser().subscribe(
      res => {
-console.log('Logged In User', res);
-if(res.user.user_type_id === 1){
   this.apiService.USER.firstname =  res.user.firstname;
   this.apiService.USER.firstname =  res.user.firstname;
   this.apiService.USER.user_type_id =  res.user.user_type_id;
   this.apiService.USER.id = res.user.id;
-  let account_id = '1360742278';
-let query = 'user';
-if(res.user.user_type_id === 1){
-query = 'all';
-}
-this.getAccount(res.user.id, account_id, query);
-
-  }else{
-   this.sharedService.openSnackBar('Bad Request.', ``, 2000, 'bg-danger');
-   this.router.navigate(['/dashboard']);
-  }
      },
      err => {
       this.router.navigate(['/login']);

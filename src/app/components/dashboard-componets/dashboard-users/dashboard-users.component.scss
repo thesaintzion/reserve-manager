@@ -156,6 +156,10 @@
             vertical-align: middle !important;
         }
     }
+    .deleted {
+        color: rgb(255, 74, 74);
+        text-decoration: line-through;
+    }
     //////// Responsive ////////////
     @media (max-width: 991.93px) {
         .table {

@@ -1,7 +1,17 @@
 <div *ngIf="action == 'edit'" class="animated fadeInUp" style="min-height: 100%;">
     <div class="container">
 
-        <div class="inner mt-4 pb-5" style="overflow: hidden; ">
+        <div *ngIf="imgPrevMode" class="img-prev-con">
+            <div class="d-flex justify-content-end w-100">
+                <button (click)="imgPrevMode = false" color="warn" mat-icon-button mat-raised-button class="border">
+                        <mat-icon>close</mat-icon>
+                    </button>
+            </div>
+
+            <img class="w-100" [src]="imgPrevUrl" alt="">
+        </div>
+
+        <div *ngIf="!imgPrevMode" class="inner mt-4 pb-5" style="overflow: hidden; ">
             <header class="d-flex justify-content-start  ">
                 <div class="d-flex align-content-center  align-items-center">
                     <button (click)="location.back()" mat-icon-button><mat-icon>arrow_back</mat-icon></button>
@@ -46,7 +56,7 @@
 
                                         <div class="col-md-6">
                                             <mat-form-field class="w-100">
-                                                <input matInput type="tel" formControlName="phone" placeholder="Phone number">
+                                                <input matInput type="tel" formControlName="phone_number" placeholder="Phone number">
                                             </mat-form-field>
                                         </div>
 
@@ -80,35 +90,33 @@
                                         </div>
 
                                         <div class="col-md-6 mt-4">
-                                            <div class="custom-file">
+                                            <label> Identification file*</label>
+                                            <div class="text-center form-img-con">
+                                                <img (click)="viewImg('../../../../assets/img/'+identification_filename)" width="100" src="../../../../assets/img/{{identification_filename}}" alt="">
+                                            </div>
+                                            <div class="custom-file mt-2">
                                                 <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
                                                 <label class="custom-file-label" for="customFile">Upload image</label>
                                             </div>
-                                            <img width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
-                                            <!-- <img width="100" src="{{defaultImgUrl}}" alt=""> -->
                                         </div>
 
                                         <div class="col-md-6 mt-4">
-                                            <div class="custom-file">
+                                            <label>Proof of address file* </label>
+                                            <div class="text-center form-img-con">
+                                                <img (click)="viewImg('../../../../assets/img/'+proof_of_address_filename)" width="100" src="../../../../assets/img/{{proof_of_address_filename}}" alt="">
+                                            </div>
+                                            <div class="custom-file mt-2">
                                                 <input accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input ">
                                                 <label class="custom-file-label" for="customFile">Upload image</label>
                                             </div>
-                                            <img width="100" src="../../../../assets/img/Aggital-2018-in-Review-10.jpg" alt="">
-                                            <!-- <img width="100" src="{{defaultImgUrl}}" alt=""> -->
                                         </div>
-
-                                        <!-- <div class="custom-file">
-                                            <input tabindex="-1" formControlName="image" accept="image/*" (change)="fileChange($event.target.files)" type="file" class="custom-file-input " id="customFile">
-                                            <label class="custom-file-label" for="customFile">Upload image</label>
-                                            <img src="{{defaultImgUrl}}" alt="">
-                                        </div> -->
 
 
                                     </div>
 
-                                    <div class="row mt-4">
-                                        <div class="col-md-6">
-                                            <div class="pb-2 mt-2 d-flex justify-content-between">
+                                    <div class="row mt-5">
+                                        <div class="col-md-12">
+                                            <div class="pb-2 mt-2 d-flex justify-content-end">
                                                 <div>
                                                     <button (click)="onformSubmit()" class="btn-primary" mat-raised-button>Save changes</button>
                                                 </div>
@@ -154,9 +162,6 @@
                     <h4>{{user?.firstname}} {{user?.lastname}}</h4>
                 </div>
             </header>
-
-            ,
-
             <div class="row mt-3  ">
                 <div class="col-md-12 mb-4 pt-1">
                     <div class=" bg-white ">

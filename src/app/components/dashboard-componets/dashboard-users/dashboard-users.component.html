@@ -35,18 +35,18 @@
 
                                 </thead>
                                 <tbody class="w-100">
-                                    <tr *ngFor="let user of users" class="d-flext justify-content-arround">
+                                    <tr *ngFor="let user of users" [ngClass]="{'text-primary': user.user_type_id == 1, 'deleted': user.status == 0 }" class="d-flext justify-content-arround">
                                         <td [routerLink]="user.id" class="account-no">{{user.firstname}} {{user.lastname}}</td>
                                         <td>
                                             Unknown
                                         </td>
                                         <td>{{ user.createdAt | date }}</td>
                                         <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                            <button [routerLink]="user.id" [queryParams]="{ action: 'edit'  }" mat-icon-button>
-                                        <mat-icon class="color-primary">create</mat-icon>
+                                            <button [disabled]="user.status == 0" [routerLink]="user.id" [queryParams]="{ action: 'edit'  }" mat-icon-button>
+                                        <mat-icon class="color-primary" [ngClass]="{'text-muted': user.status == 0 }" >create</mat-icon>
                                     </button>
-                                            <button (click)="openConfirmDialog()" mat-icon-button>
-                                        <mat-icon class="text-danger">delete_outline</mat-icon>
+                                            <button [disabled]="user.status == 0" (click)="openConfirmDialog(user.id)" mat-icon-button>
+                                        <mat-icon [ngClass]="{'text-muted': user.status == 0 }" class="text-danger">delete_outline</mat-icon>
                                     </button>
                                         </td>
                                     </tr>

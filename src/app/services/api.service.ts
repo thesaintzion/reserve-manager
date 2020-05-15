@@ -61,6 +61,9 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
        editUser(user: any,  uid: any ){
         return this.http.put<any>(`${this.devUrl}/user/${uid}`, user);
        }
+       deleteUser(uid: any ){
+        return this.http.delete<any>(`${this.devUrl}/user/${uid}`);
+       }
 
        editPassword(password: any, uid: any){
         return this.http.put<any>(`${this.devUrl}/user/password/${uid}`, password);
