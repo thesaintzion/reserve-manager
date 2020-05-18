@@ -1,0 +1,86 @@
+<div style="min-height: 100%; margin-bottom: 200px; position: relative;">
+
+    <div class="container animated fadeInUp">
+
+        <div class="inner mt-4" style="overflow: hidden;">
+            <header class="d-flex justify-content-between  ">
+                <div class="d-flex align-content-center  align-items-center">
+                    <h4 class="mb-0">Requests</h4>
+                </div>
+            </header>
+
+
+            <div class="row mt-3 ">
+                <!-- Transactions -->
+                <div class="col-md-12 ">
+                    <div *ngIf="requests.length < 1 else showTable" class="text-center mt-5">
+                        <p>
+                            <mat-icon>error_outline</mat-icon> No requests to show</p>
+                        <!-- <button (click)="refresh()" mat-button class="color-primary">Refresh</button> -->
+                    </div>
+                    <ng-template #showTable>
+                        <div class="table-conshadow mt-0 bg-white">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Request Type</th>
+                                        <th>Amount</th>
+                                        <th>User</th>
+                                        <th>Confirmed</th>
+                                        <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let request of requests">
+
+                                        <tr [ngClass]="{'completed': request?.request_id == request?.id}" [matMenuTriggerFor]="userMenu">
+                                            <td>
+                                                {{request.request_type}}
+                                            </td>
+                                            <td [ngClass]="{'text-primary': request.request_type == 'deposite', 'text-danger': request.request_type == 'withdraw', 'text-dark': request.request_type == 'transfer' }">&#8358;
+                                                <span *ngIf="request.request_amount >= 1000">
+                                            {{request.request_amount |  number:'2.'}}
+                                        </span>
+                                                <span *ngIf="request.request_amount < 1000">
+                                            {{request.request_amount}}
+                                        </span>
+                                            </td>
+                                            <td>
+                                                {{request?.lastname}} {{request?.firstname}}
+                                            </td>
+                                            <td>
+                                                {{request?.request_id == request?.id? 'YES' : 'NO'}}
+                                            </td>
+                                            <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                                {{request.createdAt | date:'short'}}
+                                            </td>
+                                        </tr>
+
+                                        <mat-menu #userMenu="matMenu">
+                                            <!-- [routerLink]="request?.request_id != request?.id ? request?.id: null" -->
+                                            <button [routerLink]="request?.id" mat-menu-item>
+                                              <span>Details</span>
+                                            </button>
+                                            <button (click)="openAddTransactionDialog(
+                                                request?.uid,
+                                                request?.request_account_number,
+                                                request?.request_type,
+                                                request?.request_amount, 
+                                                request?.firstname,
+                                                request?.lastname,
+                                                request?.id
+                                                )" *ngIf="request?.request_id != request?.id" mat-menu-item>
+                                              <span>Confirm Transaction</span>
+                                            </button>
+                                        </mat-menu>
+                                    </ng-container>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

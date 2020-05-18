@@ -20,6 +20,7 @@ export class AddNewUserComponent implements OnInit {
   promotionTypes = [];
   registerForm;
   submited = false;
+  successful: boolean = false;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private apiService: ApiService, 
     private sharedService: SharedService, private formBuider: FormBuilder,  public location: Location ) { 
 
@@ -73,6 +74,7 @@ if(this.registerForm.invalid){
       this.loading = false;
       this.apiService.LOADING.isLoading =  false;
       this.router.navigate(['/dashboard/users']);
+      this.successful = true;
       this.sharedService.openSnackBar('Registeration succesful, please login', 'ok', 90000, 'bg-success');
       }, 1000);
   },

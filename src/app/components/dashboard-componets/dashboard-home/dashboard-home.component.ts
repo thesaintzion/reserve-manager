@@ -10,11 +10,12 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class DashboardHomeComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router, private sharedService: SharedService ) {
+  constructor(public apiService: ApiService, private router: Router, private sharedService: SharedService ) {
     this.getLoggedInUser();
 
    }
 
+  //  Get logged in user
   getLoggedInUser(){
     this.apiService.LOADING.isLoading =  true;
     this.apiService.getLoggedInUser().subscribe(
@@ -29,6 +30,7 @@ export class DashboardHomeComponent implements OnInit {
       err => {
         this.apiService.LOADING.isLoading =  false;
        this.router.navigate(['/login']);
+       this.sharedService.openSnackBar('Please login', '', 6000, '')
         console.log(err);
      
       }

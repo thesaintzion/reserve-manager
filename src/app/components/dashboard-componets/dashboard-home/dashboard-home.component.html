@@ -7,7 +7,7 @@
             </header>
             <div class="row mt-4  animated fadeInUp">
 
-                <div class="col-md-4 col-lg-3  mb-4 ">
+                <div class="col-md-4 col-lg-2  mb-4 ">
                     <mat-card routerLink="transactions" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
                             <div class="link-box-text">
@@ -18,7 +18,7 @@
                     </mat-card>
                 </div>
 
-                <div *ngIf="apiService.USER.user_type_id == 1" class="col-md-4 col-lg-3  mb-4 ">
+                <div class="col-md-4 col-lg-2  mb-4 ">
                     <mat-card routerLink="requests" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
                             <div class="link-box-text">
@@ -31,7 +31,7 @@
 
 
 
-                <div class="col-md-4 col-lg-3  mb-4">
+                <div class="col-md-4 col-lg-2  mb-4">
                     <mat-card routerLink="accounts" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
                             <div class="link-box-text">
@@ -42,7 +42,7 @@
                     </mat-card>
                 </div>
 
-                <div *ngIf="apiService.USER.user_type_id == 1" class="col-md-4 col-lg-3  mb-4">
+                <div *ngIf="apiService.USER.user_type_id == 1" class="col-md-4 col-lg-2  mb-4">
                     <mat-card routerLink="users" class="link-box">
                         <div class="">
                             <div class="link-box-text">
@@ -53,7 +53,7 @@
                     </mat-card>
                 </div>
 
-                <div class="col-md-4 col-lg-3  mb-4 ">
+                <div class="col-md-4 col-lg-2  mb-4 ">
                     <mat-card routerLink="settings/profile" class="link-box">
                         <div class="d-flex align-content-center align-items-center justify-content-center">
                             <div class="link-box-text">
@@ -62,6 +62,19 @@
                             </div>
                         </div>
                     </mat-card>
+                </div>
+
+                <div class="col-md-4 col-lg-2  mb-4 ">
+                    <a routerLink="/">
+                        <mat-card class="link-box">
+                            <div class="d-flex align-content-center align-items-center justify-content-center">
+                                <div class="link-box-text">
+                                    <mat-icon class="color-primary">arrow_right_alt</mat-icon>
+                                    <h5>Visit website</h5>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </a>
                 </div>
             </div>
         </div>

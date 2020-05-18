@@ -22,7 +22,7 @@ account = [];
 accountEdit =  {
 accountNo: '',
 uid: '',
-balance: '',
+balance: 0,
 createdAt: '',
 type: '',
 denomination: '',

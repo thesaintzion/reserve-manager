@@ -108,19 +108,8 @@ country_id: [''],
       });
       }
 
-  //  onformSubmit(){
-  //   this.loading = true;
-  //   this.apiService.LOADING.isLoading =  true;
-
-  //   setTimeout( () =>{
-  //     this.loading = false;
-  //     this.apiService.LOADING.isLoading =  false;
-  //     this.sharedService.openSnackBar('Not ready yet...', 'ok', 3000, 'bg-s');
-  //   }, 3000);
-  //  }
-
+      // 
    openConfirmDialog(): void {
-    
     let message = 'Are you sure you want to delete this?'
     const  dialogRef = this.dialog.open(DashboardDeleteConfirmDialogComponent, {  
       //  width: '400px',

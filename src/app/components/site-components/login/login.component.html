@@ -24,14 +24,14 @@
                 <div class="col-12">
                     <mat-form-field>
                         <input matInput formControlName="email" type="text" placeholder="Email">
-                        <mat-hint *ngIf="submited && f.email?.errors.required || (f.email?.errors && (f.email?.dirty || f.email?.touched))" class="text-danger">Email is required</mat-hint>
+                        <mat-hint *ngIf="submitted && f.email?.errors?.required || (f.email?.errors && (f.email?.dirty || f.email?.touched))" class="text-danger">Email is required</mat-hint>
                     </mat-form-field>
                 </div>
 
                 <div class="col-12">
                     <mat-form-field>
                         <input matInput formControlName="password" type="password" placeholder="Password">
-                        <mat-hint *ngIf="submited && f.password.errors?.required" class="text-danger">Password is required</mat-hint>
+                        <mat-hint *ngIf="submitted && f.password.errors?.required" class="text-danger">Password is required</mat-hint>
                     </mat-form-field>
                 </div>
 

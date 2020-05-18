@@ -74,10 +74,10 @@
             // height: 200px;
             text-align: center !important;
             .mat-icon {
-                font-size: 100px;
-                height: 100px !important;
+                font-size: 80px;
+                height: 80px !important;
                 // color: gray !important;
-                width: 100px !important;
+                width: 80px !important;
                 margin: 0 auto !important;
             }
             &:hover {
@@ -85,8 +85,11 @@
                 background-color: gray;
                 color: #ffffff !important;
                 .mat-icon {
-                    // color: black !important;
+                    color: #ffffff !important;
                 }
+            }
+            h5 {
+                font-size: 16px;
             }
         }
     }

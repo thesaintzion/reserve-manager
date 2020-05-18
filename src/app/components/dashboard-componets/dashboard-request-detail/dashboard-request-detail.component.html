@@ -1,0 +1,89 @@
+<div class="animated fadeInUp" style="min-height: 100%; margin-bottom: 200px;">
+    <div class="container">
+        <div class="inner mt-4" style="overflow: hidden;">
+            <header class="d-flex justify-content-start  ">
+                <div class="d-flex align-content-center  align-items-center">
+                    <button (click)="location.back()" mat-icon-button><mat-icon>arrow_back</mat-icon></button>
+                </div>
+                <div class="d-flex align-content-center  align-items-center ml-3">
+                    <h4>Request</h4>
+                </div>
+            </header>
+
+            <div class="row mt-3  ">
+                <div class="col-md-12 mb-4 pt-1">
+                    <div class=" bg-white">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Request Type</p>
+                            <p class="m-0 text-capitalize">{{request?.request_type}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Amount</p>
+                            <p class="m-0">
+                                &#8358;
+                                <span *ngIf="request?.request_amount >= 1000">
+                                    {{request?.request_amount |  number:'2.'}}
+                                </span>
+                                <span *ngIf="request?.request_amount < 1000">
+                                    {{request?.request_amount}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Account Number</p>
+                            <p class="m-0 text-capitalize">#{{request?.request_account_number}}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">User</p>
+                            <p class="m-0">{{request?.lastname}} {{request?.firstname}}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Date Time</p>
+                            <p class="m-0">{{request?.createdAt | date:'short'}}</p>
+                        </div>
+
+                        <!-- Bank Details -->
+
+                    </div>
+                    <div class="my-2 ">
+                        <strong>User Bank Details</strong>
+                    </div>
+                    <div class=" bg-white">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Account Number</p>
+                            <p class="m-0">{{request?.bank_account_number}}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Account Name</p>
+                            <p class="m-0">{{request?.bank_account_name}}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                            <p class="m-0">Bank</p>
+                            <p class="m-0">{{request?.bank_name}}</p>
+                        </div>
+                    </div>
+
+                    <!-- <div *ngIf="apiService.USER.user_type_id == 1" class="row action-footer mt-3 mb-5 ">
+                        <div class="col-md-4 mx-auto">
+                            <button (click)="openAddTransactionDialog(
+                            request?.uid,
+                            request?.request_account_number,
+                            request?.request_type,
+                            request?.request_amount, 
+                            request?.firstname,
+                            request?.lastname,
+                            request?.id
+                            )" class="btn btn-outline-primary">
+                                <mat-icon>cached</mat-icon> {{!loading ? 'Add transaction' : 'Please wait..'}}
+                        </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

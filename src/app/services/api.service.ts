@@ -70,7 +70,6 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
        }
 
       // USER ACCOUNT  //
-
   addAccount(account: any){
     return this.http.post<any>(`${this.devUrl}/account`, account);
   }
@@ -84,6 +83,33 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   deleteAccount(account_id: any){
     return this.http.delete<any>(`${this.devUrl}/account/${account_id}`);
   }
+
+
+       // REQUEST  //
+       addRequest(request: any){
+        return this.http.post<any>(`${this.devUrl}/request`, request);
+      }
+      getRequest( uid: any, request_id: any, single: any,  all:any){
+        return this.http.get<any>(`${this.devUrl}/request?uid=${uid}&request_id=${request_id}&single=${single}&all=${all}`);
+      }
+      deleteRequest(request_id: any){
+        return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
+      }
+
+
+           // TRANSACTIONS  //
+           addTransaction(transaction: any){
+            return this.http.post<any>(`${this.devUrl}/transaction`, transaction);
+          }
+          getTransactions(uid: any,  transactions_id: any, account_number: any, all:any){
+            return this.http.get<any>(`${this.devUrl}/transaction?uid=${uid}&account_number=${account_number}&all=${all}`);
+          }
+          // deleteTransaction(request_id: any){
+          //   return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
+          // }
+    
+
+      
 
   //  UTILITIES //
   getCountries(){

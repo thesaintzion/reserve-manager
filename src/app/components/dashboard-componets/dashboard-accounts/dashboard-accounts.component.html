@@ -44,7 +44,7 @@
                                                 {{account.balance}}
                                             </span>
                                         </td>
-                                        <td>{{account.createdAt | date:'fullDate'}}</td>
+                                        <td>{{account.createdAt | date:'short'}}</td>
                                         <td class=" d-flex justify-content-end align-content-center align-items-center ">
                                             <button *ngIf="account.status" title="Edit account" (click)="openEditAccountDialog(account.id)" mat-icon-button>
                                             <mat-icon  class="color-primary">create</mat-icon>

@@ -8,7 +8,7 @@
                     <h4 class="mb-0">Transactions</h4>
                 </div>
                 <div *ngIf="apiService.USER.user_type_id == 1" class="d-flex align-content-center  align-items-center">
-                    <button [disabled]="loading" (click)="openAddTransactionDialog()" mat-raised-button class="btn-primary">Add Transaction <mat-icon>add</mat-icon> </button>
+                    <button [disabled]="loading" (click)="openAddTransactionDialog()" mat-raised-button class="btn-primary"> Confirm Transaction <mat-icon>add</mat-icon> </button>
                 </div>
             </header>
 
@@ -22,46 +22,29 @@
                                 <tr>
                                     <th>Transaction Type</th>
                                     <th>Amount</th>
+                                    <th>User</th>
                                     <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let transaction of transactions" routerLink="123456">
+                                <tr *ngFor="let transaction of transactions" [routerLink]="transaction.id">
                                     <td>
-                                        {{transaction.type}}
+                                        {{transaction.transaction_type}}
                                     </td>
-                                    <td [ngClass]="{'text-primary': transaction.type == 'Deposite', 'text-danger': transaction.type == 'Withdraw', 'text-dark': transaction.type == 'Transfer' }">&#8358;
-                                        <span *ngIf="transaction.amount >= 1000">
+                                    <td [ngClass]="{'text-primary': transaction.transaction_type== 'deposite', 'text-danger': transaction.transaction_type == 'withdraw', 'text-dark': transaction.transaction_type == 'transfer' }">
+                                        &#8358;
+                                        <span class="text-capitalize" *ngIf="transaction.amount >= 1000">
                                             {{transaction.amount |  number:'2.'}}
                                         </span>
                                         <span *ngIf="transaction.amount < 1000">
                                             {{transaction.amount}}
                                         </span>
-                                        <!-- <mat-icon class="text-muted" *ngIf="transaction.type == 'Deposite'">add_circle</mat-icon>
-                                        <mat-icon class="text-muted" *ngIf="transaction.type == 'Transfer'">publish</mat-icon>
-                                        <mat-icon class="text-muted" *ngIf="transaction.type == 'Withdraw'">archive</mat-icon> -->
                                     </td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        {{transaction.date | date:'fullDate'}}
-                                    </td>
-                                </tr>
-                                <tr *ngFor="let transaction of transactions" routerLink="123456">
                                     <td>
-                                        {{transaction.type}}
-                                    </td>
-                                    <td [ngClass]="{'text-primary': transaction.type == 'Deposite', 'text-danger': transaction.type == 'Withdraw', 'text-dark': transaction.type == 'Transfer' }">&#8358;
-                                        <span *ngIf="transaction.amount >= 1000">
-                                            {{transaction.amount |  number:'2.'}}
-                                        </span>
-                                        <span *ngIf="transaction.amount < 1000">
-                                            {{transaction.amount}}
-                                        </span>
-                                        <!-- <mat-icon class="text-muted" *ngIf="transaction.type == 'Deposite'">add_circle</mat-icon>
-                                        <mat-icon class="text-muted" *ngIf="transaction.type == 'Transfer'">publish</mat-icon>
-                                        <mat-icon class="text-muted" *ngIf="transaction.type == 'Withdraw'">archive</mat-icon> -->
+                                        {{transaction.uid}}
                                     </td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        {{transaction.date | date:'fullDate'}}
+                                        {{transaction.createdAt | date:'short'}}
                                     </td>
                                 </tr>
                             </tbody>

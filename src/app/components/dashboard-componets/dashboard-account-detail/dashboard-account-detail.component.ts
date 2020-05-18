@@ -25,7 +25,7 @@ account_number: '',
 denomination_id:  '',
 account_type_id:  '',
 investment_period_id:  '',
-balance:  '',
+balance:  0,
 createdAt: '',
 updatedAt: '',
 status: '',
@@ -69,20 +69,6 @@ lastname:  '',
    }
 
 
-   // form dialog
-openEditAccountDialog(accountNo, type, denomination, period): void {
-  let title = 'Edit Account';
-  let selectedAccount  = {
-    accountNo: accountNo,
-    type: type,
-    denomination: denomination,
-    period:  period
-  }
-  const  dialogRef = this.dialog.open(DashboardCreateAccountDialogComponent, {  
-     width: '400px',
-     data:{selectedAccount: selectedAccount, title:  title, type: 'editAccount' },
-  });
- }
 
 //  Get logged in user
 getLoggedInUser(){
@@ -108,7 +94,6 @@ this.apiService.USER.id = res.user.id;
 getAccount(uid, account_id, query){
   this.apiService.getAccount(uid, account_id, query).subscribe(
     res => {
-  console.log('the account', res);
 this.account.id =  res.accounts[0].id ;
 this.account.uid =  res.accounts[0].uid ;
 this.account.account_number =  res.accounts[0].account_number;
@@ -124,7 +109,6 @@ this.account.account_type =  res.accounts[0].account_type ;
 this.account.investment_period =  res.accounts[0].investment_period;
 this.account.firstname =  res.accounts[0].firstname ;
 this.account.lastname =  res.accounts[0].lastname ;
-console.log('the main account', this.account);
     },
     err => {
       console.log(err);
@@ -134,21 +118,50 @@ console.log('the main account', this.account);
 }
 
 // Opean account operation dialog
-   openAccountOperationDialog(title, type, account_number): void {
+   openAccountOperationDialog(type, account_number, balance): void {
     const  dialogRef = this.dialog.open(DashboardAccountOperationDialogComponent, {  
-       width: '350px',
-       data:{ title: title, type: type, account_number },
+       width: '400px',
+       data:{ type: type, account_number, balance },
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         this.result = true;
         this.apiService.LOADING.isLoading =  true;
         this.loading = true;
-        setTimeout( ()=>{
-          this.apiService.LOADING.isLoading =  false;
-          this.loading = false;
-          this.sharedService.openSnackBar('Transaction added...', '', 3000, 'bg-success');
-        }, 4000);
+      
+          let request = {
+            uid:this.apiService.USER.id,
+            request_type: type,
+            request_amount:  result.request_amount,
+            comment: '',
+            request_account_number:  account_number,
+          }
+    
+
+          // Call to api
+          this.apiService.addRequest(request).subscribe(
+            res => {
+              console.log(res);
+              setTimeout( ()=>{ 
+              this.apiService.LOADING.isLoading =  false;
+              this.loading = false; 
+              if(type == 'withdraw'){
+                this.sharedService.openSnackBar('Your Withdrawal request has been sent successfully. You will get a response from the admin soon. Thank you!!', 'Ok', 19000, 'bg-success');
+              }else if(type == 'deposite'){
+                this.sharedService.openSnackBar('Your Deposite request has been sent successfully. You will get a response from the admin soon. Thank you!!', 'Ok', 19000, 'bg-success');
+              }else{
+                this.sharedService.openSnackBar('Transfer was successful. Thank you!!', 'Ok', 19000, 'bg-success');
+              }
+            }, 2000);
+            },
+            err => {
+              console.log(err);
+              setTimeout( ()=>{ 
+              this.apiService.LOADING.isLoading =  false;
+              this.loading = false;  
+              this.sharedService.openSnackBar('Something went wrong.. Please try again after some time.', 'Ok', 9000, 'bg-danger');
+            }, 2000);
+            })
      }
     });
   
@@ -161,7 +174,6 @@ console.log('the main account', this.account);
   ngOnInit() {
     this.getLoggedInUser();
     if(this.accountId){
-    console.log(this.accountId);
     this.getAccount(this.apiService.USER.id, this.accountId, 'single');
     }
   }

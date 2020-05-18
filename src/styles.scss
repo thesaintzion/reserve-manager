@@ -86,6 +86,10 @@ button:focus {
     // outline: 5px auto -webkit-focus-ring-color;
 }
 
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+
 * {
     scroll-behavior: smooth !important;
 }

@@ -16,7 +16,8 @@ import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { DashboardTransactionsComponent } from './dashboard-transactions/dashboard-transactions.component';
 import { DashboardTransactionDetailComponent } from './dashboard-transaction-detail/dashboard-transaction-detail.component';
-import { DasboardRequestsComponent } from './dasboard-requests/dasboard-requests.component';
+import { DashboardRequestDetailComponent } from './dashboard-request-detail/dashboard-request-detail.component';
+import { DashboardRequestsComponent } from './dashboard-requests/dashboard-requests.component';
 
 const routes: Routes = [
  {path: '', component: DashboardLayoutComponent, children: 
@@ -29,8 +30,9 @@ const routes: Routes = [
   {path: 'accounts/:account_id', component:   DashboardAccountDetailComponent},
   {path: 'users/new/user', component: AddNewUserComponent},
   {path: 'transactions', component: DashboardTransactionsComponent},
-  {path: 'requests', component: DasboardRequestsComponent},
   {path: 'transactions/:transactionId', component: DashboardTransactionDetailComponent},
+  {path: 'requests', component: DashboardRequestsComponent},
+  {path: 'requests/:requestId', component: DashboardRequestDetailComponent},
   {path: 'settings', component:  DashboardSettingsComponent, children: [
     { path: '', component:  DashboardProfileComponent},
     { path: 'profile', component:  DashboardProfileComponent},

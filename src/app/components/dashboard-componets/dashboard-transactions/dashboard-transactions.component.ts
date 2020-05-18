@@ -20,73 +20,7 @@ export class DashboardTransactionsComponent implements OnInit {
   accounts = [];
   objectKeys = Object.length;
   transactions = [];
-    constructor(public sharedService: SharedService, private dialog: MatDialog, private apiService: ApiService, private router: Router) {
-    let transactions = [
-      {
-        id: 1,
-        uid: 'K49485494N',
-        type: 'Deposite',
-        amount: '9000',
-        date: Date.now()
-      },
-      {
-        id: 2,
-        uid: 'K4785494N',
-        type: 'Transfer',
-        amount: '700000',
-        date: Date.now()
-      },
-      {
-        id: 3,
-        uid: 'K494878494N',
-        type: 'Withdraw',
-        amount: '900000',
-        date: Date.now()
-      },
-      {
-        id: 4,
-        uid: 'K49485494N',
-        type: 'Deposite',
-        amount: '20000',
-        date: Date.now()
-      },
-      {
-        id: 5,
-        uid: 'K4785494N',
-        type: 'Transfer',
-        amount: '10000',
-        date: Date.now()
-      },
-      {
-        id: 6,
-        uid: 'K494878494N',
-        type: 'Withdraw',
-        amount: '900000',
-        date: Date.now()
-      },
-      {
-        id: 5,
-        uid: 'K4785494N',
-        type: 'Transfer',
-        amount: '700000',
-        date: Date.now()
-      },
-      {
-        id: 6,
-        uid: 'K494878494N',
-        type: 'Withdraw',
-        amount: '900000',
-        date: Date.now()
-      },
-      {
-        id: 6,
-        uid: 'K494878494N',
-        type: 'Withdraw',
-        amount: '900000',
-        date: Date.now()
-      },
-    ];
-    this.transactions = transactions;
+    constructor(public sharedService: SharedService, private dialog: MatDialog, public apiService: ApiService, private router: Router) {
      }
   
   
@@ -110,70 +44,54 @@ export class DashboardTransactionsComponent implements OnInit {
   
    // Open dialog for adding transaction
    openAddTransactionDialog(): void {
-    let title = 'Add Transaction';
+
     const  dialogRef = this.dialog.open(DasboardAddTransactionDialogComponent, {  
-       width: '600px',
-       data:{ title:  title, type: 'createAccount' },
+       width: '400px',
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        this.result = true;
         this.apiService.LOADING.isLoading =  true;
         this.loading = true;
-        setTimeout( ()=>{
-          this.apiService.LOADING.isLoading =  false;
-          this.loading = false;
-          this.sharedService.openSnackBar('Transaction added...', '', 3000, 'bg-success');
-        }, 4000);
-
-      //   let account = {
-      //   uid: this.apiService.USER.id,
-      //   denomination_id: result.denomination_id,
-      //   account_type_id: result.account_type_id,
-      //   investment_period_id:  result.investment_period_id
-      //  }
-      //  console.log('account', account);
-      // this.apiService.addAccount(account).subscribe(
-      // res => {
-      //   this.getLoggedInUser();
-      // console.log('Account created', res);
-
-      // this.sharedService.openSnackBar('Account Created', '', 3000, 'bg-success');
-      // this.accntAdded = true;
-      // setTimeout( ()=>{
-      // this.accntAdded = false;
-      // }, 3000);
-      // },
-      // err => {
-      // console.log(err);
-      // if(err.error && err.error.statusMsg !== ''){
-      //   this.sharedService.openSnackBar(err.error.statusMsg, 'Ok', 9000, 'bg-danger');
-      // }else{
-      // this.sharedService.openSnackBar('Could not create account please try again later', '', 3000, 'bg-danger');
-      // }
-      // });
-     }
-    });
+        console.log('Transaction recieved..', result);
+let transaction = {
+uid: result.uid,
+transaction_type: result.transaction_type,
+amount: result.amount,
+comment: result.comment,
+account_number: result.account_number,
+request_id: '',
+account_transfer_from: '',
+account_transfer_to: ''
+}
+console.log('the transaction', transaction);
+// debugger;
+this.apiService.addTransaction(transaction).subscribe(
+res =>{
+  console.log(res);
+  setTimeout( ()=>{
+    this.apiService.LOADING.isLoading =  false;
+    this.loading = false;
+    this.sharedService.openSnackBar('Transaction added', '', 3000, 'bg-success');
+    this.getLoggedInUser();
+  }, 3000);
+},
+err => {
+console.log(err);
+setTimeout( ()=>{
+this.apiService.LOADING.isLoading =  false;
+this.loading = false;
+this.sharedService.openSnackBar('Something went wrong.. please try again latter.', '', 3000, 'bg-danger');
+}, 3000);
+})
+     
+}
+});
   
    }
   
   
-  getLoggedInUser(){
-     this.apiService.getLoggedInUser().subscribe(
-       res => {
-  console.log('Logged In User', res);
-    this.apiService.USER.firstname =  res.user.firstname;
-    this.apiService.USER.firstname =  res.user.firstname;
-    this.apiService.USER.user_type_id =  res.user.user_type_id;
-    this.apiService.USER.id = res.user.id;
-       },
-       err => {
-        this.router.navigate(['/login']);
-         console.log(err);
-      
-       }
-     )
-   }
+
   
   getAccount(uid, account_number, query){
      this.apiService.getAccount(uid, account_number, query).subscribe(
@@ -204,6 +122,46 @@ export class DashboardTransactionsComponent implements OnInit {
       }
     )
    }
+
+  //  Get transactions
+  getTransactions(user_type_id, userId){
+    let uid = 'null';
+    let account_number = 'null';
+    let transactions_id = 'null';
+    let all = 'all';
+    if(user_type_id == 2){
+      all = 'null';
+      uid = userId;
+      }
+
+    this.apiService.getTransactions(uid, transactions_id, account_number, all).subscribe(
+      res => {
+this.transactions = res.transactions;
+      },
+       err => {
+console.log(err);
+      }
+    )
+
+  }
+
+  getLoggedInUser(){
+    this.apiService.getLoggedInUser().subscribe(
+      res => {
+ console.log('Logged In User', res);
+   this.apiService.USER.firstname =  res.user.firstname;
+   this.apiService.USER.firstname =  res.user.firstname;
+   this.apiService.USER.user_type_id =  res.user.user_type_id;
+   this.apiService.USER.id = res.user.id;
+   this.getTransactions(res.user.user_type_id, res.user.id);
+      },
+      err => {
+       this.router.navigate(['/login']);
+        console.log(err);
+     
+      }
+    )
+  }
   
     ngOnInit() {
       this.getUsers();

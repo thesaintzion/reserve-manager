@@ -59,29 +59,32 @@
 
                     </div>
 
-                    <div class="row action-footer mt-3">
-                        <div class="col-md-4">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('Deposite', 'deposite', account.account_number)" class="btn btn-outline-primary">
-                                <mat-icon>add_circle</mat-icon>  Doposite
+                    <div *ngIf="apiService.USER.user_type_id == 2" class="row action-footer mt-3">
+                        <div class="col-md-4 mb-2">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('deposite', account.account_number, account.balance )" class="btn btn-outline-primary">
+                                <mat-icon>add_circle</mat-icon>  
+                                {{!loading ? 'Doposite Request' : 'Please wait..'}}
                         </button>
                         </div>
-                        <div class="col-md-4">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('Transfer', 'transfer', account.account_number)" class="btn btn-outline-dark">
-                                <mat-icon> publish</mat-icon>
-                                Transfer
+                        <div class="col-md-4 mb-2">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('transfer', account.account_number, account.balance)" class="btn btn-outline-dark">
+                                <mat-icon>publish</mat-icon>
+                                {{!loading ? 'Transfer' : 'Please wait..'}}
                         </button>
                         </div>
 
-                        <div class="col-md-4">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('Withdraw', 'withdraw', account.account_number)" class="btn btn-outline-danger">
-                                <mat-icon>archive</mat-icon>  withdraw
+                        <div class="col-md-4 mb-2">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('withdraw', account.account_number, account.balance)" class="btn btn-outline-danger">
+                                <mat-icon>archive</mat-icon>  {{!loading ? 'withdrawal Request' : 'Please wait..'}}
                         </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Transactions -->
+
                 <div class="col-md-12 ">
+                    <strong class="mb-3 d-block">Transactions</strong>
                     <div class="table-conshadow mt-0 bg-white">
                         <table class="table">
                             <thead>
