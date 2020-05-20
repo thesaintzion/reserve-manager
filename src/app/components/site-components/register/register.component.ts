@@ -80,7 +80,7 @@ if(this.registerForm.invalid){
     setTimeout( () =>{
       this.loading = false;
       this.router.navigate(['/login']);
-      this.sharedService.openSnackBar('Registeration succesful, please login', 'ok', 90000, 'bg-success');
+      this.sharedService.openSnackBar('Registeration was succesful, please login.', 'ok', 90000, 'bg-success');
       }, 2000);
   },
 

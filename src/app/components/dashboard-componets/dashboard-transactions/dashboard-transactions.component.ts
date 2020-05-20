@@ -125,24 +125,30 @@ this.sharedService.openSnackBar('Something went wrong.. please try again latter.
 
   //  Get transactions
   getTransactions(user_type_id, userId){
-    let uid = 'null';
-    let account_number = 'null';
-    let transactions_id = 'null';
+    let uid = userId;
     let all = 'all';
-    if(user_type_id == 2){
-      all = 'null';
-      uid = userId;
-      }
+    if(user_type_id == 1){
+      // Get all transctions for admin...
+      this.apiService.getTransactions(all).subscribe(
+        res => {
+  this.transactions = res.transactions;
+  console.log('Transactions', res);
+        },
+         err => {
+  console.log(err);
+        })
+      }else{
+        // Get transactions for a spacific user...
+        this.apiService.getTransactionsByUid(uid).subscribe(
+          res => {
+    this.transactions = res.transactions;
+    console.log('User Transactions', res);
+          },
+           err => {
+    console.log(err);
+          })
 
-    this.apiService.getTransactions(uid, transactions_id, account_number, all).subscribe(
-      res => {
-this.transactions = res.transactions;
-      },
-       err => {
-console.log(err);
       }
-    )
-
   }
 
   getLoggedInUser(){

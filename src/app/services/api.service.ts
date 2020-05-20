@@ -101,8 +101,11 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
            addTransaction(transaction: any){
             return this.http.post<any>(`${this.devUrl}/transaction`, transaction);
           }
-          getTransactions(uid: any,  transactions_id: any, account_number: any, all:any){
-            return this.http.get<any>(`${this.devUrl}/transaction?uid=${uid}&account_number=${account_number}&all=${all}`);
+          getTransactions(all:any){
+            return this.http.get<any>(`${this.devUrl}/transaction?all=${all}`);
+          }
+          getTransactionsByUid(uid:any){
+            return this.http.get<any>(`${this.devUrl}/transaction?uid=${uid}`);
           }
           // deleteTransaction(request_id: any){
           //   return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);

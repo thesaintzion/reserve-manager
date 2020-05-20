@@ -27,24 +27,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let transaction of transactions" [routerLink]="transaction.id">
+                                <tr *ngFor="let transaction of transactions" [routerLink]="transaction?.id">
                                     <td>
-                                        {{transaction.transaction_type}}
+                                        {{transaction?.transaction_type}}
                                     </td>
-                                    <td [ngClass]="{'text-primary': transaction.transaction_type== 'deposite', 'text-danger': transaction.transaction_type == 'withdraw', 'text-dark': transaction.transaction_type == 'transfer' }">
+                                    <td [ngClass]="{'text-primary': transaction?.transaction_type== 'deposite', 'text-danger': transaction?.transaction_type == 'withdraw', 'text-dark': transaction?.transaction_type == 'transfer' }">
                                         &#8358;
-                                        <span class="text-capitalize" *ngIf="transaction.amount >= 1000">
-                                            {{transaction.amount |  number:'2.'}}
+                                        <span class="text-capitalize" *ngIf="transaction?.amount >= 1000">
+                                            {{transaction?.amount |  number:'2.'}}
                                         </span>
-                                        <span *ngIf="transaction.amount < 1000">
-                                            {{transaction.amount}}
+                                        <span *ngIf="transaction?.amount < 1000">
+                                            {{transaction?.amount}}
                                         </span>
                                     </td>
                                     <td>
-                                        {{transaction.uid}}
+                                        {{transaction?.firstname}} {{transaction?.lastname}}
                                     </td>
                                     <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        {{transaction.createdAt | date:'short'}}
+                                        {{transaction?.createdAt | date:'short'}}
                                     </td>
                                 </tr>
                             </tbody>
