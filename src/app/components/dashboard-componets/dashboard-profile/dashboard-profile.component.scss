@@ -90,7 +90,6 @@
             overflow-x: scroll;
         }
     }
-    @media (max-width:767px) {}
     .img-prev-con {
         position: relative;
         // top: 0;
@@ -102,6 +101,16 @@
             top: 0;
             right: 0;
             z-index: 2;
+        }
+    }
+    @media (max-width: 767px) {
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        header {
+            padding-right: 15px;
+            padding-left: 15px;
         }
     }
 }

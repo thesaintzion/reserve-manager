@@ -85,7 +85,7 @@
 
                 <div class="col-md-12 ">
                     <strong class="mb-3 d-block px-sm-3">Transactions</strong>
-                    <div *ngIf="transaction.length < 1 else showTable" class="text-center">
+                    <div *ngIf="transactions.length < 1 else showTable" class="text-center">
                         <p>No transactions to display.</p>
                     </div>
                     <ng-template #showTable>

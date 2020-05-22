@@ -70,7 +70,8 @@
                 <button *ngIf="!fancyBg" class="main-icon" mat-icon-button>
                     <mat-icon>star_half</mat-icon>
                     </button>
-                <span matBadge="8" matBadgeOverlap="false" matBadgeColor="warn" *ngIf="!fancyBg" class="main-text">Requests</span>
+                <!-- matBadge="8" matBadgeOverlap="false" -->
+                <span matBadgeColor="warn" *ngIf="!fancyBg" class="main-text">Requests</span>
                 <button *ngIf="fancyBg" class="fancy-icon" mat-icon-button>
                         <mat-icon></mat-icon>
                         </button>
@@ -127,8 +128,8 @@
         <mat-toolbar>
             <div class="d-flex justify-content-between align-content-center align-items-center w-100">
                 <div *ngIf="isHandset$ | async">
-                    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                    <button type="button" class="mr-4" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                    <mat-icon aria-label="Side nav toggle icon" class="color-primary">menu</mat-icon>
                   </button>
 
                     <a routerLink="profile" class="sidenav-logo">
