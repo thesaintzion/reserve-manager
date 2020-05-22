@@ -19,8 +19,11 @@
             width: 40px !important;
             height: 40px !important;
         }
+        .mat-progress-bar .mat-progress-bar-fill {
+            // background-color: rgb(255, 0, 221) !important;
+        }
         .mat-progress-bar .mat-progress-bar-fill::after {
-            background-color: blue !important;
+            background-color: red !important;
             // background-image: linear-gradient(to bottom, yellow, blue) !important;
         }
     }

@@ -5,6 +5,7 @@
                 <h4>Home</h4>
                 <h4 class=""><span class="text-muted">Welcome</span>, {{apiService.USER.firstname}} 😀!</h4>
             </header>
+
             <div class="row mt-4  animated fadeInUp">
 
                 <div class="col-md-4 col-lg-2  mb-4 ">
@@ -13,6 +14,7 @@
                             <div class="link-box-text">
                                 <mat-icon>cached</mat-icon>
                                 <h5>Transactions</h5>
+                                <p *ngFor="let request of requests">{{request}}</p>
                             </div>
                         </div>
                     </mat-card>

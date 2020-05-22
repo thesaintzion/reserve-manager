@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="d-flex align-content-center  align-items-center ml-3">
-                    <h4> #{{account.account_number}} </h4>
+                    <h4> #{{account?.account_number}} </h4>
 
                 </div>
 
@@ -17,64 +17,64 @@
             <div class="row mt-3  ">
 
                 <div class="col-md-12 mb-4 pt-1">
-                    <div class=" bg-white" [ngClass]="{'color-danger': !account.status}">
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                    <div class=" bg-white" [ngClass]="{'color-danger': !account?.status}">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Balance</p>
                             <p class="m-0">&#8358;
-                                <span *ngIf="account.balance >= 1000">
-                                    {{account.balance | number:'2.'}}
+                                <span *ngIf="account?.balance >= 1000">
+                                    {{account?.balance | number:'2.'}}
                                 </span>
-                                <span *ngIf="account.balance < 1000">
-                                    {{account.balance}}
+                                <span *ngIf="account?.balance < 1000">
+                                    {{account?.balance}}
                                 </span>
 
                             </p>
                         </div>
 
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Account Type</p>
-                            <p class="m-0">{{account.account_type}}</p>
+                            <p class="m-0">{{account?.account_type}}</p>
                         </div>
 
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Denomination</p>
-                            <p class="m-0">{{account.denomination}}</p>
+                            <p class="m-0">{{account?.denomination}}</p>
                         </div>
 
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Investment Period</p>
-                            <p class="m-0">{{account.investment_period}}</p>
+                            <p class="m-0">{{account?.investment_period}}</p>
                         </div>
 
 
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Owner</p>
-                            <p class="m-0">{{account.firstname}} {{account.lastname}}</p>
+                            <p class="m-0">{{account?.firstname}} {{account?.lastname}}</p>
                         </div>
 
-                        <div class="d-flex justify-content-between border-bottom  py-3 px-2">
+                        <div class="d-flex justify-content-between border-bottom  py-3 px-3">
                             <p class="m-0">Created</p>
-                            <p class="m-0">{{account.createdAt | date:'fullDate'}}</p>
+                            <p class="m-0">{{account?.createdAt | date:'fullDate'}}</p>
                         </div>
 
                     </div>
 
-                    <div *ngIf="apiService.USER.user_type_id == 2" class="row action-footer mt-3">
+                    <div *ngIf="apiService.USER.user_type_id == 2" class="row action-footer mt-3 px-sm-3">
                         <div class="col-md-4 mb-2">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('deposite', account.account_number, account.balance )" class="btn btn-outline-primary">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('deposite', account?.account_number, account?.balance )" class="btn btn-outline-primary">
                                 <mat-icon>add_circle</mat-icon>  
                                 {{!loading ? 'Doposite Request' : 'Please wait..'}}
                         </button>
                         </div>
                         <div class="col-md-4 mb-2">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('transfer', account.account_number, account.balance)" class="btn btn-outline-dark">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('transfer', account?.account_number, account?.balance)" class="btn btn-outline-dark">
                                 <mat-icon>publish</mat-icon>
                                 {{!loading ? 'Transfer' : 'Please wait..'}}
                         </button>
                         </div>
 
                         <div class="col-md-4 mb-2">
-                            <button [disabled]="loading" (click)="openAccountOperationDialog('withdraw', account.account_number, account.balance)" class="btn btn-outline-danger">
+                            <button [disabled]="loading" (click)="openAccountOperationDialog('withdraw', account?.account_number, account?.balance)" class="btn btn-outline-danger">
                                 <mat-icon>archive</mat-icon>  {{!loading ? 'withdrawal Request' : 'Please wait..'}}
                         </button>
                         </div>
@@ -84,116 +84,54 @@
                 <!-- Transactions -->
 
                 <div class="col-md-12 ">
-                    <strong class="mb-3 d-block">Transactions</strong>
-                    <div class="table-conshadow mt-0 bg-white">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Transaction Type</th>
-                                    <th>Amount</th>
-                                    <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
-                                </tr>
-
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>Transer</td>
-                                    <td>&#8358; 50, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <td>Deposite</td>
-                                    <td>&#8358; 30, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>Witdraw</td>
-                                    <td>&#8358; 40, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>Transer</td>
-                                    <td>&#8358; 50, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <td>Deposite</td>
-                                    <td>&#8358; 30, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>Witdraw</td>
-                                    <td>&#8358; 40, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>Transer</td>
-                                    <td>&#8358; 50, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <td>Deposite</td>
-                                    <td>&#8358; 30, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>Witdraw</td>
-                                    <td>&#8358; 40, 000</td>
-                                    <td class=" d-flex justify-content-end align-content-center align-items-center ">
-                                        20/12/2019 | 1:30 pm
-                                    </td>
-
-                                </tr>
-
-
-
-
-
-
-                            </tbody>
-                        </table>
+                    <strong class="mb-3 d-block px-sm-3">Transactions</strong>
+                    <div *ngIf="transaction.length < 1 else showTable" class="text-center">
+                        <p>No transactions to display.</p>
                     </div>
+                    <ng-template #showTable>
+                        <div class="row mt-3 ">
+                            <!-- Transactions -->
+                            <div class="col-md-12 ">
+                                <div class="table-conshadow mt-0 bg-white">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Amount</th>
+                                                <th class=" d-flex justify-content-end align-content-center align-items-center ">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let transaction of transactions" [routerLink]="transaction?.id">
+                                                <td>
+                                                    {{transaction?.transaction_type}}
+                                                </td>
+                                                <td [ngClass]="{'text-primary': transaction?.transaction_type== 'deposite', 'text-danger': transaction?.transaction_type == 'withdraw', 'text-dark': transaction?.transaction_type == 'transfer' }">
+                                                    &#8358;
+                                                    <span class="text-capitalize" *ngIf="transaction?.amount >= 1000">
+                                                    {{transaction?.amount |  number:'2.'}}
+                                                </span>
+                                                    <span *ngIf="transaction?.amount < 1000">
+                                                    {{transaction?.amount}}
+                                                </span>
+                                                </td>
+
+                                                <td class=" d-flex justify-content-end align-content-center align-items-center ">
+                                                    {{transaction?.createdAt | date:'short'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
 
 
                 <!-- <div class="col-md-12 mt-4">
                     <div class=" bg-white">
-                        <div class="py-3 px-2">
+                        <div class="py-3 px-3">
                             <button class="" color="warn" (click)="openConfirmDialog()" mat-raised-button>
                             Detelte Account
                         </button>

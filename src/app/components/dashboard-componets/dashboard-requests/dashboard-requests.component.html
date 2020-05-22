@@ -69,7 +69,7 @@
                                                 request?.firstname,
                                                 request?.lastname,
                                                 request?.id
-                                                )" *ngIf="request?.request_id != request?.id" mat-menu-item>
+                                                )" *ngIf="request?.request_id != request?.id && apiService.USER.user_type_id == 1" mat-menu-item>
                                               <span>Confirm Transaction</span>
                                             </button>
                                         </mat-menu>

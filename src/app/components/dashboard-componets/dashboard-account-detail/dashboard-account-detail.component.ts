@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardDeleteConfirmDialogComponent } from '../_dialogs/dashboard-delete-confirm-dialog/dashboard-delete-confirm-dialog.component';
 import { DashboardCreateAccountDialogComponent } from '../_dialogs/dashboard-create-account-dialog/dashboard-create-account-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,28 +14,13 @@ import { DashboardAccountOperationDialogComponent } from '../_dialogs/dashboard-
   templateUrl: './dashboard-account-detail.component.html',
   styleUrls: ['./dashboard-account-detail.component.scss']
 })
-export class DashboardAccountDetailComponent implements OnInit {
+export class DashboardAccountDetailComponent implements OnInit, OnDestroy {
 loading;
 result;
-  accountId =  this.router.url.split('/')[3];
-  account =  {
-id:  '',
-uid:  '',
-account_number: '',
-denomination_id:  '',
-account_type_id:  '',
-investment_period_id:  '',
-balance:  0,
-createdAt: '',
-updatedAt: '',
-status: '',
-denomination:  '',
-account_type:  '',
-investment_period: '',
-firstname:  '',
-lastname:  '',
-    }
-
+sub;
+transactions = []
+account_number =  this.router.url.split('/')[3];
+  account =  []
 
   constructor(private dialog: MatDialog, public sharedService: SharedService, 
     public apiService: ApiService, private router: Router, public location: Location) { }
@@ -91,28 +76,14 @@ this.apiService.USER.id = res.user.id;
 
 
 // Get account
-getAccount(uid, account_id, query){
-  this.apiService.getAccount(uid, account_id, query).subscribe(
+getAccount(uid, account_number, query){
+ this.sub = this.apiService.getAccount(uid, account_number, query).subscribe(
     res => {
-this.account.id =  res.accounts[0].id ;
-this.account.uid =  res.accounts[0].uid ;
-this.account.account_number =  res.accounts[0].account_number;
-this.account.denomination_id =  res.accounts[0].denomination_id ;
-this.account.account_type_id =  res.accounts[0].account_type_id;
-this.account.investment_period_id =  res.accounts[0].investment_period_id ;
-this.account.balance =  res.accounts[0].balance ;
-this.account.createdAt =  res.accounts[0].createdAt;
-this.account.updatedAt =  res.accounts[0].updatedAt;
-this.account.status =  res.accounts[0].status;
-this.account.denomination =  res.accounts[0].denomination ;
-this.account.account_type =  res.accounts[0].account_type ;
-this.account.investment_period =  res.accounts[0].investment_period;
-this.account.firstname =  res.accounts[0].firstname ;
-this.account.lastname =  res.accounts[0].lastname ;
+this.account =  res.accounts[0];
     },
     err => {
       console.log(err);
-      this.sharedService.openSnackBar('Oops..!! Problem finding account.. Please try again later.', '', 3000, 'bg-success');
+      this.sharedService.openSnackBar('Oops..!! Problem finding account.. Please try again later.', '', 3000, 'bg-danger');
       this.router.navigate(['/dashboard/accounts']);
     });
 }
@@ -136,8 +107,6 @@ this.account.lastname =  res.accounts[0].lastname ;
             comment: '',
             request_account_number:  account_number,
           }
-    
-
           // Call to api
           this.apiService.addRequest(request).subscribe(
             res => {
@@ -168,14 +137,29 @@ this.account.lastname =  res.accounts[0].lastname ;
    }
 
 
+   getTransaction(){
+    let account_number = this.account_number;
+    this.sub = this.apiService.getTransactionsByAccountNo(account_number).subscribe(
+    res => {
+    console.log('Transactions', res);
+    this.transactions = res.transactions;
+    },
+    err => {
+      console.log('Transaction err', err);
+    })
+ }
 
 
 
   ngOnInit() {
+    this. getTransaction()
     this.getLoggedInUser();
-    if(this.accountId){
-    this.getAccount(this.apiService.USER.id, this.accountId, 'single');
+    if(this.account_number){
+    this.getAccount(this.apiService.USER.id, this.account_number, 'single');
     }
+  }
+  ngOnDestroy(){
+    this.sub;
   }
 
 }

@@ -73,8 +73,8 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   addAccount(account: any){
     return this.http.post<any>(`${this.devUrl}/account`, account);
   }
-  getAccount(uid, account_id, query){
-    return this.http.get<any>(`${this.devUrl}/account?uid=${uid}&account_id=${account_id}&query=${query}`);
+  getAccount(uid, account_number, query){
+    return this.http.get<any>(`${this.devUrl}/account?uid=${uid}&account_number=${account_number}&query=${query}`);
   }
   editAccount(account: any,  account_id: any ){
     return this.http.put<any>(`${this.devUrl}/account/${account_id}`, account);
@@ -85,32 +85,39 @@ return this.http.post<any>(`${this.devUrl}/user`, user)
   }
 
 
-       // REQUEST  //
-       addRequest(request: any){
-        return this.http.post<any>(`${this.devUrl}/request`, request);
-      }
-      getRequest( uid: any, request_id: any, single: any,  all:any){
-        return this.http.get<any>(`${this.devUrl}/request?uid=${uid}&request_id=${request_id}&single=${single}&all=${all}`);
-      }
-      deleteRequest(request_id: any){
-        return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
-      }
+    // REQUEST  //
+    addRequest(request: any){
+    return this.http.post<any>(`${this.devUrl}/request`, request);
+  }
+  getRequest( uid: any, request_id: any, single: any,  all:any){
+    return this.http.get<any>(`${this.devUrl}/request?uid=${uid}&request_id=${request_id}&single=${single}&all=${all}`);
+  }
+  deleteRequest(request_id: any){
+    return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
+  }
 
 
-           // TRANSACTIONS  //
-           addTransaction(transaction: any){
-            return this.http.post<any>(`${this.devUrl}/transaction`, transaction);
-          }
-          getTransactions(all:any){
-            return this.http.get<any>(`${this.devUrl}/transaction?all=${all}`);
-          }
-          getTransactionsByUid(uid:any){
-            return this.http.get<any>(`${this.devUrl}/transaction?uid=${uid}`);
-          }
-          // deleteTransaction(request_id: any){
-          //   return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
-          // }
+      // TRANSACTIONS  //
+      addTransaction(transaction: any){
+      return this.http.post<any>(`${this.devUrl}/transaction`, transaction);
+    }
+    getTransactions(all:any){
+      return this.http.get<any>(`${this.devUrl}/transaction?all=${all}`);
+    }
+    getTransactionsByUid(uid:any){
+      return this.http.get<any>(`${this.devUrl}/transaction?uid=${uid}`);
+    }
+    getTransactionsById(transaction_id:any){
+      return this.http.get<any>(`${this.devUrl}/transaction?transaction_id=${transaction_id}`);
+    }
+    getTransactionsByAccountNo(account_number:any){
+      return this.http.get<any>(`${this.devUrl}/transaction?account_number=${account_number}`);
+    }
     
+    // deleteTransaction(request_id: any){
+    //   return this.http.delete<any>(`${this.devUrl}/request/${request_id}`);
+    // }
+
 
       
 

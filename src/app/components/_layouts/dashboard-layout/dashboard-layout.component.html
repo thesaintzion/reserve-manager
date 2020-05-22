@@ -139,23 +139,28 @@
 
 
 
-                <div class="nav-search-con w-100 ">
+                <div class="nav-search-con w-100 hide-ipade-phone  ">
                     <div class="fancy-search-input mx-auto"></div>
                 </div>
 
                 <div class="nav-profile-con">
-                    <button class="bg-gray" mat-icon-button>
+                    <button class="bg-gray hide-ipade-phone" mat-icon-button>
                         <mat-icon>notifications_none</mat-icon>
                     </button>
 
-                    <button class="bg-gray" [matMenuTriggerFor]="userMenu" mat-icon-button>
+                    <button class="bg-gray hide-ipade-phone" [matMenuTriggerFor]="userMenu" mat-icon-button>
                         <mat-icon>person</mat-icon>
                         <div class="online-icon"></div>
                    </button>
 
-                    <button (click)="logOutDialog()" color="warn" class="rounded-btn " mat-raised-button>
+                    <button (click)="logOutDialog()" color="warn" class="rounded-btn hide-ipade-phone" mat-raised-button>
                         Logout 
                     </button>
+
+                    <button class="hide-desktop" [matMenuTriggerFor]="userMenu" mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                   </button>
+
 
 
                 </div>
@@ -170,6 +175,17 @@
                     <p mat-line>{{this.apiService.USER.email}}</p>
                 </mat-list-item>
             </mat-list>
+
+            <button class="bg-gray  hide-desktop" routerLink="settings/profile" mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+           </button>
+
+            <button (click)="logOutDialog()" color="warn" class="rounded-btn  hide-desktop" mat-menu-item>
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Logout</span>
+            </button>
+
             <button routerLink="settings/profile" mat-menu-item>
                <mat-icon>settings</mat-icon>
               <span>Settings</span>
@@ -178,6 +194,7 @@
                     <mat-icon class="mat-icon">account_balance_wallet</mat-icon>
               <span>Account</span>
             </button>
+
         </mat-menu>
 
         <!-- Add Content Here -->

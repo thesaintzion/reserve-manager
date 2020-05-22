@@ -96,14 +96,34 @@
         // }
     }
     //////// Responsive ////////////
+    @media (min-width:768px) {
+        .hide-desktop {
+            display: none !important;
+        }
+        .sidenav-container {
+            .mat-nav-list {
+                .hide-desktop {
+                    display: none !important;
+                }
+            }
+        }
+    }
     @media (max-width: 991.93px) {
         .mat-toolbar {
             overflow-x: scroll;
         }
+        .hide-ipade-phone {
+            display: none !important;
+        }
+        .sidenav-container {
+            .mat-nav-list {
+                .hide-ipade-phone {
+                    display: none !important;
+                }
+            }
+        }
     }
-    @media (min-width:768px) {
-        // .ipage-red {
-        //     background: yellow !important;
-        // }
+    @media (max-width:767px) {
+        // ....
     }
 }

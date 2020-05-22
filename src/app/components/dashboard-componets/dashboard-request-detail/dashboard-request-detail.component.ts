@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy} from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
@@ -11,10 +11,11 @@ import { DasboardAddTransactionDialogComponent } from '../_dialogs/dasboard-add-
   templateUrl: './dashboard-request-detail.component.html',
   styleUrls: ['./dashboard-request-detail.component.scss']
 })
-export class DashboardRequestDetailComponent implements OnInit {
+export class DashboardRequestDetailComponent implements OnInit, OnDestroy {
   requestId =  this.router.url.split('/')[3];
   request = [];
   loading: boolean;
+  sub
   constructor(public sharedService: SharedService, private dialog: MatDialog, public apiService: ApiService, private router: Router, public location: Location,) { }
 
 
@@ -24,7 +25,7 @@ export class DashboardRequestDetailComponent implements OnInit {
     let request_id = this.requestId;
     let single = 'SINGLE';
     let all = null;
-  this.apiService.getRequest( uid, request_id, single,  all).subscribe(
+  this.sub = this.apiService.getRequest( uid, request_id, single,  all).subscribe(
     res => {
     console.log('Request', res);
     this.request = res.request[0];
@@ -36,7 +37,7 @@ export class DashboardRequestDetailComponent implements OnInit {
  }
    //  Get logged in user
    getLoggedInUser(){
-    this.apiService.getLoggedInUser().subscribe(
+    this.sub = this.apiService.getLoggedInUser().subscribe(
       res => {
    this.apiService.USER.firstname =  res.user.firstname;
    this.apiService.USER.lastname =  res.user.lastname;
@@ -71,7 +72,7 @@ export class DashboardRequestDetailComponent implements OnInit {
          data:{ title:  title, transaction},
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      this.sub = dialogRef.afterClosed().subscribe(result => {
         if(result) {
           this.apiService.LOADING.isLoading =  true;
           this.loading = true;
@@ -88,7 +89,7 @@ let transaction = {
 }
 console.log('the transaction', transaction);
 // debugger;
-this.apiService.addTransaction(transaction).subscribe(
+this.sub = this.apiService.addTransaction(transaction).subscribe(
   res =>{
     console.log(res);
     setTimeout( ()=>{
@@ -114,6 +115,10 @@ setTimeout( ()=>{
     this.getRequests();
     this.getLoggedInUser();
     console.log(this.requestId);
+  }
+
+  ngOnDestroy(){
+    this.sub;
   }
 
 }

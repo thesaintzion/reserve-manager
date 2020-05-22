@@ -22,7 +22,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th> Account No.</th>
+                                        <th> Acc No.</th>
                                         <th>Owner</th>
                                         <th>Balance</th>
                                         <th>Created</th>
@@ -32,7 +32,7 @@
                                 <tbody [ngClass]="{'flesh-tr': accntAdded}">
                                     <tr *ngFor="let account of accounts; let index = index" [ngClass]="{'color-danger': !account.status, 'flash-yellow': account.id == editedAccntId }">
                                         <td class="account-no">{{index+1}}</td>
-                                        <td routerLink="{{account.id}}" *ngIf="account.status" class="account-no">#{{account.account_number}}</td>
+                                        <td routerLink="{{account.account_number}}" *ngIf="account.status" class="account-no">#{{account.account_number}}</td>
                                         <td *ngIf="!account.status">#{{account.account_number}}</td>
                                         <td [ngClass]="{'text-mute': apiService.USER.id === account.uid}">{{account?.firstname}} {{account?.lastname}}</td>
                                         <td>
